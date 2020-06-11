@@ -1,7 +1,7 @@
 :host {
     text-align: center;
     display: block;
-    margin-top: 15%;
+    margin-top: 12%;
   }
   
   form {
@@ -15,5 +15,17 @@
   
   .actions {
     text-align: center;
+    margin-top: 3px;
+    margin-bottom:50px;
   }
+
+  button[name=signUp] {
+    color: rgb(8, 187, 89);
+    font-size: medium;
+}
+
+.header-center {
+  font-size: x-large;
+  font-weight: 420;
+}
   

@@ -1,5 +1,5 @@
-<div class="header center">Register</div>
-
+<div class="header-center">Join WorkForYou</div>
+<br>
 <form [formGroup]="registerForm" (ngSubmit)="register()">
 
   <mat-form-field>
@@ -14,8 +14,16 @@
     <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
   </mat-form-field>
 
+  <div class="passwordExp">
+    6 characters or longer. Combine upper and lowercase letters and numbers.
+  </div>
+
   <div class="actions">
     <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+  </div>
+  <hr>
+  <div>
+      Already a member? <button name="signIn" mat-button color="Link" [routerLink]="['/auth/login']">Sign In</button>
   </div>
 
 </form>
