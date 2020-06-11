@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="header center">Register</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+  <mat-form-field>
+    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" disabled>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" id="email" placeholder="Email" autocomplete="off" formControlName="email" disabled>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+  </div>
+
+</form>

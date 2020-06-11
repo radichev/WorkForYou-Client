@@ -28,6 +28,16 @@ export class AuthService {
         }));
   }
 
+  register(user: { username: string, email: string, password: string }) {
+    return this.http.post(this.REGISTER_URL, user)
+    .pipe(
+      catchError(error => {
+        alert(error.error);
+        return of(false);
+      })
+    )
+  }
+
   logout() {
     this.doLogoutUser();
   }
