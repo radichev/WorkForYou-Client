@@ -3,11 +3,11 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
   <mat-form-field hideRequiredMarker>
-    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
+    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+    <input matInput type="password" id="password" placeholder="Password" formControlName="password">
   </mat-form-field>
 
   <div class="actions">

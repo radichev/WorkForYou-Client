@@ -1,13 +1,14 @@
 <mat-toolbar>
         <a class="logo" mat-button [routerLink]="'/'">WorkForYou</a>
+        
         <div class="spacer"></div>
+
+        <ng-container *ngIf="!isLoggedIn(); else notLoggedIn">
         <a mat-button [routerLink]="'/auth/login'">Sign In</a>
         <a mat-button [routerLink]="'/auth/register'">Sign Up</a>
-    
-        <!-- <button name="signUp" mat-button color="Link" [routerLink]="['/auth/register']">Sign Up</button> -->
-        <!-- <a mat-button [routerLink]="'/create-account'"> Create Account </a>
-        <a mat-button [routerLink]="'/contacts'"> Contacts </a>
-        <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
-        <a mat-button [routerLink]="'/activities'"> Activities </a>
-        <a mat-button [routerLink]="'/create-activity'"> Create Activity </a> -->
+        </ng-container>
+
+        <ng-template #notLoggedIn>
+                <a mat-button (click)="logout()">Logout</a>
+        </ng-template>
 </mat-toolbar>

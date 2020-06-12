@@ -5,9 +5,7 @@ import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from "../../../environments/environment"
 import { Tokens } from '../models/tokens';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';

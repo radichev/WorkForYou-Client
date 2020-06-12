@@ -16,13 +16,17 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private readonly authService: AuthService,
+    private readonly formBuilder: FormBuilder,
+    private readonly router: Router
+    ) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30), Validators.pattern(this.USERNAME_PATTERN)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern(this.PASSWORD_PATTERN)]]
+      username: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(30), Validators.pattern(this.USERNAME_PATTERN)]],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern(this.PASSWORD_PATTERN)]]
     });
   }
 
@@ -42,7 +46,7 @@ export class RegisterComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
       }
     });
   }
