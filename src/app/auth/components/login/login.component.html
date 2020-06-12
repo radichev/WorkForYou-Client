@@ -2,8 +2,8 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-  <mat-form-field>
-    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" disabled>
+  <mat-form-field hideRequiredMarker>
+    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
   </mat-form-field>
 
   <mat-form-field>

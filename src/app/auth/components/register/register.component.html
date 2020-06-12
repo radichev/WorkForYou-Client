@@ -2,16 +2,22 @@
 <br>
 <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-  <mat-form-field>
-    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" disabled>
+  <mat-form-field hideRequiredMarker>
+    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" disabled required>
+      <mat-error *ngIf="checkError('username', 'required')">Username is required</mat-error>
+      <mat-error *ngIf="checkError('username', 'minlength')">Username should be at least 4 characters</mat-error>
+      <mat-error *ngIf="checkError('username', 'maxlength')">Username should be less than 20 characters</mat-error>
   </mat-form-field>
 
-  <mat-form-field>
-    <input matInput type="text" id="email" placeholder="Email" autocomplete="off" formControlName="email" disabled>
+  <mat-form-field hideRequiredMarker>
+    <input matInput type="text" id="email" placeholder="Email" autocomplete="off" formControlName="email" required>
+      <mat-error *ngIf="checkError('email', 'email')">Please enter a valid email address</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+      <mat-error *ngIf="checkError('password', 'minlength')">Password should be at least 6 characters</mat-error>
+      <mat-error *ngIf="checkError('password', 'maxlength')">Password should be less than 30 characters</mat-error>
   </mat-form-field>
 
   <div class="passwordExp">
