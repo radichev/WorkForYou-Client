@@ -14,7 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 
 
-
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   providers: [
