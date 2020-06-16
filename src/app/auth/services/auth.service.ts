@@ -11,8 +11,8 @@ import { Tokens } from '../models/tokens';
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly LOGIN_URL = `${environment.apiUrl}/login`
-  private readonly REGISTER_URL = `${environment.apiUrl}/register`
+  private readonly LOGIN_URL = `${environment.apiUrl}/authentication/sing-in`
+  private readonly REGISTER_URL = `${environment.apiUrl}/authentication/sign-up`
   private loggedUser: string;
 
   constructor(private http: HttpClient) {}
