@@ -4,6 +4,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RouterModule } from '@angular/router';
 import { UsersRoutingModule } from './users-routing.module';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { AuthGuard } from '../shared/guards/auth.guard';
   imports: [
     CommonModule,
     RouterModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    HttpClientModule
   ]
 })
 export class UsersModule { }
