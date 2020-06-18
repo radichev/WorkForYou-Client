@@ -4,20 +4,18 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { RouterModule } from '@angular/router';
 import { UsersRoutingModule } from './users-routing.module';
 import { AuthGuard } from '../shared/guards/auth.guard';
-import { HttpClientModule } from '@angular/common/http';
-
-
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [UserProfileComponent],
   providers: [
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   imports: [
     CommonModule,
     RouterModule,
-    UsersRoutingModule,
-    HttpClientModule
+    UsersRoutingModule
   ]
 })
 export class UsersModule { }
