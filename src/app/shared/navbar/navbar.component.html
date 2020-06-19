@@ -3,12 +3,15 @@
         
         <div class="spacer"></div>
 
-        <ng-container *ngIf="!isLoggedIn(); else notLoggedIn">
+        <ng-container *ngIf="!isLoggedIn(); else LoggedIn">
         <a mat-button [routerLink]="'/auth/login'">Sign In</a>
         <a mat-button [routerLink]="'/auth/register'">Sign Up</a>
         </ng-container>
 
-        <ng-template #notLoggedIn>
+        <ng-template #LoggedIn>
                 <a mat-button (click)="logout()">Logout</a>
+                <ng-container *ngIf="userId">
+                <a mat-button [routerLink]="['/users/profile', userId]">Profile</a>
+                </ng-container>
         </ng-template>
 </mat-toolbar>

@@ -12,6 +12,5 @@ export class JwtService {
     const decodedToken = this.jwtHelper.decodeToken(this.JWT_TOKEN);
 
     return decodedToken.id;
-
   }
 }

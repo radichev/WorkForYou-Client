@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { JwtService } from '../jwt.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  userId = this.jwtHelper.getUserId();
+
+  constructor(private authService: AuthService, private router: Router, private jwtHelper: JwtService) { }
 
   ngOnInit(): void {
   }

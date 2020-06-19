@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { UsersRoutingModule } from './users-routing.module';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { UserService } from './shared/user.service';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [UserProfileComponent],
@@ -15,7 +17,9 @@ import { UserService } from './shared/user.service';
   imports: [
     CommonModule,
     RouterModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    MatCardModule,
+    MatExpansionModule
   ]
 })
 export class UsersModule { }
