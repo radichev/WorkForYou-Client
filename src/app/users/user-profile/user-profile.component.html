@@ -1,3 +1,7 @@
-<div>{{userProfile}}</div>
+<div *ngIf="userProfile">{{userProfile.firstName}}
+<div *ngIf="userProfile.certificates">
+<div *ngFor="let certificate of userProfile.certificates">{{certificate.certificateSubject}}</div>
+</div>
+</div>
 <div>WORKS</div>
 
