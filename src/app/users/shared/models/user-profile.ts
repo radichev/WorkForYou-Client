@@ -4,7 +4,7 @@ import { Skill } from './skill-models/skill';
 import { Education } from './education-models/education';
 import { Certificate } from './certificate-models/certificate';
 
-export class UserProfile {
+export interface UserProfile {
     id: string;
     firstName: string;
     lastName: string;
