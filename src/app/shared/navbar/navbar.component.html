@@ -11,7 +11,7 @@
         <ng-template #LoggedIn>
                 <a mat-button (click)="logout()">Logout</a>
                 <ng-container *ngIf="userId">
-                <a mat-button [routerLink]="['/users/profile', userId]">Profile</a>
+                <a mat-button [routerLink]="['/users/profile', userId]">{{username}}</a>
                 </ng-container>
         </ng-template>
 </mat-toolbar>

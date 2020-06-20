@@ -10,11 +10,14 @@ import { JwtService } from '../jwt.service';
 })
 export class NavbarComponent implements OnInit {
 
-  userId = this.jwtHelper.getUserId();
+  userId: string;
+  username: string;
 
   constructor(private authService: AuthService, private router: Router, private jwtHelper: JwtService) { }
 
   ngOnInit(): void {
+    this.userId = this.jwtHelper.getUserId();
+    this.username = this.jwtHelper.getUsername();
   }
 
   isLoggedIn() {

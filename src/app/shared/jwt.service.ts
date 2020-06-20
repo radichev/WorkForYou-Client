@@ -6,11 +6,15 @@ export class JwtService {
 
   private readonly JWT_TOKEN = localStorage.getItem('JWT_TOKEN')
 
+  private decodedToken = this.jwtHelper.decodeToken(this.JWT_TOKEN);
+
   constructor(private jwtHelper: JwtHelperService) { }
 
   getUserId() {
-    const decodedToken = this.jwtHelper.decodeToken(this.JWT_TOKEN);
+    return this.decodedToken.id;
+  }
 
-    return decodedToken.id;
+  getUsername() {
+    return this.decodedToken.sub;
   }
 }
