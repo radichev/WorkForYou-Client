@@ -11,3 +11,9 @@
   top: 120px;
   width: 400px;
 }
+
+mat-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
