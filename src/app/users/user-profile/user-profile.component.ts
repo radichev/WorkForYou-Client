@@ -16,14 +16,14 @@ export class UserProfileComponent implements OnInit {
   username: string;
   userProfile: UserProfile;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService:JwtService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.username = this.jwtService.getUsername();
-    this.userService.getUserProfile(this.id).subscribe(data => { 
-    this.userProfile = data;
-    this.isLoading = false;
+    this.username = this.jwtService.getUsername;
+    this.userService.getUserProfile(this.id).subscribe(data => {
+      this.userProfile = data;
+      this.isLoading = false;
     });
   }
 }

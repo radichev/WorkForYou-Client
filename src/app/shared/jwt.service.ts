@@ -4,17 +4,27 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable()
 export class JwtService {
 
-  private readonly JWT_TOKEN = localStorage.getItem('JWT_TOKEN')
-
-  private decodedToken = this.jwtHelper.decodeToken(this.JWT_TOKEN);
-
   constructor(private jwtHelper: JwtHelperService) { }
 
-  getUserId() {
-    return this.decodedToken.id;
+  get getUserId(): string {
+    const decodedToken = this.getDecodedToken();
+    return decodedToken ? decodedToken.id : null;
   }
 
-  getUsername() {
-    return this.decodedToken.sub;
+  get getUsername(): string {
+    const decodedToken = this.getDecodedToken();
+    console.log(decodedToken);
+    return decodedToken ? decodedToken.sub : null;
+  }
+
+  private getDecodedToken(): any {
+    const token = this.jwtHelper.tokenGetter();
+    let decodedToken = null;
+
+    if (token) {
+      decodedToken = this.jwtHelper.decodeToken(token);
+    }
+
+    return decodedToken;
   }
 }

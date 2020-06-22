@@ -1,4 +1,4 @@
-/* @import '../../../styles.css'; */
+@import '../../../styles.css';
 
 .avatar {
   display: block;
@@ -8,10 +8,11 @@
   height: 200px;
   margin-bottom: 15px;
 }
-.user {
-  position: absolute;
-  margin-left: 100px;
-  margin-top: 60px;
+.user-details {
+  /* position: absolute; */
+  margin-top: 50px;
+  /* margin-left: 100px;
+  margin-top: 60px; */
   /* width: 400px !important; */
 }
 
@@ -25,17 +26,60 @@ mat-spinner {
   text-align: center;
 }
 
-.created-date:before {
-  content: "\00a0 ";
-  text-align: right;
-}
-
 .user-content{
   margin-top: 20px;
 }
 
-.user-details {
-  position: absolute;
-  margin-left: 100px;
-  margin-top: 60px;
+.jobs {
+  /* position: fixed; */
+  /* margin-left: 100px;
+  margin-top: 60px; */
+}
+
+.divider {
+  margin-top: 10px;
+}
+
+.description {
+  margin-top: 40px;
+}
+
+.user-content {
+  margin-top: 40px;
+}
+
+.description-title {
+  margin-bottom: 30px;
+}
+
+/* .language-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+} */
+
+.languages {
+  margin-top: 40px;
+  
+}
+
+.language-title {
+  margin-bottom: 30px;
+}
+
+.skills {
+  margin-top: 40px;
+}
+
+.skill-title {
+  margin-bottom: 30px;
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.country {
+  display: flex;
+  justify-content: space-between;
 }
