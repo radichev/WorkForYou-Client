@@ -13,7 +13,6 @@ export class JwtService {
 
   get getUsername(): string {
     const decodedToken = this.getDecodedToken();
-    console.log(decodedToken);
     return decodedToken ? decodedToken.sub : null;
   }
 

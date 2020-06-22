@@ -20,7 +20,7 @@ export class AuthService {
   login(user: { username: string, password: string }): Observable<boolean> {
     return this.http.post<any>(this.LOGIN_URL, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.username, tokens)),
+        tap(token => this.doLoginUser(user.username, token)),
         mapTo(true),
         catchError(error => {
           alert(error.error);

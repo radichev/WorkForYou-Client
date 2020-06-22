@@ -15,12 +15,15 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private jwtHelper: JwtService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getUserDetails() {
     this.userId = this.jwtHelper.getUserId;
     this.username = this.jwtHelper.getUsername;
   }
 
   isLoggedIn() {
+    this.getUserDetails();
     return this.authService.isLoggedIn();
   }
 

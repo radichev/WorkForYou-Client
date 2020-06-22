@@ -31,11 +31,9 @@ export class LoginComponent implements OnInit {
         password: this.f.password.value
       }
     )
-    .subscribe(success => {
-      if (success) {
-        this.router.navigate(['/']);
-      }
-    });
+    .subscribe(() => {
+      this.router.navigateByUrl('/');
+  });
   }
 
 }
