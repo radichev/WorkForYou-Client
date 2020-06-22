@@ -10,9 +10,9 @@
 }
 .user {
   position: absolute;
-  left: 100px;
-  top: 120px;
-  width: 400px;
+  margin-left: 100px;
+  margin-top: 60px;
+  /* width: 400px !important; */
 }
 
 mat-spinner {
@@ -32,4 +32,10 @@ mat-spinner {
 
 .user-content{
   margin-top: 20px;
+}
+
+.user-details {
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 60px;
 }
