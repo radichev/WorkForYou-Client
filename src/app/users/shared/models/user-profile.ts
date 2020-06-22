@@ -12,6 +12,7 @@ export interface UserProfile {
     personalWebsite: string;
     country: string;
     email: string;
+    createdDate: string;
     profilePicture: string
     languages: [Language];
     workSpheres: [workSphere];

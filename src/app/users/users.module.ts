@@ -7,7 +7,8 @@ import { AuthGuard } from '../shared/guards/auth.guard';
 import { UserService } from './shared/user.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-spinner';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [UserProfileComponent],
@@ -21,7 +22,8 @@ import {MatProgressSpinnerModule, MatSpinner} from '@angular/material/progress-s
     UsersRoutingModule,
     MatCardModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDividerModule
   ]
 })
 export class UsersModule { }
