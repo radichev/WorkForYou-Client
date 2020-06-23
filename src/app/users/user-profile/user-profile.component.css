@@ -1,5 +1,3 @@
-@import '../../../styles.css';
-
 .avatar {
   display: block;
   margin-left: auto;
@@ -9,11 +7,7 @@
   margin-bottom: 15px;
 }
 .user-details {
-  /* position: absolute; */
   margin-top: 50px;
-  /* margin-left: 100px;
-  margin-top: 60px; */
-  /* width: 400px !important; */
 }
 
 mat-spinner {
@@ -26,14 +20,8 @@ mat-spinner {
   text-align: center;
 }
 
-.user-content{
+.user-content {
   margin-top: 20px;
-}
-
-.jobs {
-  /* position: fixed; */
-  /* margin-left: 100px;
-  margin-top: 60px; */
 }
 
 .divider {
@@ -52,14 +40,8 @@ mat-spinner {
   margin-bottom: 20px;
 }
 
-/* .language-title {
-  margin-top: 30px;
-  margin-bottom: 30px;
-} */
-
 .languages {
   margin-top: 40px;
-  
 }
 
 .language-title {
