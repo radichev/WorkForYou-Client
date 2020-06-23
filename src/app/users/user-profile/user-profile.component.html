@@ -67,6 +67,19 @@
                     Graduated {{education.graduationYear}}
                 </span>
             </mat-card-content>
+            <mat-card-content *ngFor="let certificate of userProfile.certificates" class="certificates">
+                <mat-card-title class="certificate-title">
+                    Certification
+                </mat-card-title>
+                <label>
+                    {{certificate.certificateSubject}}
+                </label>
+                <br>
+                <span class="certificate-details">
+                    {{certificate.awardedFrom}},
+                    Graduated {{certificate.graduationYear}}
+                </span>
+            </mat-card-content>
         </mat-card>
         <div class="col-lg-5 jobs">
         <mat-card>

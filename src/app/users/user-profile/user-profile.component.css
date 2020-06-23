@@ -49,7 +49,7 @@ mat-spinner {
 }
 
 .description-title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* .language-title {
@@ -63,7 +63,7 @@ mat-spinner {
 }
 
 .language-title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .skills {
@@ -71,7 +71,7 @@ mat-spinner {
 }
 
 .skill-title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .date-container {
@@ -89,9 +89,21 @@ mat-spinner {
 }
 
 .education-title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .education-details {
+  opacity: 0.7;
+}
+
+.certificates {
+  margin-top: 40px;
+}
+
+.certificate-title {
+  margin-bottom: 20px;
+}
+
+.certificate-details {
   opacity: 0.7;
 }
