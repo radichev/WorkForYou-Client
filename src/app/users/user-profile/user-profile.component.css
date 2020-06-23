@@ -83,3 +83,15 @@ mat-spinner {
   display: flex;
   justify-content: space-between;
 }
+
+.educations {
+  margin-top: 40px;
+}
+
+.education-title {
+  margin-bottom: 30px;
+}
+
+.education-details {
+  opacity: 0.7;
+}
