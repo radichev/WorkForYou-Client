@@ -28,32 +28,12 @@ mat-spinner {
   margin-top: 10px;
 }
 
-.description {
-  margin-top: 40px;
-}
-
-.user-content {
-  margin-top: 40px;
-}
-
-.description-title {
+.title {
   margin-bottom: 20px;
 }
 
-.languages {
+.detail-container {
   margin-top: 40px;
-}
-
-.language-title {
-  margin-bottom: 20px;
-}
-
-.skills {
-  margin-top: 40px;
-}
-
-.skill-title {
-  margin-bottom: 20px;
 }
 
 .date-container {
@@ -66,24 +46,8 @@ mat-spinner {
   justify-content: space-between;
 }
 
-.educations {
-  margin-top: 40px;
-}
-
-.education-title {
-  margin-bottom: 20px;
-}
-
 .education-details {
   opacity: 0.7;
-}
-
-.certificates {
-  margin-top: 40px;
-}
-
-.certificate-title {
-  margin-bottom: 20px;
 }
 
 .certificate-details {

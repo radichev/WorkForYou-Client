@@ -26,8 +26,8 @@
                 </div>
             </mat-card-content>
             <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="description">
-                <mat-card-title class="description-title">
+            <mat-card-content class="detail-container">
+                <mat-card-title class="title">
                     Description
                 </mat-card-title>
                 <p>
@@ -35,8 +35,8 @@
                 </p>
             </mat-card-content>
             <mat-divider class="divider"></mat-divider>
-            <mat-card-content *ngFor="let language of userProfile.languages" class="languages">
-                <mat-card-title class="language-title">
+            <mat-card-content *ngFor="let language of userProfile.languages" class="detail-container">
+                <mat-card-title class="title">
                     Languages
                 </mat-card-title>
                 <p>
@@ -44,8 +44,8 @@
                 </p>
             </mat-card-content>
             <mat-divider class="divider"></mat-divider>
-            <mat-card-content *ngFor="let skill of userProfile.skills" class="skills">
-                <mat-card-title class="skill-title">
+            <mat-card-content *ngFor="let skill of userProfile.skills" class="detail-container">
+                <mat-card-title class="title">
                     Skills
                 </mat-card-title>
                 <p>
@@ -53,8 +53,8 @@
                 </p>
             </mat-card-content>
             <mat-divider class="divider"></mat-divider>
-            <mat-card-content *ngFor="let education of userProfile.educations" class="educations">
-                <mat-card-title class="education-title">
+            <mat-card-content *ngFor="let education of userProfile.educations" class="detail-container">
+                <mat-card-title class="title">
                     Education
                 </mat-card-title>
                 <label>
@@ -67,8 +67,9 @@
                     Graduated {{education.graduationYear}}
                 </span>
             </mat-card-content>
-            <mat-card-content *ngFor="let certificate of userProfile.certificates" class="certificates">
-                <mat-card-title class="certificate-title">
+            <mat-divider class="divider"></mat-divider>
+            <mat-card-content *ngFor="let certificate of userProfile.certificates" class="detail-container">
+                <mat-card-title class="title">
                     Certification
                 </mat-card-title>
                 <label>
