@@ -15,7 +15,7 @@ export interface UserProfile {
     createdDate: string;
     profilePicture: string
     languages: [Language];
-    workSpheres: [workSphere];
+    // workSpheres: [workSphere];
     skills: [Skill];
     educations: [Education];
     certificates: [Certificate];
