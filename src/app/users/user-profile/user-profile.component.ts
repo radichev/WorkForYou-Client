@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   id: string;
   username: string;
   userProfile: UserProfile;
+  photo: any
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -25,5 +26,31 @@ export class UserProfileComponent implements OnInit {
       this.userProfile = data;
       this.isLoading = false;
     });
+    
+    this.userService.getUserProfileImage(this.id).subscribe(
+      data => {
+        
+        this.createImageFromBlob(data);
+        // this.isImageLoading = false;
+      },
+      error => {
+        // this.isImageLoading = false;
+      });
   }
+
+
+  createImageFromBlob(image: Blob) {
+    let reader = new FileReader();
+    reader.addEventListener("load",
+      () => {
+        this.photo = reader.result;
+      },
+      false);
+
+    if (image) {
+      if (image.type !== "application/pdf")
+        reader.readAsDataURL(image);
+    }
+  }
+
 }

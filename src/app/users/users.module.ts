@@ -9,6 +9,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [UserProfileComponent],
@@ -23,7 +25,9 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class UsersModule { }
