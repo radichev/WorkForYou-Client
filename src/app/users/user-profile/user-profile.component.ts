@@ -4,7 +4,6 @@ import { UserProfile } from '../shared/models/user-profile';
 import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   userProfile: UserProfile;
   photo: any
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private sanitizer: DomSanitizer, private http: HttpClient) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -30,26 +29,5 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
-  //   this.userService.getUserProfileImage(this.id).subscribe(data => {
-  //     debugger
-  //     //alert(JSON.stringify(data.image));
-  //     // let objectURL = 'data:image/jpeg;base64,' + baseImage;
-  //     this.photo = data;
-  //     this.isLoading = false;
-  //   });
   }
 }
-  // createImageFromBlob(image: Blob) {
-  //   let reader = new FileReader();
-  //   reader.addEventListener("load",
-  //     () => {
-  //       this.photo = reader.result;
-  //     },
-  //     false);
-
-  //   if (image) {
-  //     if (image.type !== "application/pdf")
-  //       reader.readAsDataURL(image);
-  //   }
-  // }
-
