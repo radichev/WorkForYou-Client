@@ -13,19 +13,23 @@ export class UserService {
   private IMAGE_UR;
 
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
-  
+
   getUserProfile(id) {
     const userId = this.jwtService.getUserId;
-    return this.http.get<UserProfile>(this.PROFILE_DETAILS_ULR + id);    
+    return this.http.get<UserProfile>(this.PROFILE_DETAILS_ULR + id);
   }
 
-  getUserProfileImage(id){
+  getUserProfileImage(id) {
     // const userId = this.jwtService.getUserId;
     // this.IMAGE_URL = this.sanitizeImageUrl(this.PROFILE_DETAILS_ULR + `${id}/image/download`);
-    return this.http.get(`http://localhost:8080/api/profile/details/${id}/image/download`, {responseType: 'blob'});
+    return this.http.get(`http://localhost:8080/api/profile/details/${id}/image/download`, { responseType: 'blob' });
   }
-  
+
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-}
+  }
+
+  uploadUserProfileImage(id: string, formData: FormData) {
+    return this.http.post(`http://localhost:8080/api/profile/details/${id}/image/upload`, formData);
+  }
 }
