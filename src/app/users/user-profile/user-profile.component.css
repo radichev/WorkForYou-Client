@@ -6,9 +6,6 @@
   height: 200px;
   margin-bottom: 15px;
 }
-.user-details {
-  margin-top: 50px;
-}
 
 mat-spinner {
   position: fixed;
@@ -77,11 +74,11 @@ mat-spinner {
 
 .overlay {
   position: absolute;
-  top: 9.1%;
+  top: 9.4%;
   left: 50%;
   background-color: rgb(56, 56, 56, 0.57);
-  height: 16%;
-  width: 59.2%;
+  height: 16.3%;
+  width: 55%;
   border-radius: 50%;
   opacity: 0;
   transition: .4s ease;
@@ -100,5 +97,47 @@ mat-spinner {
 
 .mat-fab {
   background-color: black;
-  bottom: 12px;
+  bottom: 12%;
+}
+
+.flex {
+  margin: 30px auto;
+  padding: 0 20px;
+  justify-content: space-between;
+  -webkit-box-pack: justify;
+  
+}
+
+.row.flex {
+  display: flex;
+
+}
+.row {
+  box-sizing: border-box;
+    position: relative;
+}
+
+@media (max-width: 1259px){}
+.row {
+  max-width: 1210px;
+}
+
+.jobs {
+  padding-left: 20px;
+  width: 590px;
+}
+
+/* @media (min-width: 1260px){}
+.jobs {
+  width: 736px;
+} */
+/* .user-details {
+  display: block;
+  position: relative;
+  width: 400px;
+} */
+
+@media (min-width: 1260px){}
+.row {
+    padding: 0;
 }

@@ -1,11 +1,12 @@
 <mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
 
 <ng-template #Loaded>
-    <div class="row justify-content-around user-details">
-        <mat-card class="col-lg-3">
-            <div class="imghov">
+    <div class="row flex user-details">
+        <div class="user-details">
+        <mat-card>
+            <div class="imghov" *ngIf="photo">
             <img mat-card-avatar class="avatar"
-                src="{{photo}}">
+                [src]='photo'>
                 <div class="overlay ctr"><button mat-fab type="button"><mat-icon>camera_alt</mat-icon></button></div>
             </div>
             <mat-card-title class="username">{{username}}</mat-card-title>
@@ -96,7 +97,8 @@
                 </div>
             </mat-card-content>
         </mat-card>
-        <div class="col-lg-5 jobs">
+    </div>
+        <div class="jobs">
             <mat-card>
                 Offers
             </mat-card>
