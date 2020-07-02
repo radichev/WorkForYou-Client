@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   username: string;
   userProfile: UserProfile;
   photo: any
+  selectedImage: File;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
@@ -29,5 +30,16 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+  }
+
+  onImageSelected(event) {
+    this.selectedImage = <File>event.target.files[0];
+
+    const formData = new FormData;
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+
+    this.userService.uploadUserProfileImage(this.id, formData).subscribe(res => {
+      console.log(res);
+    });
   }
 }
