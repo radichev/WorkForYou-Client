@@ -1,104 +1,115 @@
 <mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
 
 <ng-template #Loaded>
-    <div class="row flex user-details">
-        <div class="user-details">
-        <mat-card>
-            <div class="imghov" *ngIf="photo">
-            <img mat-card-avatar class="avatar"
-                [src]='photo'>
-                <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)"/>
-                <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()"><mat-icon>camera_alt</mat-icon></button></div>
-            </div>
-            <mat-card-title class="username">{{username}}</mat-card-title>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="user-content">
-                <div class="country">
-                    <label>
-                        From
-                    </label>
-                    <label>
-                        <strong>{{userProfile.country}}</strong>
-                    </label>
+    <div class="row flex">
+        <div class="asd user-details">
+            <mat-card>
+                <div class="imghov" *ngIf="photo">
+                    <img mat-card-avatar class="avatar" [src]='photo'>
+                    <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
+                    <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
+                            <mat-icon>camera_alt</mat-icon>
+                        </button></div>
                 </div>
-                <div class="date-container">
-                    <label>
-                        Member since
-                    </label>
-                    <label>
-                        <strong>{{userProfile.createdDate | date:'MMMM y'}}</strong>
-                    </label>
-                </div>
-            </mat-card-content>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Description
-                </mat-card-title>
-                <p>
-                    {{userProfile.description}}
-                </p>
-            </mat-card-content>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Languages
-                </mat-card-title>
-                <div *ngFor="let language of userProfile.languages">
-                    <label class="language">
-                        {{language.language}}
-                    </label>
-                    <label class="language-level">
-                        - {{language.languageLevel.languageLevel}}
-                    </label>
-                </div>
-            </mat-card-content>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Skills
-                </mat-card-title>
-                <div *ngFor="let skill of userProfile.skills" class="detail-container" class="box">
-                    <label>
-                        {{skill.skill}}
-                    </label>
-                </div>
-            </mat-card-content>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Education
-                </mat-card-title>
-                <div *ngFor="let education of userProfile.educations" class="detail-container">
-                    <label>
-                        {{education.titleType.titleType}} - {{education.educationSubject}}
-                    </label>
-                    <br />
-                    <span class="education-details">
-                        {{education.universityName}},
-                        {{education.country.country}},
-                        Graduated {{education.graduationYear}}
-                    </span>
-                </div>
-            </mat-card-content>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Certification
-                </mat-card-title>
-                <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
-                    <label>
-                        {{certificate.certificateSubject}}
-                    </label>
-                    <br />
-                    <span class="certificate-details">
-                        {{certificate.awardedFrom}},
-                        Graduated {{certificate.graduationYear}}
-                    </span>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
+                <mat-card-title class="username">{{username}}</mat-card-title>
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="user-content">
+                    <div class="country">
+                        <label>
+                            From
+                        </label>
+                        <label>
+                            <strong>{{userProfile.country}}</strong>
+                        </label>
+                    </div>
+                    <div class="date-container">
+                        <label>
+                            Member since
+                        </label>
+                        <label>
+                            <strong>{{userProfile.createdDate | date:'MMMM y'}}</strong>
+                        </label>
+                    </div>
+                </mat-card-content>
+                <ng-container *ngIf="userProfile.description">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Description
+                        </mat-card-title>
+                        <p>
+                            {{userProfile.description}}
+                        </p>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="userProfile.languages.length > 0">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Languages
+                        </mat-card-title>
+                        <div *ngFor="let language of userProfile.languages">
+                            <label class="language">
+                                {{language.language}}
+                            </label>
+                            <label class="language-level">
+                                - {{language.languageLevel.languageLevel}}
+                            </label>
+                        </div>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="userProfile.skills.length > 0">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Skills
+                        </mat-card-title>
+                        <div *ngFor="let skill of userProfile.skills" class="detail-container" class="box">
+                            <label>
+                                {{skill.skill}}
+                            </label>
+                        </div>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="userProfile.educations.length > 0">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Education
+                        </mat-card-title>
+                        <div *ngFor="let education of userProfile.educations" class="detail-container">
+                            <label>
+                                {{education.titleType.titleType}} - {{education.educationSubject}}
+                            </label>
+                            <br />
+                            <span class="education-details">
+                                {{education.universityName}},
+                                {{education.country.country}},
+                                Graduated {{education.graduationYear}}
+                            </span>
+                        </div>
+                    </mat-card-content>
+                </ng-container>
+                <ng-container *ngIf="userProfile.certificates.length > 0">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Certification
+                        </mat-card-title>
+                        <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
+                            <label>
+                                {{certificate.certificateSubject}}
+                            </label>
+                            <br />
+                            <span class="certificate-details">
+                                {{certificate.awardedFrom}},
+                                Graduated {{certificate.graduationYear}}
+                            </span>
+                        </div>
+                    </mat-card-content>
+                </ng-container>
+            </mat-card>
+        </div>
         <div class="jobs">
             <mat-card>
                 Offers

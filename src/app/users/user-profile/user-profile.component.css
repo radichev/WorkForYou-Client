@@ -9,8 +9,8 @@
 
 mat-spinner {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 45%;
 }
 
 .username {
@@ -97,7 +97,7 @@ mat-spinner {
 
 .mat-fab {
   background-color: black;
-  bottom: 12%;
+  bottom: 19%;
 }
 
 .flex {
@@ -119,7 +119,7 @@ mat-spinner {
 
 @media (max-width: 1259px){}
 .row {
-  max-width: 1210px;
+  max-width: 1200px;
 }
 
 .jobs {
@@ -135,4 +135,8 @@ mat-spinner {
 @media (min-width: 1260px){}
 .row {
     padding: 0;
+}
+
+.user-details {
+  width: 360px;
 }

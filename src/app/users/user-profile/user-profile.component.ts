@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.username = this.jwtService.getUsername;
     this.userService.getUserProfile(this.id).subscribe(data => {
+      console.log(data);
       this.userProfile = data;
       this.isLoading = false;
     });
