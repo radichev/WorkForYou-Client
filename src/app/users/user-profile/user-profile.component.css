@@ -74,11 +74,11 @@ mat-spinner {
 
 .overlay {
   position: absolute;
-  top: 9.4%;
-  left: 50%;
+  top: 115.6px;
+  left: 195px;
   background-color: rgb(56, 56, 56, 0.57);
-  height: 16.3%;
-  width: 55%;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   opacity: 0;
   transition: .4s ease;
@@ -97,7 +97,7 @@ mat-spinner {
 
 .mat-fab {
   background-color: black;
-  bottom: 19%;
+  bottom: 30px;
 }
 
 .flex {
@@ -138,5 +138,5 @@ mat-spinner {
 }
 
 .user-details {
-  width: 360px;
+  width: 390px;
 }
