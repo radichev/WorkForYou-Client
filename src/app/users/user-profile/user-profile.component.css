@@ -15,6 +15,7 @@ mat-spinner {
 
 .username {
   text-align: center;
+  margin-top: 15px;
 }
 
 .user-content {
@@ -81,7 +82,7 @@ mat-spinner {
   width: 200px;
   border-radius: 50%;
   opacity: 0;
-  transition: .4s ease;
+  transition: 0.4s ease;
 }
 
 .ctr {
@@ -105,19 +106,18 @@ mat-spinner {
   padding: 0 20px;
   justify-content: space-between;
   -webkit-box-pack: justify;
-  
 }
 
 .row.flex {
   display: flex;
-
 }
 .row {
   box-sizing: border-box;
-    position: relative;
+  position: relative;
 }
 
-@media (max-width: 1259px){}
+@media (max-width: 1259px) {
+}
 .row {
   max-width: 1200px;
 }
@@ -132,11 +132,29 @@ mat-spinner {
   width: 736px;
 } */
 
-@media (min-width: 1260px){}
+@media (min-width: 1260px) {
+}
 .row {
-    padding: 0;
+  padding: 0;
 }
 
 .user-details {
   width: 390px;
+}
+
+.edit-button {
+  margin-top: 10px;
+  display: inline-block;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 3px 0;
+  font-size: 14px;
+  text-align: center;
+  background: 0 0;
+  background-color: #fff;
+  font-weight: 500;
+  color: #777;
+  border-color: #ccc;
+  text-shadow: none;
+  width: 359px;
 }
