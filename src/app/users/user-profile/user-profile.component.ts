@@ -30,6 +30,14 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+
+    // this.userService.getUserProfileImage(this.id).subscribe(data => {
+    //   const reader = new FileReader();
+    //   reader.onload = (e) => this.photo = "data:Image/*;base64,"+e.target.result;
+    //   reader.readAsDataURL(new Blob([data]));
+
+      // this.photo = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64,"+data)
+    // });
   }
 
   onImageSelected(event) {
