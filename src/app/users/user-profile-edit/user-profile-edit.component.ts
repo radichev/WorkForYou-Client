@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfile } from '../shared/models/user-profile';
+import { UserService } from '../shared/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { JwtService } from 'src/app/shared/jwt.service';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileEditComponent implements OnInit {
 
-  constructor() { }
+  userProfile: UserProfile;
+  id: string;
+  username: string;
+  isLoading = true;
+  photo: any;
+
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.username = this.jwtService.getUsername;
+    this.userService.getUserProfile(this.id).subscribe(data => {
+      this.userProfile = data;
+      this.isLoading = false;
+    });
+
+    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
   }
 
 }

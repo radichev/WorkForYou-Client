@@ -15,7 +15,6 @@ export class UserService {
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
   getUserProfile(id) {
-    const userId = this.jwtService.getUserId;
     return this.http.get<UserProfile>(this.PROFILE_DETAILS_ULR + id);
   }
 
