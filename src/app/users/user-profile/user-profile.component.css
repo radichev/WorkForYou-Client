@@ -116,8 +116,7 @@ mat-spinner {
   position: relative;
 }
 
-@media (max-width: 1259px) {
-}
+@media (max-width: 1259px) {}
 .row {
   max-width: 1200px;
 }
