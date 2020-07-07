@@ -29,11 +29,13 @@ mat-spinner {
 }
 
 .title {
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .detail-container {
-  margin-top: 40px;
+  margin-top: 25px;
+  display: inline-block;
+  margin-left: 30px;
 }
 
 .date-container {
@@ -125,7 +127,7 @@ mat-spinner {
 .user-info {
   margin: 0 auto;
   margin-top: 3em;
-  width: 33rem;
+  width: 34rem;
 }
 
 .edit-button {

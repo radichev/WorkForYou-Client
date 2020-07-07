@@ -43,6 +43,8 @@
                 </p>
             </mat-card-content>
         </ng-container>
+        <input [(ngModel)]="userProfile.description" placeholder="Description"/>
+        <div>
         <ng-container *ngIf="userProfile.languages.length > 0">
             <mat-divider class="divider"></mat-divider>
             <mat-card-content class="detail-container">
@@ -59,6 +61,7 @@
                 </div>
             </mat-card-content>
         </ng-container>
+        </div>
         <ng-container *ngIf="userProfile.skills.length > 0">
             <mat-divider class="divider"></mat-divider>
             <mat-card-content class="detail-container">

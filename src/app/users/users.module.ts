@@ -12,6 +12,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UserProfileComponent, UserProfileEditComponent],
@@ -28,7 +29,8 @@ import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.
     MatProgressSpinnerModule,
     MatDividerModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ]
 })
 export class UsersModule { }
