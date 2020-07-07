@@ -98,6 +98,27 @@
                         {{skill.skill}}
                     </label>
                 </div>
+                <div class="edit-box">
+                    <form>
+                        <mat-form-field>
+                            <input matInput type="skill" id="skill" placeholder="Skill"
+                                formControlName="skill">
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field appearance="fill">
+                            <mat-label>Skill Level</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let skillLevel of skillLevels"
+                                    [value]="skillLevel.skillLevel" [value]="skillLevel.skillLevel">
+                                    {{skillLevel.skillLevel}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <span class="buttons-wrapper">
+                            <button mat-flat-button color="primary">Add</button>
+                        </span>
+                    </form>
+                </div>
             </mat-card-content>
         </ng-container>
         <ng-container *ngIf="userProfile.educations.length > 0">
@@ -117,6 +138,46 @@
                         Graduated {{education.graduationYear}}
                     </span>
                 </div>
+                <div class="edit-box">
+                    <form>
+                        <mat-form-field >
+                            <mat-label>Country of University</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let languageLevel of languageLevels"
+                                    [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
+                                    {{languageLevel.languageLevel}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field >
+                            <input matInput type="name" id="name" placeholder="College/University name"
+                                formControlName="name">
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field >
+                            <mat-label>Title</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let languageLevel of languageLevels"
+                                    [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
+                                    {{languageLevel.languageLevel}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="major" id="major" placeholder="Major"
+                                formControlName="major">
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field>
+                            <input matInput type="number" id="year" placeholder="Graduation year"
+                                formControlName="year">
+                        </mat-form-field>
+                        <span class="buttons-wrapper">
+                            <button mat-flat-button color="primary">Update</button>
+                        </span>
+                    </form>
+                </div>
             </mat-card-content>
         </ng-container>
         <ng-container *ngIf="userProfile.certificates.length > 0">
@@ -134,6 +195,27 @@
                         {{certificate.awardedFrom}},
                         Graduated {{certificate.graduationYear}}
                     </span>
+                </div>
+                <div class="edit-box">
+                    <form>
+                        <mat-form-field >
+                            <input matInput id="certificate" placeholder="Certificate or Award"
+                                formControlName="certificate">
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field>
+                            <input matInput  id="awarded-from" placeholder="Certified From (E.G. Softuni)"
+                                formControlName="awarded-from">
+                        </mat-form-field>
+                        <br />
+                        <mat-form-field>
+                            <input matInput type="number" id="grad-year" placeholder="Graduation year"
+                                formControlName="year">
+                        </mat-form-field>
+                        <span class="buttons-wrapper">
+                            <button mat-flat-button color="primary">Update</button>
+                        </span>
+                    </form>
                 </div>
             </mat-card-content>
         </ng-container>

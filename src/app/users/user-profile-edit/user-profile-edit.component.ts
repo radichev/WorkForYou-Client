@@ -38,7 +38,6 @@ export class UserProfileEditComponent implements OnInit {
     });
 
     this.userService.getSkillLevels().subscribe(data => {
-      console.log(data);
       this.skillLevels = data
     });
   }

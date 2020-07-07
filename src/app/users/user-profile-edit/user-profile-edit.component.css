@@ -122,7 +122,7 @@ mat-spinner {
     max-width: 100%;
   }
 
-  .language-edit {
+  .edit-box {
     max-width: 76%;
   }
 }
@@ -132,6 +132,7 @@ mat-spinner {
   margin-top: 3em;
   width: 25em;
 }
+
 .user-info {
   margin: 0 auto;
   margin-top: 3em;
