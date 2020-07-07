@@ -28,7 +28,7 @@
                     </label>
                 </div>
             </mat-card-content>
-            
+
         </mat-card>
     </div>
     <mat-card class="user-info">
@@ -37,30 +37,39 @@
             <mat-card-content class="detail-container">
                 <mat-card-title class="title">
                     Description
+                    <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
                 </mat-card-title>
-                <p>
-                    {{userProfile.description}}
-                </p>
+                <textarea [(ngModel)]="userProfile.description" placeholder="Description"
+                    class="description-input"></textarea>
+                <button mat-flat-button color="primary">Update</button>
             </mat-card-content>
         </ng-container>
-        <input [(ngModel)]="userProfile.description" placeholder="Description"/>
         <div>
-        <ng-container *ngIf="userProfile.languages.length > 0">
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Languages
-                </mat-card-title>
-                <div *ngFor="let language of userProfile.languages">
-                    <label class="language">
-                        {{language.language}}
-                    </label>
-                    <label class="language-level">
-                        - {{language.languageLevel.languageLevel}}
-                    </label>
-                </div>
-            </mat-card-content>
-        </ng-container>
+            <ng-container *ngIf="userProfile.languages.length > 0">
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="detail-container">
+                    <mat-card-title class="title">
+                        Languages
+                    </mat-card-title>
+                    <div *ngFor="let language of userProfile.languages">
+                        <label class="language">
+                            {{language.language}}
+                        </label>
+                        <label class="language-level">
+                            - {{language.languageLevel.languageLevel}}
+                        </label>
+                    </div>
+                    <div>
+                        <form>
+                            <mat-form-field>
+                                <input matInput type="language" id="language" placeholder="Language"
+                                    formControlName="language">
+                            </mat-form-field>
+                            
+                        </form>
+                    </div>
+                </mat-card-content>
+            </ng-container>
         </div>
         <ng-container *ngIf="userProfile.skills.length > 0">
             <mat-divider class="divider"></mat-divider>

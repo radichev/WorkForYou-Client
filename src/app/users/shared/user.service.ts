@@ -5,17 +5,23 @@ import { JwtService } from 'src/app/shared/jwt.service';
 import { UserProfile } from './models/user-profile';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { LanguageLevel } from './models/language-models/language-level';
 
 @Injectable()
 export class UserService {
 
-  private readonly PROFILE_DETAILS_ULR = `${environment.apiUrl}/profile/details/`
+  private readonly PROFILE_DETAILS_URL = `${environment.apiUrl}/profile/details/`
+  private readonly LANGUAGE_LEVELS_URL = `${environment.apiUrl}/languages/levels/all`;
   private IMAGE_UR;
 
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
   getUserProfile(id) {
-    return this.http.get<UserProfile>(this.PROFILE_DETAILS_ULR + id);
+    return this.http.get<UserProfile>(this.PROFILE_DETAILS_URL + id);
+  }
+
+  getLanguageLevels() {
+    return this.http.get<LanguageLevel>(this.LANGUAGE_LEVELS_URL);
   }
 
   getUserProfileImage(id) {

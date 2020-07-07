@@ -117,6 +117,10 @@ mat-spinner {
   .user-info {
     max-width: 25em;
   }
+
+  .description-input {
+    max-width: 67%;
+  }
 }
 
 .user-details {
@@ -145,4 +149,10 @@ mat-spinner {
   border-color: #ccc;
   text-shadow: none;
   width: 359px;
+}
+
+.description-input {
+  resize: none;
+  width: 33em;
+  height: 9em;
 }
