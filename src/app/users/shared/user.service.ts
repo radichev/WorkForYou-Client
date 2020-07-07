@@ -6,12 +6,14 @@ import { UserProfile } from './models/user-profile';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { LanguageLevel } from './models/language-models/language-level';
+import { SkillLevel } from './models/skill-models/skill-level';
 
 @Injectable()
 export class UserService {
 
   private readonly PROFILE_DETAILS_URL = `${environment.apiUrl}/profile/details/`
   private readonly LANGUAGE_LEVELS_URL = `${environment.apiUrl}/languages/levels/all`;
+  private readonly Skill_LEVELS_URL = `${environment.apiUrl}/skills/levels/all`;
   private IMAGE_UR;
 
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
@@ -22,6 +24,10 @@ export class UserService {
 
   getLanguageLevels() {
     return this.http.get<LanguageLevel[]>(this.LANGUAGE_LEVELS_URL);
+  }
+
+  getSkillLevels() {
+    return this.http.get<SkillLevel[]>(this.Skill_LEVELS_URL);
   }
 
   getUserProfileImage(id) {

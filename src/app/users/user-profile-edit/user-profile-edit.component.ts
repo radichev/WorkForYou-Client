@@ -4,6 +4,7 @@ import { UserService } from '../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { LanguageLevel } from '../shared/models/language-models/language-level';
+import { SkillLevel } from '../shared/models/skill-models/skill-level';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -18,6 +19,7 @@ export class UserProfileEditComponent implements OnInit {
   isLoading = true;
   photo: any;
   languageLevels: LanguageLevel[];
+  skillLevels: SkillLevel[];
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -32,9 +34,13 @@ export class UserProfileEditComponent implements OnInit {
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
 
     this.userService.getLanguageLevels().subscribe(data => {
-      console.log(data);
       this.languageLevels = data
-    })
+    });
+
+    this.userService.getSkillLevels().subscribe(data => {
+      console.log(data);
+      this.skillLevels = data
+    });
   }
 
 }
