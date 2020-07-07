@@ -21,7 +21,7 @@ export class UserService {
   }
 
   getLanguageLevels() {
-    return this.http.get<LanguageLevel>(this.LANGUAGE_LEVELS_URL);
+    return this.http.get<LanguageLevel[]>(this.LANGUAGE_LEVELS_URL);
   }
 
   getUserProfileImage(id) {

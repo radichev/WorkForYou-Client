@@ -39,9 +39,13 @@
                     Description
                     <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
                 </mat-card-title>
+                <div class="edit-box">
                 <textarea [(ngModel)]="userProfile.description" placeholder="Description"
                     class="description-input"></textarea>
-                <button mat-flat-button color="primary">Update</button>
+                    <span class="buttons-wrapper">
+                        <button mat-flat-button color="primary">Update</button>
+                    </span>
+                </div>
             </mat-card-content>
         </ng-container>
         <div>
@@ -59,13 +63,25 @@
                             - {{language.languageLevel.languageLevel}}
                         </label>
                     </div>
-                    <div>
+                    <div class="edit-box">
                         <form>
                             <mat-form-field>
                                 <input matInput type="language" id="language" placeholder="Language"
                                     formControlName="language">
                             </mat-form-field>
-                            
+                            <br />
+                            <mat-form-field appearance="fill">
+                                <mat-label>Language Level</mat-label>
+                                <mat-select>
+                                    <mat-option *ngFor="let languageLevel of languageLevels"
+                                        [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
+                                        {{languageLevel.languageLevel}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <span class="buttons-wrapper">
+                                <button mat-flat-button color="primary">Update</button>
+                            </span>
                         </form>
                     </div>
                 </mat-card-content>

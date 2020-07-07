@@ -3,6 +3,7 @@ import { UserProfile } from '../shared/models/user-profile';
 import { UserService } from '../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
+import { LanguageLevel } from '../shared/models/language-models/language-level';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -16,6 +17,7 @@ export class UserProfileEditComponent implements OnInit {
   username: string;
   isLoading = true;
   photo: any;
+  languageLevels: LanguageLevel[];
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -28,6 +30,11 @@ export class UserProfileEditComponent implements OnInit {
     });
 
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+
+    this.userService.getLanguageLevels().subscribe(data => {
+      console.log(data);
+      this.languageLevels = data
+    })
   }
 
 }
