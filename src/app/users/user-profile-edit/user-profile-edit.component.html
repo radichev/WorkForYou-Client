@@ -1,3 +1,6 @@
+<mat-spinner *ngIf="isLoading && isLookupLoaded; else Loaded"></mat-spinner>
+
+<ng-template #Loaded>
 <div class="row flex">
     <div class="asd user-details">
         <mat-card>
@@ -75,14 +78,14 @@
                             <mat-form-field appearance="fill">
                                 <mat-label>Language Level</mat-label>
                                 <mat-select>
-                                    <mat-option *ngFor="let languageLevel of languageLevels"
-                                        [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
+                                    <mat-option *ngFor="let languageLevel of lookupTables.languageLevels"
+                                        [value]="languageLevel" [value]="languageLevel.languageLevel">
                                         {{languageLevel.languageLevel}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
                             <span class="buttons-wrapper">
-                                <button mat-flat-button color="primary">Update</button>
+                                <button mat-flat-button color="primary">Add</button>
                             </span>
                         </form>
                     </div>
@@ -110,7 +113,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Skill Level</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let skillLevel of skillLevels"
+                                <mat-option *ngFor="let skillLevel of lookupTables.skillLevels"
                                     [value]="skillLevel.skillLevel" [value]="skillLevel.skillLevel">
                                     {{skillLevel.skillLevel}}
                                 </mat-option>
@@ -145,9 +148,9 @@
                         <mat-form-field >
                             <mat-label>Country of University</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let languageLevel of languageLevels"
-                                    [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
-                                    {{languageLevel.languageLevel}}
+                                <mat-option *ngFor="let country of lookupTables.countries"
+                                    [value]="country.country" [value]="country.country">
+                                    {{country.country}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -160,9 +163,9 @@
                         <mat-form-field >
                             <mat-label>Title</mat-label>
                             <mat-select>
-                                <mat-option *ngFor="let languageLevel of languageLevels"
-                                    [value]="languageLevel.languageLevel" [value]="languageLevel.languageLevel">
-                                    {{languageLevel.languageLevel}}
+                                <mat-option *ngFor="let titleType of lookupTables.titleTypes"
+                                    [value]="titleType.titleType" [value]="titleType.titleType">
+                                    {{titleType.titleType}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -176,7 +179,7 @@
                                 formControlName="year">
                         </mat-form-field>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button color="primary">Update</button>
+                            <button mat-flat-button color="primary">Add</button>
                         </span>
                     </form>
                 </div>
@@ -215,7 +218,7 @@
                                 formControlName="year">
                         </mat-form-field>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button color="primary">Update</button>
+                            <button mat-flat-button color="primary">Add</button>
                         </span>
                     </form>
                 </div>
@@ -223,3 +226,4 @@
         </ng-container>
     </mat-card>
 </div>
+</ng-template>

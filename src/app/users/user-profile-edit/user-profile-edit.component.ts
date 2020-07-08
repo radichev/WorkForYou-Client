@@ -6,6 +6,7 @@ import { JwtService } from 'src/app/shared/jwt.service';
 import { LanguageLevel } from '../shared/models/language-models/language-level';
 import { SkillLevel } from '../shared/models/skill-models/skill-level';
 import { FormGroup } from '@angular/forms';
+import { LookupTables } from '../shared/models/lookup-tables';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -18,9 +19,9 @@ export class UserProfileEditComponent implements OnInit {
   id: string;
   username: string;
   isLoading = true;
+  isLookupLoaded = true;
   photo: any;
-  languageLevels: LanguageLevel[];
-  skillLevels: SkillLevel[];
+  lookupTables: LookupTables;
   descriptionForm: FormGroup;
   languageForm: FormGroup;
   skillForm: FormGroup;
@@ -39,13 +40,32 @@ export class UserProfileEditComponent implements OnInit {
 
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
 
-    this.userService.getLanguageLevels().subscribe(data => {
-      this.languageLevels = data
-    });
-
-    this.userService.getSkillLevels().subscribe(data => {
-      this.skillLevels = data
-    });
+    this.userService.getAllLookupTables().subscribe(data => {
+      this.lookupTables = data;
+      this.isLookupLoaded = false;
+    })
   }
 
+  editDescription() {
+
+  }
+
+  addLanguages() {
+
+  }
+
+  addSkill() {
+
+  }
+
+  addEducation() {
+
+  }
+
+  addCertificate() {
+
+  }
+
+
 }
+

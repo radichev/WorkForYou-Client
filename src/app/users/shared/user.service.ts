@@ -7,13 +7,14 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { LanguageLevel } from './models/language-models/language-level';
 import { SkillLevel } from './models/skill-models/skill-level';
+import { LookupTables } from './models/lookup-tables';
 
 @Injectable()
 export class UserService {
 
   private readonly PROFILE_DETAILS_URL = `${environment.apiUrl}/profile/details/`
-  private readonly LANGUAGE_LEVELS_URL = `${environment.apiUrl}/languages/levels/all`;
-  private readonly Skill_LEVELS_URL = `${environment.apiUrl}/skills/levels/all`;
+  private readonly LOOKUP_TABLES_URL = `${environment.apiUrl}/profile/details/lookups`
+
   private IMAGE_UR;
 
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
@@ -22,12 +23,8 @@ export class UserService {
     return this.http.get<UserProfile>(this.PROFILE_DETAILS_URL + id);
   }
 
-  getLanguageLevels() {
-    return this.http.get<LanguageLevel[]>(this.LANGUAGE_LEVELS_URL);
-  }
-
-  getSkillLevels() {
-    return this.http.get<SkillLevel[]>(this.Skill_LEVELS_URL);
+  getAllLookupTables() {
+    return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL)
   }
 
   getUserProfileImage(id) {
