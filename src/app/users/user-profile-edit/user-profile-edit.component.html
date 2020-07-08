@@ -40,11 +40,13 @@
                     <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
                 </mat-card-title>
                 <div class="edit-box">
+                    <form [formGroup]="descriptionForm" (ngSubmit)="editDescription()">
                 <textarea [(ngModel)]="userProfile.description" placeholder="Description"
                     class="description-input"></textarea>
                     <span class="buttons-wrapper">
                         <button mat-flat-button color="primary">Update</button>
                     </span>
+                </form>
                 </div>
             </mat-card-content>
         </ng-container>
@@ -64,7 +66,7 @@
                         </label>
                     </div>
                     <div class="edit-box">
-                        <form>
+                        <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
                             <mat-form-field>
                                 <input matInput type="language" id="language" placeholder="Language"
                                     formControlName="language">
@@ -99,7 +101,7 @@
                     </label>
                 </div>
                 <div class="edit-box">
-                    <form>
+                    <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
                         <mat-form-field>
                             <input matInput type="skill" id="skill" placeholder="Skill"
                                 formControlName="skill">
@@ -139,7 +141,7 @@
                     </span>
                 </div>
                 <div class="edit-box">
-                    <form>
+                    <form [formGroup]="educationsForm" (ngSubmit)="addEducation()">
                         <mat-form-field >
                             <mat-label>Country of University</mat-label>
                             <mat-select>
@@ -197,7 +199,7 @@
                     </span>
                 </div>
                 <div class="edit-box">
-                    <form>
+                    <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
                         <mat-form-field >
                             <input matInput id="certificate" placeholder="Certificate or Award"
                                 formControlName="certificate">

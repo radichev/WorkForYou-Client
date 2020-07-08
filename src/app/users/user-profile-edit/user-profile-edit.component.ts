@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { LanguageLevel } from '../shared/models/language-models/language-level';
 import { SkillLevel } from '../shared/models/skill-models/skill-level';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -20,6 +21,11 @@ export class UserProfileEditComponent implements OnInit {
   photo: any;
   languageLevels: LanguageLevel[];
   skillLevels: SkillLevel[];
+  descriptionForm: FormGroup;
+  languageForm: FormGroup;
+  skillForm: FormGroup;
+  educationsForm: FormGroup;
+  certificateForm: FormGroup;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
