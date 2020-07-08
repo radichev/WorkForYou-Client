@@ -1,229 +1,227 @@
 <mat-spinner *ngIf="isLoading && isLookupLoaded; else Loaded"></mat-spinner>
 
 <ng-template #Loaded>
-<div class="row flex">
-    <div class="asd user-details">
-        <mat-card>
-            <div class="imghov" *ngIf="photo">
-                <img mat-card-avatar class="avatar" [src]='photo'>
-                <!-- <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
+    <div class="row flex">
+        <div class="asd user-details">
+            <mat-card>
+                <div class="imghov" *ngIf="photo">
+                    <img mat-card-avatar class="avatar" [src]='photo'>
+                    <!-- <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
         <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()"> -->
-                <!-- <mat-icon>camera_alt</mat-icon> -->
-                <!-- </button></div> -->
-            </div>
-            <mat-card-title class="username">{{username}}</mat-card-title>
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="user-content">
-                <div class="country" *ngIf="userProfile.country">
-                    <label>
-                        From
-                    </label>
-                    <label>
-                        <strong>{{userProfile.country}}</strong>
-                    </label>
+                    <!-- <mat-icon>camera_alt</mat-icon> -->
+                    <!-- </button></div> -->
                 </div>
-                <div class="date-container">
-                    <label>
-                        Member since
-                    </label>
-                    <label>
-                        <strong>{{userProfile.createdDate | date:'MMMM y'}}</strong>
-                    </label>
-                </div>
-            </mat-card-content>
+                <mat-card-title class="username">{{username}}</mat-card-title>
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="user-content">
+                    <div class="country" *ngIf="userProfile.country">
+                        <label>
+                            From
+                        </label>
+                        <label>
+                            <strong>{{userProfile.country}}</strong>
+                        </label>
+                    </div>
+                    <div class="date-container">
+                        <label>
+                            Member since
+                        </label>
+                        <label>
+                            <strong>{{userProfile.createdDate | date:'MMMM y'}}</strong>
+                        </label>
+                    </div>
+                </mat-card-content>
 
-        </mat-card>
-    </div>
-    <mat-card class="user-info">
-        <ng-container *ngIf="userProfile.description">
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Description
-                    <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
-                </mat-card-title>
-                <div class="edit-box">
-                    <form [formGroup]="descriptionForm" (ngSubmit)="editDescription()">
-                <textarea [(ngModel)]="userProfile.description" placeholder="Description"
-                    class="description-input"></textarea>
-                    <span class="buttons-wrapper">
-                        <button mat-flat-button color="primary">Update</button>
-                    </span>
-                </form>
-                </div>
-            </mat-card-content>
-        </ng-container>
-        <div>
-            <ng-container *ngIf="userProfile.languages.length > 0">
+            </mat-card>
+        </div>
+        <mat-card class="user-info">
+            <ng-container *ngIf="userProfile.description">
                 <mat-divider class="divider"></mat-divider>
                 <mat-card-content class="detail-container">
                     <mat-card-title class="title">
-                        Languages
+                        Description
+                        <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
                     </mat-card-title>
-                    <div *ngFor="let language of userProfile.languages">
-                        <label class="language">
-                            {{language.language}}
-                        </label>
-                        <label class="language-level">
-                            - {{language.languageLevel.languageLevel}}
-                        </label>
-                    </div>
                     <div class="edit-box">
-                        <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
-                            <mat-form-field>
-                                <input matInput type="language" id="language" placeholder="Language"
-                                    formControlName="language">
-                            </mat-form-field>
-                            <br />
-                            <mat-form-field appearance="fill">
-                                <mat-label>Language Level</mat-label>
-                                <mat-select>
-                                    <mat-option *ngFor="let languageLevel of lookupTables.languageLevels"
-                                        [value]="languageLevel" [value]="languageLevel.languageLevel">
-                                        {{languageLevel.languageLevel}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                        <form [formGroup]="descriptionForm" (ngSubmit)="editDescription()">
+                            <textarea [(ngModel)]="userProfile.description" placeholder="Description"
+                                class="description-input" formControlName="description"></textarea>
                             <span class="buttons-wrapper">
-                                <button mat-flat-button color="primary">Add</button>
+                                <button mat-flat-button type="submit" color="primary">Update</button>
                             </span>
                         </form>
                     </div>
                 </mat-card-content>
             </ng-container>
-        </div>
-        <ng-container *ngIf="userProfile.skills.length > 0">
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Skills
-                </mat-card-title>
-                <div *ngFor="let skill of userProfile.skills" class="detail-container" class="box">
-                    <label>
-                        {{skill.skill}}
-                    </label>
-                </div>
-                <div class="edit-box">
-                    <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
-                        <mat-form-field>
-                            <input matInput type="skill" id="skill" placeholder="Skill"
-                                formControlName="skill">
-                        </mat-form-field>
+            <div>
+                <ng-container *ngIf="userProfile.languages.length > 0">
+                    <mat-divider class="divider"></mat-divider>
+                    <mat-card-content class="detail-container">
+                        <mat-card-title class="title">
+                            Languages
+                        </mat-card-title>
+                        <div *ngFor="let language of userProfile.languages">
+                            <label class="language">
+                                {{language.language}}
+                            </label>
+                            <label class="language-level">
+                                - {{language.languageLevel.languageLevel}}
+                            </label>
+                        </div>
+                        <div class="edit-box">
+                            <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
+                                <mat-form-field>
+                                    <input matInput type="language" id="language" placeholder="Language"
+                                        formControlName="language">
+                                </mat-form-field>
+                                <br />
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Language Level</mat-label>
+                                    <mat-select formControlName="languageLevel">
+                                        <mat-option *ngFor="let languageLevel of lookupTables.languageLevels"
+                                            [value]="languageLevel.languageLevel" >
+                                            {{languageLevel.languageLevel}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <span class="buttons-wrapper">
+                                    <button mat-flat-button type="submit" color="primary">Add</button>
+                                </span>
+                            </form>
+                        </div>
+                    </mat-card-content>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="userProfile.skills.length > 0">
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="detail-container">
+                    <mat-card-title class="title">
+                        Skills
+                    </mat-card-title>
+                    <div *ngFor="let skill of userProfile.skills" class="detail-container" class="box">
+                        <label>
+                            {{skill.skill}}
+                        </label>
+                    </div>
+                    <div class="edit-box">
+                        <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
+                            <mat-form-field>
+                                <input matInput type="skill" id="skill" placeholder="Skill" formControlName="skill">
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field appearance="fill">
+                                <mat-label>Skill Level</mat-label>
+                                <mat-select formControlName="skillLevel">
+                                    <mat-option *ngFor="let skillLevel of lookupTables.skillLevels"
+                                        [value]="skillLevel.skillLevel">
+                                        {{skillLevel.skillLevel}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <span class="buttons-wrapper">
+                                <button mat-flat-button type="submit" color="primary">Add</button>
+                            </span>
+                        </form>
+                    </div>
+                </mat-card-content>
+            </ng-container>
+            <ng-container *ngIf="userProfile.educations.length > 0">
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="detail-container">
+                    <mat-card-title class="title">
+                        Education
+                    </mat-card-title>
+                    <div *ngFor="let education of userProfile.educations" class="detail-container">
+                        <label>
+                            {{education.titleType.titleType}} - {{education.educationSubject}}
+                        </label>
                         <br />
-                        <mat-form-field appearance="fill">
-                            <mat-label>Skill Level</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let skillLevel of lookupTables.skillLevels"
-                                    [value]="skillLevel.skillLevel" [value]="skillLevel.skillLevel">
-                                    {{skillLevel.skillLevel}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <span class="buttons-wrapper">
-                            <button mat-flat-button color="primary">Add</button>
+                        <span class="education-details">
+                            {{education.universityName}},
+                            {{education.country.country}},
+                            Graduated {{education.graduationYear}}
                         </span>
-                    </form>
-                </div>
-            </mat-card-content>
-        </ng-container>
-        <ng-container *ngIf="userProfile.educations.length > 0">
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Education
-                </mat-card-title>
-                <div *ngFor="let education of userProfile.educations" class="detail-container">
-                    <label>
-                        {{education.titleType.titleType}} - {{education.educationSubject}}
-                    </label>
-                    <br />
-                    <span class="education-details">
-                        {{education.universityName}},
-                        {{education.country.country}},
-                        Graduated {{education.graduationYear}}
-                    </span>
-                </div>
-                <div class="edit-box">
-                    <form [formGroup]="educationsForm" (ngSubmit)="addEducation()">
-                        <mat-form-field >
-                            <mat-label>Country of University</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let country of lookupTables.countries"
-                                    [value]="country.country" [value]="country.country">
-                                    {{country.country}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
+                    </div>
+                    <div class="edit-box">
+                        <form [formGroup]="educationsForm" (ngSubmit)="addEducation()">
+                            <mat-form-field>
+                                <mat-label>Country of University</mat-label>
+                                <mat-select formControlName="country">
+                                    <mat-option *ngFor="let country of lookupTables.countries"
+                                        [value]="country.country">
+                                        {{country.country}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field>
+                                <input matInput type="name" id="name" placeholder="College/University name"
+                                    formControlName="collegeName">
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field>
+                                <mat-label>Title</mat-label>
+                                <mat-select formControlName="titleType">
+                                    <mat-option *ngFor="let titleType of lookupTables.titleTypes"
+                                        [value]="titleType.titleType">
+                                        {{titleType.titleType}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput type="major" id="major" placeholder="Major" formControlName="major">
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field>
+                                <input matInput type="number" id="year" placeholder="Graduation year"
+                                    formControlName="graduationYear">
+                            </mat-form-field>
+                            <span class="buttons-wrapper">
+                                <button mat-flat-button type="submit" color="primary">Add</button>
+                            </span>
+                        </form>
+                    </div>
+                </mat-card-content>
+            </ng-container>
+            <ng-container *ngIf="userProfile.certificates.length > 0">
+                <mat-divider class="divider"></mat-divider>
+                <mat-card-content class="detail-container">
+                    <mat-card-title class="title">
+                        Certification
+                    </mat-card-title>
+                    <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
+                        <label>
+                            {{certificate.certificateSubject}}
+                        </label>
                         <br />
-                        <mat-form-field >
-                            <input matInput type="name" id="name" placeholder="College/University name"
-                                formControlName="name">
-                        </mat-form-field>
-                        <br />
-                        <mat-form-field >
-                            <mat-label>Title</mat-label>
-                            <mat-select>
-                                <mat-option *ngFor="let titleType of lookupTables.titleTypes"
-                                    [value]="titleType.titleType" [value]="titleType.titleType">
-                                    {{titleType.titleType}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <input matInput type="major" id="major" placeholder="Major"
-                                formControlName="major">
-                        </mat-form-field>
-                        <br />
-                        <mat-form-field>
-                            <input matInput type="number" id="year" placeholder="Graduation year"
-                                formControlName="year">
-                        </mat-form-field>
-                        <span class="buttons-wrapper">
-                            <button mat-flat-button color="primary">Add</button>
+                        <span class="certificate-details">
+                            {{certificate.awardedFrom}},
+                            Graduated {{certificate.graduationYear}}
                         </span>
-                    </form>
-                </div>
-            </mat-card-content>
-        </ng-container>
-        <ng-container *ngIf="userProfile.certificates.length > 0">
-            <mat-divider class="divider"></mat-divider>
-            <mat-card-content class="detail-container">
-                <mat-card-title class="title">
-                    Certification
-                </mat-card-title>
-                <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
-                    <label>
-                        {{certificate.certificateSubject}}
-                    </label>
-                    <br />
-                    <span class="certificate-details">
-                        {{certificate.awardedFrom}},
-                        Graduated {{certificate.graduationYear}}
-                    </span>
-                </div>
-                <div class="edit-box">
-                    <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
-                        <mat-form-field >
-                            <input matInput id="certificate" placeholder="Certificate or Award"
-                                formControlName="certificate">
-                        </mat-form-field>
-                        <br />
-                        <mat-form-field>
-                            <input matInput  id="awarded-from" placeholder="Certified From (E.G. Softuni)"
-                                formControlName="awarded-from">
-                        </mat-form-field>
-                        <br />
-                        <mat-form-field>
-                            <input matInput type="number" id="grad-year" placeholder="Graduation year"
-                                formControlName="year">
-                        </mat-form-field>
-                        <span class="buttons-wrapper">
-                            <button mat-flat-button color="primary">Add</button>
-                        </span>
-                    </form>
-                </div>
-            </mat-card-content>
-        </ng-container>
-    </mat-card>
-</div>
+                    </div>
+                    <div class="edit-box">
+                        <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
+                            <mat-form-field>
+                                <input matInput id="certificate" placeholder="Certificate or Award"
+                                    formControlName="certificate">
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field>
+                                <input matInput id="awardedFrom" placeholder="Certified From (E.G. Softuni)"
+                                    formControlName="awardedFrom">
+                            </mat-form-field>
+                            <br />
+                            <mat-form-field>
+                                <input matInput type="number" id="year" placeholder="Graduation Year"
+                                    formControlName="graduationYear">
+                            </mat-form-field>
+                            <span class="buttons-wrapper">
+                                <button mat-flat-button type="submit" color="primary">Add</button>
+                            </span>
+                        </form>
+                    </div>
+                </mat-card-content>
+            </ng-container>
+        </mat-card>
+    </div>
 </ng-template>
