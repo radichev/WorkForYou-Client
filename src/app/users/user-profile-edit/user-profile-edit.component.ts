@@ -57,19 +57,18 @@ export class UserProfileEditComponent implements OnInit {
 
     this.educationsForm = this.formBuilder.group({
       country: [null, [Validators.required]],
-      collegeName: [null, [Validators.required]],
+      universityName: [null, [Validators.required]],
       titleType: [null, [Validators.required]],
-      major: [null, [Validators.required]],
+      educationSubject: [null, [Validators.required]],
       graduationYear: [null, [Validators.required]]
     });
 
     this.certificateForm = this.formBuilder.group({
-      certificate: [null, [Validators.required]],
+      certificateSubject: [null, [Validators.required]],
       awardedFrom: [null, [Validators.required]],
       graduationYear: [null, [Validators.required]]
     });
 
-    // console.log(this.languageForm.value);
   }
 
   editDescription() {
@@ -111,13 +110,41 @@ export class UserProfileEditComponent implements OnInit {
   }
 
   addEducation() {
+    const formValue = this.educationsForm.value;
+    const country = {
+      country: formValue.country
+    };
+
+    const titleType = {
+      titleType: formValue.titleType
+    };
+
+    const education = {
+      country: country,
+      universityName: formValue.universityName,
+      titleType: titleType,
+      educationSubject: formValue.educationSubject,
+      graduationYear: formValue.graduationYear
+    };
+
+    this.userProfile.educations.push(education);
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+      console.log(data);
+    });
 
   }
 
   addCertificate() {
-
+    const formValue = this.certificateForm.value;
+    const certificate = {
+      certificateSubject: formValue.certificateSubject,
+      awardedFrom: formValue.awardedFrom,
+      graduationYear: formValue.graduationYear
+    };
+    this.userProfile.certificates.push(certificate);
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+      console.log(data);
+    });
   }
-
-
 }
 

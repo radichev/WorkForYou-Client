@@ -79,7 +79,7 @@
                                     <mat-label>Language Level</mat-label>
                                     <mat-select formControlName="languageLevel">
                                         <mat-option *ngFor="let languageLevel of lookupTables.languageLevels"
-                                            [value]="languageLevel.languageLevel" >
+                                            [value]="languageLevel.languageLevel">
                                             {{languageLevel.languageLevel}}
                                         </mat-option>
                                     </mat-select>
@@ -155,8 +155,8 @@
                             </mat-form-field>
                             <br />
                             <mat-form-field>
-                                <input matInput type="name" id="name" placeholder="College/University name"
-                                    formControlName="collegeName">
+                                <input matInput type="universityName" id="universityName"
+                                    placeholder="College/University name" formControlName="universityName">
                             </mat-form-field>
                             <br />
                             <mat-form-field>
@@ -169,11 +169,12 @@
                                 </mat-select>
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput type="major" id="major" placeholder="Major" formControlName="major">
+                                <input matInput type="educationSubject" id="educationSubject"
+                                    placeholder="Education Subject" formControlName="educationSubject">
                             </mat-form-field>
                             <br />
                             <mat-form-field>
-                                <input matInput type="number" id="year" placeholder="Graduation year"
+                                <input matInput type="number" id="graduationYear" placeholder="Graduation year"
                                     formControlName="graduationYear">
                             </mat-form-field>
                             <span class="buttons-wrapper">
@@ -202,8 +203,8 @@
                     <div class="edit-box">
                         <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
                             <mat-form-field>
-                                <input matInput id="certificate" placeholder="Certificate or Award"
-                                    formControlName="certificate">
+                                <input matInput id="certificateSubject" placeholder="Certificate or Award"
+                                    formControlName="certificateSubject">
                             </mat-form-field>
                             <br />
                             <mat-form-field>
@@ -212,7 +213,7 @@
                             </mat-form-field>
                             <br />
                             <mat-form-field>
-                                <input matInput type="number" id="year" placeholder="Graduation Year"
+                                <input matInput type="number" id="graduationYear" placeholder="Graduation Year"
                                     formControlName="graduationYear">
                             </mat-form-field>
                             <span class="buttons-wrapper">

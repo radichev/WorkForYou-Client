@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getAllLookupTables() {
-    return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL)
+    return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL);
   }
 
   getUserProfileImage(id) {
