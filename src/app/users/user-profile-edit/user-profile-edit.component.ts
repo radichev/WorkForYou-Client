@@ -17,7 +17,6 @@ export class UserProfileEditComponent implements OnInit {
   id: string;
   username: string;
   isLoading = true;
-  isLookupLoaded = true;
   photo: any;
   lookupTables: LookupTables;
   descriptionForm: FormGroup;
@@ -29,18 +28,17 @@ export class UserProfileEditComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+
     this.id = this.route.snapshot.paramMap.get('id');
     this.username = this.jwtService.getUsername;
     this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
-      this.isLoading = false;
     });
-
-    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
 
     this.userService.getAllLookupTables().subscribe(data => {
       this.lookupTables = data;
-      this.isLookupLoaded = false;
+      this.isLoading = false;
     });
 
     this.descriptionForm = this.formBuilder.group({
@@ -70,18 +68,46 @@ export class UserProfileEditComponent implements OnInit {
       awardedFrom: [null, [Validators.required]],
       graduationYear: [null, [Validators.required]]
     });
+
+    // console.log(this.languageForm.value);
   }
 
   editDescription() {
-
+    const formValue = this.descriptionForm.value;
+    this.userProfile.description = formValue.description;
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+      console.log(data);
+    });
   }
 
   addLanguages() {
-
+    const formValue = this.languageForm.value;
+    const languageLevel = {
+      languageLevel: formValue.languageLevel
+    }
+    const language = {
+      language: formValue.language,
+      languageLevel: languageLevel
+    };
+    this.userProfile.languages.push(language);
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+      console.log(data);
+    });
   }
 
   addSkill() {
-
+    const formValue = this.skillForm.value;
+    const skillLevel = {
+      skillLevel: formValue.skillLevel
+    }
+    const skill = {
+      skill: formValue.skill,
+      skillLevel: skillLevel
+    };
+    this.userProfile.skills.push(skill);
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+      console.log(data);
+    });
   }
 
   addEducation() {

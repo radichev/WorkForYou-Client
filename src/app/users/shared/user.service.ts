@@ -23,6 +23,10 @@ export class UserService {
     return this.http.get<UserProfile>(this.PROFILE_DETAILS_URL + id);
   }
 
+  editUserProfile(id, userProfile: UserProfile) {
+    return this.http.put<UserProfile>(this.PROFILE_DETAILS_URL + id, userProfile);
+  }
+
   getAllLookupTables() {
     return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL)
   }
