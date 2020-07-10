@@ -19,19 +19,19 @@ export class UserService {
 
   constructor(private http: HttpClient, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
-  getUserProfile(id) {
-    return this.http.get<UserProfile>(this.PROFILE_DETAILS_URL + id);
+  getUserProfile(id: string) {
+    return this.http.get<UserProfile>(`${this.PROFILE_DETAILS_URL}${id}`);
   }
 
-  editUserProfile(id, userProfile: UserProfile) {
-    return this.http.put<UserProfile>(this.PROFILE_DETAILS_URL + id, userProfile);
+  editUserProfile(id: string, userProfile: UserProfile) {
+    return this.http.post<UserProfile>(this.PROFILE_DETAILS_URL + id, userProfile);
   }
 
   getAllLookupTables() {
     return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL);
   }
 
-  getUserProfileImage(id) {
+  getUserProfileImage(id:string) {
     // const userId = this.jwtService.getUserId;
     // this.IMAGE_URL = this.sanitizeImageUrl(this.PROFILE_DETAILS_ULR + `${id}/image/download`);
     return this.http.get(`http://localhost:8080/api/profile/details/${id}/image/download`, { responseType: 'blob' });

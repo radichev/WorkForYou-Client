@@ -14,10 +14,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
-  providers: [
-    AuthGuard,
-    AuthService
-  ],
+  // providers: [
+  //   AuthGuard,
+  //   AuthService
+  // ],
   imports: [
     CommonModule,
     RouterModule,

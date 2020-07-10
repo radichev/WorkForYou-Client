@@ -21,11 +21,8 @@ export class AuthService {
     return this.http.post<any>(this.LOGIN_URL, user)
       .pipe(
         tap(token => this.doLoginUser(user.username, token)),
-        mapTo(true),
-        catchError(error => {
-          alert(error.error);
-          return of(false);
-        }));
+        
+        );
   }
 
   register(user: { username: string, email: string, password: string }) {
