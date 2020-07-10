@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserProfile } from '../shared/models/user-profile';
 import { UserService } from '../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LookupTables } from '../shared/models/lookup-tables';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile-edit',
   templateUrl: './user-profile-edit.component.html',
   styleUrls: ['./user-profile-edit.component.css']
 })
-export class UserProfileEditComponent implements OnInit {
+export class UserProfileEditComponent implements OnInit, OnDestroy {
 
   userProfile: UserProfile;
   id: string;
@@ -24,19 +25,31 @@ export class UserProfileEditComponent implements OnInit {
   skillForm: FormGroup;
   educationsForm: FormGroup;
   certificateForm: FormGroup;
+  userProfileSubscription: Subscription;
+  lookupTablesSubscription: Subscription;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder) { }
+
+  ngOnDestroy(): void {
+    if (this.userProfileSubscription) {
+      this.userProfileSubscription.unsubscribe();
+    }
+
+    if (this.lookupTablesSubscription) {
+      this.lookupTablesSubscription.unsubscribe();
+    }
+  }
 
   ngOnInit(): void {
     this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
 
     this.id = this.route.snapshot.paramMap.get('id');
     this.username = this.jwtService.getUsername;
-    this.userService.getUserProfile(this.id).subscribe(data => {
+    this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
     });
 
-    this.userService.getAllLookupTables().subscribe(data => {
+    this.lookupTablesSubscription = this.userService.getAllLookupTables().subscribe(data => {
       this.lookupTables = data;
       this.isLoading = false;
     });

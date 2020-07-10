@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
 
   ngOnDestroy(): void {
-    if(this.userProfileSubscription){
+    if (this.userProfileSubscription) {
       this.userProfileSubscription.unsubscribe();
     }
   }
@@ -45,7 +45,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     //   reader.onload = (e) => this.photo = "data:Image/*;base64,"+e.target.result;
     //   reader.readAsDataURL(new Blob([data]));
 
-      // this.photo = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64,"+data)
+    // this.photo = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64,"+data)
     // });
   }
 
