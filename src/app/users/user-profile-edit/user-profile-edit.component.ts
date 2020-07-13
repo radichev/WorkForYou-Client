@@ -95,7 +95,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     this.basicInfo = this.formBuilder.group({
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
-      personalWebsite: [null, [Validators.required]]
+      personalWebsite: [null, [Validators.required]],
+      country: [null, [Validators.required]]
     });
 
   }
@@ -188,6 +189,13 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     this.userProfile.firstName = formValue.firstName;
     this.userProfile.lastName = formValue.lastName;
     this.userProfile.personalWebsite = formValue.personalWebsite;
+
+    const country = {
+      id: formValue.country,
+      country: null
+    }
+    this.userProfile.country = country;
+  
     this.userService.editUserProfile(this.id, this.userProfile).subscribe(() => {
       this.ngOnInit();
     });

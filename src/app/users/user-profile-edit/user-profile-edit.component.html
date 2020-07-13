@@ -48,6 +48,15 @@
                         <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
                             formControlName="personalWebsite">
                     </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <mat-label>Country</mat-label>
+                        <mat-select formControlName="country">
+                            <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
+                                {{country.country}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <span class="buttons-wrapper">
                         <button mat-flat-button type="submit" color="primary">Update</button>
                     </span>
