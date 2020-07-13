@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserProfile } from '../shared/models/user-profile';
 import { UserService } from '../shared/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LookupTables } from '../shared/models/lookup-tables';
@@ -28,7 +28,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   userProfileSubscription: Subscription;
   lookupTablesSubscription: Subscription;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnDestroy(): void {
     if (this.userProfileSubscription) {
@@ -89,8 +89,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   editDescription() {
     const formValue = this.descriptionForm.value;
     this.userProfile.description = formValue.description;
-    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
-      console.log(data);
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(() => {
+      this.ngOnInit();
     });
   }
 
@@ -103,8 +103,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       language: formValue.language,
       languageLevel: languageLevel
     };
-    this.userService.addLanguage(this.id, language).subscribe(data => {
-      console.log(data);
+    this.userService.addLanguage(this.id, language).subscribe(() => {
+      this.ngOnInit();
     });
   }
 
@@ -117,8 +117,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       skill: formValue.skill,
       skillLevel: skillLevel
     };
-    this.userService.addSkill(this.id, skill).subscribe(data => {
-      console.log(data);
+    this.userService.addSkill(this.id, skill).subscribe(() => {
+      this.ngOnInit();
     });
   }
 
@@ -140,9 +140,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       graduationYear: formValue.graduationYear
     };
 
-    // this.userProfile.educations.push(education);
-    this.userService.addEducation(this.id, education).subscribe(data => {
-      console.log(data);
+    this.userService.addEducation(this.id, education).subscribe(() => {
+      this.ngOnInit();
     });
 
   }
@@ -154,9 +153,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       awardedFrom: formValue.awardedFrom,
       graduationYear: formValue.graduationYear
     };
-    this.userProfile.certificates.push(certificate);
-    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
-      console.log(data);
+    this.userService.addCertificate(this.id, certificate).subscribe(() => {
+      this.ngOnInit();
     });
   }
 }

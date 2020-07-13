@@ -12,6 +12,7 @@ export class UserService {
   private readonly ADD_LANGUAGE_URL = `${environment.apiUrl}/languages/add/`;
   private readonly ADD_SKILL_URL = `${environment.apiUrl}/skills/add/`;
   private readonly ADD_EDUCATION_URL = `${environment.apiUrl}/educations/add/`;
+  private readonly ADD_CERTIFICATE_URL = `${environment.apiUrl}/certificates/add/`;
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,10 @@ export class UserService {
 
  addEducation(id: string, education: Object){
     return this.http.post(this.ADD_EDUCATION_URL + id, education);
+ }
+
+ addCertificate(id: string, certificate: Object) {
+   return this.http.post(this.ADD_CERTIFICATE_URL + id, certificate);
  }
 
   getAllLookupTables() {
