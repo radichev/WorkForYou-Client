@@ -1,6 +1,7 @@
 import { SubSphere } from './sub-sphere';
 
 export interface workSphere {
-        workSphere: string;
-        subSpheres: [SubSphere]
+  id: string;
+  workSphere: string;
+  subSpheres: [SubSphere]
 }

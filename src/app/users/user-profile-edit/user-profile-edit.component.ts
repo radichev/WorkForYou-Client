@@ -97,14 +97,13 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   addLanguages() {
     const formValue = this.languageForm.value;
     const languageLevel = {
-      languageLevel: formValue.languageLevel
+      id: formValue.languageLevel
     }
     const language = {
       language: formValue.language,
       languageLevel: languageLevel
     };
-    this.userProfile.languages.push(language);
-    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+    this.userService.addLanguage(this.id, language).subscribe(data => {
       console.log(data);
     });
   }
@@ -112,14 +111,13 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   addSkill() {
     const formValue = this.skillForm.value;
     const skillLevel = {
-      skillLevel: formValue.skillLevel
+      id: formValue.skillLevel
     }
     const skill = {
       skill: formValue.skill,
       skillLevel: skillLevel
     };
-    this.userProfile.skills.push(skill);
-    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+    this.userService.addSkill(this.id, skill).subscribe(data => {
       console.log(data);
     });
   }
@@ -127,11 +125,11 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   addEducation() {
     const formValue = this.educationsForm.value;
     const country = {
-      country: formValue.country
+      id: formValue.country
     };
 
     const titleType = {
-      titleType: formValue.titleType
+      id: formValue.titleType
     };
 
     const education = {
@@ -142,8 +140,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       graduationYear: formValue.graduationYear
     };
 
-    this.userProfile.educations.push(education);
-    this.userService.editUserProfile(this.id, this.userProfile).subscribe(data => {
+    // this.userProfile.educations.push(education);
+    this.userService.addEducation(this.id, education).subscribe(data => {
       console.log(data);
     });
 

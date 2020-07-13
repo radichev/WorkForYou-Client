@@ -9,6 +9,9 @@ export class UserService {
 
   private readonly PROFILE_DETAILS_URL = `${environment.apiUrl}/profile/details/`
   private readonly LOOKUP_TABLES_URL = `${environment.apiUrl}/profile/details/lookups`
+  private readonly ADD_LANGUAGE_URL = `${environment.apiUrl}/languages/add/`;
+  private readonly ADD_SKILL_URL = `${environment.apiUrl}/skills/add/`;
+  private readonly ADD_EDUCATION_URL = `${environment.apiUrl}/educations/add/`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +23,17 @@ export class UserService {
     return this.http.post<UserProfile>(this.PROFILE_DETAILS_URL + id, userProfile);
   }
 
-  
+  addLanguage(id: string, language: Object) {
+    return this.http.post(this.ADD_LANGUAGE_URL + id, language);
+  }
+
+  addSkill(id: string, skill: Object) {
+    return this.http.post(this.ADD_SKILL_URL + id, skill)
+  }
+
+ addEducation(id: string, education: Object){
+    return this.http.post(this.ADD_EDUCATION_URL + id, education);
+ }
 
   getAllLookupTables() {
     return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL);

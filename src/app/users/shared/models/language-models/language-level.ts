@@ -1,3 +1,4 @@
 export interface LanguageLevel {
-        languageLevel: string;
+  id: string;
+  languageLevel: string;
 }

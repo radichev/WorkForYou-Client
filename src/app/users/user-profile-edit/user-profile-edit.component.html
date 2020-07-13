@@ -76,7 +76,7 @@
                                 <mat-label>Language Level</mat-label>
                                 <mat-select formControlName="languageLevel">
                                     <mat-option *ngFor="let languageLevel of lookupTables.languageLevels"
-                                        [value]="languageLevel.languageLevel">
+                                        [value]="languageLevel.id">
                                         {{languageLevel.languageLevel}}
                                     </mat-option>
                                 </mat-select>
@@ -108,7 +108,7 @@
                             <mat-label>Skill Level</mat-label>
                             <mat-select formControlName="skillLevel">
                                 <mat-option *ngFor="let skillLevel of lookupTables.skillLevels"
-                                    [value]="skillLevel.skillLevel">
+                                    [value]="skillLevel.id">
                                     {{skillLevel.skillLevel}}
                                 </mat-option>
                             </mat-select>
@@ -140,7 +140,7 @@
                         <mat-form-field>
                             <mat-label>Country of University</mat-label>
                             <mat-select formControlName="country">
-                                <mat-option *ngFor="let country of lookupTables.countries" [value]="country.country">
+                                <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
                                     {{country.country}}
                                 </mat-option>
                             </mat-select>
@@ -155,7 +155,7 @@
                             <mat-label>Title</mat-label>
                             <mat-select formControlName="titleType">
                                 <mat-option *ngFor="let titleType of lookupTables.titleTypes"
-                                    [value]="titleType.titleType">
+                                    [value]="titleType.id">
                                     {{titleType.titleType}}
                                 </mat-option>
                             </mat-select>
