@@ -26,6 +26,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   skillForm: FormGroup;
   educationsForm: FormGroup;
   certificateForm: FormGroup;
+  basicInfo: FormGroup;
   userProfileSubscription: Subscription;
   lookupTablesSubscription: Subscription;
 
@@ -89,6 +90,12 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       certificateSubject: [null, [Validators.required]],
       awardedFrom: [null, [Validators.required]],
       graduationYear: [null, [Validators.required]]
+    });
+
+    this.basicInfo = this.formBuilder.group({
+      firstName: [null, [Validators.required]],
+      lastName: [null, [Validators.required]],
+      personalWebsite: [null, [Validators.required]]
     });
 
   }
@@ -172,6 +179,16 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       graduationYear: formValue.graduationYear
     };
     this.userService.addCertificate(this.id, certificate).subscribe(() => {
+      this.ngOnInit();
+    });
+  }
+
+  editBasicInfo(){
+    const formValue = this.basicInfo.value;
+    this.userProfile.firstName = formValue.firstName;
+    this.userProfile.lastName = formValue.lastName;
+    this.userProfile.personalWebsite = formValue.personalWebsite;
+    this.userService.editUserProfile(this.id, this.userProfile).subscribe(() => {
       this.ngOnInit();
     });
   }

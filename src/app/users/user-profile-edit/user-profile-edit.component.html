@@ -7,9 +7,9 @@
                 <div class="imghov" *ngIf="photo">
                     <img mat-card-avatar class="avatar" [src]='photo'>
                     <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
-        <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
-                    <mat-icon>camera_alt</mat-icon>
-                    </button></div>
+                    <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
+                            <mat-icon>camera_alt</mat-icon>
+                        </button></div>
                 </div>
                 <mat-card-title class="username">{{username}}</mat-card-title>
                 <mat-divider class="divider"></mat-divider>
@@ -32,8 +32,26 @@
                     </div>
                 </mat-card-content>
             </mat-card>
-            <mat-card>
-                
+            <mat-card class="basicInfo">
+                <form [formGroup]="basicInfo" (ngSubmit)="editBasicInfo()">
+                    <mat-form-field>
+                        <input matInput type="firstName" id="firstName" placeholder="First Name"
+                            formControlName="firstName">
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <input matInput type="lastName" id="lastName" placeholder="Last Name"
+                            formControlName="lastName">
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field>
+                        <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
+                            formControlName="personalWebsite">
+                    </mat-form-field>
+                    <span class="buttons-wrapper">
+                        <button mat-flat-button type="submit" color="primary">Update</button>
+                    </span>
+                </form>
             </mat-card>
         </div>
         <mat-card class="user-info">
@@ -109,8 +127,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Skill Level</mat-label>
                             <mat-select formControlName="skillLevel">
-                                <mat-option *ngFor="let skillLevel of lookupTables.skillLevels"
-                                    [value]="skillLevel.id">
+                                <mat-option *ngFor="let skillLevel of lookupTables.skillLevels" [value]="skillLevel.id">
                                     {{skillLevel.skillLevel}}
                                 </mat-option>
                             </mat-select>
@@ -156,8 +173,7 @@
                         <mat-form-field>
                             <mat-label>Title</mat-label>
                             <mat-select formControlName="titleType">
-                                <mat-option *ngFor="let titleType of lookupTables.titleTypes"
-                                    [value]="titleType.id">
+                                <mat-option *ngFor="let titleType of lookupTables.titleTypes" [value]="titleType.id">
                                     {{titleType.titleType}}
                                 </mat-option>
                             </mat-select>
