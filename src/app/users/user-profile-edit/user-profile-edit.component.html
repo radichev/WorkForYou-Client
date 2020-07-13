@@ -6,10 +6,10 @@
             <mat-card>
                 <div class="imghov" *ngIf="photo">
                     <img mat-card-avatar class="avatar" [src]='photo'>
-                    <!-- <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
-        <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()"> -->
-                    <!-- <mat-icon>camera_alt</mat-icon> -->
-                    <!-- </button></div> -->
+                    <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
+        <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
+                    <mat-icon>camera_alt</mat-icon>
+                    </button></div>
                 </div>
                 <mat-card-title class="username">{{username}}</mat-card-title>
                 <mat-divider class="divider"></mat-divider>
@@ -31,7 +31,9 @@
                         </label>
                     </div>
                 </mat-card-content>
-
+            </mat-card>
+            <mat-card>
+                
             </mat-card>
         </div>
         <mat-card class="user-info">

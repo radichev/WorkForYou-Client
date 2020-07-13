@@ -19,6 +19,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   username: string;
   isLoading = true;
   photo: any;
+  selectedImage: File;
   lookupTables: LookupTables;
   descriptionForm: FormGroup;
   languageForm: FormGroup;
@@ -43,18 +44,24 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
 
-    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
-
     this.username = this.jwtService.getUsername;
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
+      if(!this.userProfile.profilePicture) {
+        this.photo = `https://simpleicon.com/wp-content/uploads/user1.png`;
+      } else {
+        this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+      }
     });
+
+    
 
     this.lookupTablesSubscription = this.userService.getAllLookupTables().subscribe(data => {
       this.lookupTables = data;
       this.isLoading = false;
     });
+    
 
     this.descriptionForm = this.formBuilder.group({
       description: [null, [Validators.required]],
@@ -84,6 +91,17 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       graduationYear: [null, [Validators.required]]
     });
 
+  }
+
+  onImageSelected(event) {
+    this.selectedImage = <File>event.target.files[0];
+
+    const formData = new FormData;
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+
+    this.userService.uploadUserProfileImage(this.id, formData).subscribe(res => {
+      console.log(res);
+    });
   }
 
   editDescription() {
