@@ -12,7 +12,7 @@
                         </button></div>
                 </div>
                 <mat-card-title class="username">{{username}}</mat-card-title>
-                <a mat-stroked-button class="edit-button" [routerLink]="['/users/profile/edit', id]">Edit User Profile</a>
+                <a mat-stroked-button class="edit-button" *ngIf="id" [routerLink]="['/users/profile/edit', id]">Edit User Profile</a>
                 <mat-divider class="divider"></mat-divider>
                 <mat-card-content class="user-content">
                     <div class="country" *ngIf="userProfile.country">

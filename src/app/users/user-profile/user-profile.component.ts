@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   selectedImage: File;
   userProfileSubscription: Subscription;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private sanitizer: DomSanitizer) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
   ngOnDestroy(): void {
     if (this.userProfileSubscription) {
@@ -31,22 +31,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+
+    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+
     this.username = this.jwtService.getUsername;
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
+      console.log(data);
       this.isLoading = false;
     });
-
-    this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
-
-    // this.userService.getUserProfileImage(this.id).subscribe(data => {
-    //   const reader = new FileReader();
-    //   reader.onload = (e) => this.photo = "data:Image/*;base64,"+e.target.result;
-    //   reader.readAsDataURL(new Blob([data]));
-
-    // this.photo = this.sanitizer.bypassSecurityTrustUrl("data:Image/*;base64,"+data)
-    // });
   }
 
   onImageSelected(event) {
