@@ -56,7 +56,10 @@
 }
 
 .dropdown-space {
-    margin-right: 55px;
+  margin-right: 55px;
 }
 
-
+.price {
+  margin-top: 2%;
+  width: 13em;
+}

@@ -46,19 +46,16 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <!-- <div class="form-row">
+            <div class="form-row">
                 <div class="label-wrap">
-                    <label class="job-title">Sub Sphere</label>
+                    <label class="prefix">Price</label>
                 </div>
-                <mat-form-field class="dropdown">
-                    <mat-label>Select Sub Sphere</mat-label>
-                    <mat-select formControlName="country"> -->
-                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
-                        {{country.country}}
-                    </mat-option> -->
-                    <!-- </mat-select>
-                </mat-form-field>
-            </div> -->
+                <div class="input-wrap">
+                    <mat-form-field class="price">
+                        <input matInput type="number" class="job-name" placeholder="Price" formControlName="jobPrice" />
+                    </mat-form-field>
+                </div>
+            </div>
             <span class="buttons-wrapper">
                 <button mat-flat-button type="submit" color="primary">Add</button>
             </span>
