@@ -3,32 +3,62 @@
         <form [formGroup]="addJob" (ngSubmit)="addJob()">
             <div class="form-row">
                 <div class="label-wrap">
-                    <label class="job-title">Job Title</label>
+                    <label class="prefix">Job Title</label>
                 </div>
                 <div class="input-wrap">
-                    <mat-form-field>
-                        <textarea class="job-name" placeholder="Job Name" formControlName="jobName"></textarea>
+                    <mat-form-field class="form">
+                        <input matInput class="job-name" placeholder="Job Title" formControlName="jobName" />
                     </mat-form-field>
                 </div>
             </div>
-            <br />
-            <mat-form-field>
-                <input matInput type="lastName" id="lastName" placeholder="Last Name" formControlName="lastName">
-            </mat-form-field>
-            <br />
-            <mat-form-field>
-                <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
-                    formControlName="personalWebsite">
-            </mat-form-field>
-            <br />
-            <mat-form-field>
-                <mat-label>Country</mat-label>
-                <mat-select formControlName="country">
-                    <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
+            <div class="form-row">
+                <div class="label-wrap">
+                    <label class="prefix">Description</label>
+                </div>
+                <div class="input-wrap">
+                    <mat-form-field class="form job-description">
+                        <textarea matInput class="job-description" placeholder="Description"
+                            formControlName="jobDescription"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="label-wrap">
+                    <label class="prefix">Work Sphere</label>
+                </div>
+                <mat-form-field class="dropdown dropdown-space">
+                    <mat-label>Select Work Sphere</mat-label>
+                    <mat-select formControlName="country">
+                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
                         {{country.country}}
                     </mat-option> -->
-                </mat-select>
-            </mat-form-field>
+                    </mat-select>
+                </mat-form-field>
+                <div class="label-wrap">
+                    <label class="prefix">Sub Sphere</label>
+                </div>
+                <mat-form-field class="dropdown">
+                    <mat-label>Select Sub Sphere</mat-label>
+                    <mat-select formControlName="country">
+                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
+                        {{country.country}}
+                    </mat-option> -->
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- <div class="form-row">
+                <div class="label-wrap">
+                    <label class="job-title">Sub Sphere</label>
+                </div>
+                <mat-form-field class="dropdown">
+                    <mat-label>Select Sub Sphere</mat-label>
+                    <mat-select formControlName="country"> -->
+                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
+                        {{country.country}}
+                    </mat-option> -->
+                    <!-- </mat-select>
+                </mat-form-field>
+            </div> -->
             <span class="buttons-wrapper">
                 <button mat-flat-button type="submit" color="primary">Add</button>
             </span>
