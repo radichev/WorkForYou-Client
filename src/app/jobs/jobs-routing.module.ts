@@ -4,17 +4,15 @@ import { JobComponent } from './job/job.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { JobAddComponent } from './job-add/job-add.component';
 
-
-
 const routes: Routes = [
   {
-    path: '/job/:id',
-    component: JobComponent,
+    path: 'job/add',
+    component: JobAddComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: '/job/add',
-    component: JobAddComponent,
+    path: 'job/:id',
+    component: JobComponent,
     canActivate: [AuthGuard]
   }
 ];

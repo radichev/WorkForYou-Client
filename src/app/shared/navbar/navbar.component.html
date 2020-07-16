@@ -9,9 +9,10 @@
         </ng-container>
 
         <ng-template #LoggedIn>
-                <a mat-button (click)="logout()">Logout</a>
+                <a mat-button [routerLink]="['/jobs/job/add']">Add Job</a>
                 <ng-container *ngIf="username && userId">
                 <a mat-button [routerLink]="['/users/profile', userId]">{{username}}</a>
                 </ng-container>
+                <a mat-button (click)="logout()">Logout</a>
         </ng-template>
 </mat-toolbar>

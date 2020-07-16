@@ -1,1 +1,37 @@
-<p>job-add works!</p>
+<div class="box-row">
+    <mat-card class="job">
+        <form [formGroup]="addJob" (ngSubmit)="addJob()">
+            <div class="form-row">
+                <div class="label-wrap">
+                    <label class="job-title">Job Title</label>
+                </div>
+                <div class="input-wrap">
+                    <mat-form-field>
+                        <textarea class="job-name" placeholder="Job Name" formControlName="jobName"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <br />
+            <mat-form-field>
+                <input matInput type="lastName" id="lastName" placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
+                    formControlName="personalWebsite">
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country">
+                    <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
+                        {{country.country}}
+                    </mat-option> -->
+                </mat-select>
+            </mat-form-field>
+            <span class="buttons-wrapper">
+                <button mat-flat-button type="submit" color="primary">Add</button>
+            </span>
+        </form>
+    </mat-card>
+</div>
