@@ -1,5 +1,4 @@
 import { Language } from './language-models/language';
-import { workSphere } from './work-spheres/work-sphere';
 import { Skill } from './skill-models/skill';
 import { Education } from './education-models/education';
 import { Certificate } from './certificate-models/certificate';
