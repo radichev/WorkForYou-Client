@@ -10,13 +10,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { JobService } from './shared/job.service';
 
 
 
 @NgModule({
   declarations: [JobAddComponent, JobComponent],
   providers: [
-    AuthGuard
+    AuthGuard,
+    JobService
   ],
   imports: [
     CommonModule,

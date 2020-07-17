@@ -15,9 +15,10 @@ export class JobAddComponent implements OnInit {
   ngOnInit(): void {
     this.addJobForm = this.formBuilder.group({
       jobName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
-      personalWebsite: [null, [Validators.required]],
-      country: [null, [Validators.required]]
+      jobDescription: [null, [Validators.required]],
+      workSphere: [null, [Validators.required]],
+      subSphere: [null, [Validators.required]],
+      jobPrice: [null, [Validators.required]]
     });
   }
 
