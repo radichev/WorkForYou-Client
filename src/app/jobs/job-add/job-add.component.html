@@ -3,7 +3,7 @@
 <ng-template #Loaded>
     <div class="box-row">
         <mat-card class="job">
-            <form [formGroup]="addJob" (ngSubmit)="addJob()">
+            <form [formGroup]="addJobForm" (ngSubmit)="addJob()">
                 <div class="form-row">
                     <div class="label-wrap">
                         <label class="prefix">Job Title</label>
@@ -31,11 +31,10 @@
                     </div>
                     <mat-form-field class="dropdown dropdown-space">
                         <mat-label>Select Work Sphere</mat-label>
-                        <mat-select formControlName="workSphere"
-                        (selectionChange)='filterSubSpheres($event.value)'>
+                        <mat-select formControlName="workSphere" (selectionChange)='filterSubSpheres($event.value)'>
                             <mat-option *ngFor="let workSphere of workSpheres.workSpheres" [value]="workSphere.id">
-                        {{workSphere.workSphere}}
-                    </mat-option>
+                                {{workSphere.workSphere}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
                     <div class="label-wrap">
@@ -44,11 +43,23 @@
                     <mat-form-field class="dropdown">
                         <mat-label>Select Sub Sphere</mat-label>
                         <mat-select formControlName="subSphere">
-                            <mat-option *ngFor="let subSphere of currentWorkSphere?.subSpheres" [value]="subSphere.id">
-                        {{subSphere.subSphere}}
-                    </mat-option>
+                            <mat-option *ngFor="let subSphere of selectedWorkSphere?.subSpheres" [value]="subSphere.id">
+                                {{subSphere.subSphere}}
+                            </mat-option>
                         </mat-select>
                     </mat-form-field>
+                </div>
+                <span class="divider"></span>
+                <div class="form-row">
+                    <div class="label-wrap">
+                        <label class="prefix">Delivery Time</label>
+                    </div>
+                    <div class="input-wrap">
+                        <mat-form-field class="price">
+                            <input matInput type="number" class="job-name" placeholder="Delivery Time in Days"
+                                formControlName="deliveryTime" />
+                        </mat-form-field>
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="label-wrap">

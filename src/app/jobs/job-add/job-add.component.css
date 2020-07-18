@@ -63,3 +63,10 @@
   margin-top: 2%;
   width: 13em;
 }
+
+.divider {
+  display: block;
+  padding-top: 15px;
+  margin-top: 6px;
+  border-top: 1px solid #e5e5e5;
+}

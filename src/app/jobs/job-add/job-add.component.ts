@@ -14,7 +14,7 @@ export class JobAddComponent implements OnInit {
 
   workSpheres: WorkSphereLookup;
   subSpheres: SubSphere[];
-  currentWorkSphere: workSphere;
+  selectedWorkSphere: workSphere;
   isLoading = true;
   addJobForm: FormGroup;
 
@@ -31,12 +31,13 @@ export class JobAddComponent implements OnInit {
       jobDescription: [null, [Validators.required]],
       workSphere: [null, [Validators.required]],
       subSphere: [null, [Validators.required]],
+      deliveryTime: [null, [Validators.required]],
       jobPrice: [null, [Validators.required]]
     });
   }
 
   filterSubSpheres(event) {
-    this.currentWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
+    this.selectedWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
   }
 
   addJob() {
