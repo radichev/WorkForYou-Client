@@ -44,8 +44,8 @@
                     <mat-form-field class="dropdown">
                         <mat-label>Select Sub Sphere</mat-label>
                         <mat-select formControlName="subSphere">
-                            <mat-option *ngFor="let subSphere of workSpheres.workSpheres" [value]="subSphere.subSpheres">
-                        {{subSphere.subSpheres}}
+                            <mat-option *ngFor="let subSphere of currentWorkSphere?.subSpheres" [value]="subSphere.id">
+                        {{subSphere.subSphere}}
                     </mat-option>
                         </mat-select>
                     </mat-form-field>

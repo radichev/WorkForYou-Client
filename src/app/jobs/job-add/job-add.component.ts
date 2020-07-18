@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobService } from '../shared/job.service';
 import { WorkSphereLookup } from '../shared/models/workSpheresLookup';
+import { SubSphere } from '../shared/models/work-spheres/sub-sphere';
+import { workSphere } from '../shared/models/work-spheres/work-sphere';
 
 @Component({
   selector: 'app-job-add',
@@ -11,6 +13,8 @@ import { WorkSphereLookup } from '../shared/models/workSpheresLookup';
 export class JobAddComponent implements OnInit {
 
   workSpheres: WorkSphereLookup;
+  subSpheres: SubSphere[];
+  currentWorkSphere: workSphere;
   isLoading = true;
   addJobForm: FormGroup;
 
@@ -32,7 +36,7 @@ export class JobAddComponent implements OnInit {
   }
 
   filterSubSpheres(event) {
-    console.log(event);
+    this.currentWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
   }
 
   addJob() {
