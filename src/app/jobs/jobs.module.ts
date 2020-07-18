@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { JobService } from './shared/job.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -29,7 +30,8 @@ import { JobService } from './shared/job.service';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ]
 })
 export class JobsModule { }

@@ -1,64 +1,69 @@
-<div class="box-row">
-    <mat-card class="job">
-        <form [formGroup]="addJob" (ngSubmit)="addJob()">
-            <div class="form-row">
-                <div class="label-wrap">
-                    <label class="prefix">Job Title</label>
+<mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
+
+<ng-template #Loaded>
+    <div class="box-row">
+        <mat-card class="job">
+            <form [formGroup]="addJob" (ngSubmit)="addJob()">
+                <div class="form-row">
+                    <div class="label-wrap">
+                        <label class="prefix">Job Title</label>
+                    </div>
+                    <div class="input-wrap">
+                        <mat-form-field class="form">
+                            <input matInput class="job-name" placeholder="Job Title" formControlName="jobName" />
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="input-wrap">
-                    <mat-form-field class="form">
-                        <input matInput class="job-name" placeholder="Job Title" formControlName="jobName" />
+                <div class="form-row">
+                    <div class="label-wrap">
+                        <label class="prefix">Description</label>
+                    </div>
+                    <div class="input-wrap">
+                        <mat-form-field class="form job-description">
+                            <textarea matInput class="job-description" placeholder="Description"
+                                formControlName="jobDescription"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="label-wrap">
+                        <label class="prefix">Work Sphere</label>
+                    </div>
+                    <mat-form-field class="dropdown dropdown-space">
+                        <mat-label>Select Work Sphere</mat-label>
+                        <mat-select formControlName="workSphere">
+                            <mat-option *ngFor="let workSphere of workSpheres.workSpheres" [value]="workSphere.id">
+                        {{workSphere.workSphere}}
+                    </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="label-wrap">
+                        <label class="prefix">Sub Sphere</label>
+                    </div>
+                    <mat-form-field class="dropdown">
+                        <mat-label>Select Sub Sphere</mat-label>
+                        <mat-select formControlName="subSphere">
+                            <mat-option *ngFor="let subSphere of workSpheres.workSpheres" [value]="subSphere.subSpheres">
+                        {{subSphere}}
+                    </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="label-wrap">
-                    <label class="prefix">Description</label>
+                <div class="form-row">
+                    <div class="label-wrap">
+                        <label class="prefix">Price</label>
+                    </div>
+                    <div class="input-wrap">
+                        <mat-form-field class="price">
+                            <input matInput type="number" class="job-name" placeholder="Price"
+                                formControlName="jobPrice" />
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="input-wrap">
-                    <mat-form-field class="form job-description">
-                        <textarea matInput class="job-description" placeholder="Description"
-                            formControlName="jobDescription"></textarea>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="label-wrap">
-                    <label class="prefix">Work Sphere</label>
-                </div>
-                <mat-form-field class="dropdown dropdown-space">
-                    <mat-label>Select Work Sphere</mat-label>
-                    <mat-select formControlName="workSphere">
-                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
-                        {{country.country}}
-                    </mat-option> -->
-                    </mat-select>
-                </mat-form-field>
-                <div class="label-wrap">
-                    <label class="prefix">Sub Sphere</label>
-                </div>
-                <mat-form-field class="dropdown">
-                    <mat-label>Select Sub Sphere</mat-label>
-                    <mat-select formControlName="subSphere">
-                        <!-- <mat-option *ngFor="let country of lookupTables.countries" [value]="country.id">
-                        {{country.country}}
-                    </mat-option> -->
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div class="form-row">
-                <div class="label-wrap">
-                    <label class="prefix">Price</label>
-                </div>
-                <div class="input-wrap">
-                    <mat-form-field class="price">
-                        <input matInput type="number" class="job-name" placeholder="Price" formControlName="jobPrice" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <span class="buttons-wrapper">
-                <button mat-flat-button type="submit" color="primary">Add</button>
-            </span>
-        </form>
-    </mat-card>
-</div>
+                <span class="buttons-wrapper">
+                    <button mat-flat-button type="submit" color="primary">Add</button>
+                </span>
+            </form>
+        </mat-card>
+    </div>
+</ng-template>
