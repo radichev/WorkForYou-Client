@@ -1,3 +1,9 @@
+mat-spinner {
+  position: fixed;
+  top: 45%;
+  left: 45%;
+}
+
 .box-row {
   display: flex;
   justify-content: center;
