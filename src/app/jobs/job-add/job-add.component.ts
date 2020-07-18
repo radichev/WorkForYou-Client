@@ -31,6 +31,10 @@ export class JobAddComponent implements OnInit {
     });
   }
 
+  filterSubSpheres(event) {
+    console.log(event);
+  }
+
   addJob() {
 
   }

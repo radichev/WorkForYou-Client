@@ -31,7 +31,8 @@
                     </div>
                     <mat-form-field class="dropdown dropdown-space">
                         <mat-label>Select Work Sphere</mat-label>
-                        <mat-select formControlName="workSphere">
+                        <mat-select formControlName="workSphere"
+                        (selectionChange)='filterSubSpheres($event.value)'>
                             <mat-option *ngFor="let workSphere of workSpheres.workSpheres" [value]="workSphere.id">
                         {{workSphere.workSphere}}
                     </mat-option>
@@ -44,7 +45,7 @@
                         <mat-label>Select Sub Sphere</mat-label>
                         <mat-select formControlName="subSphere">
                             <mat-option *ngFor="let subSphere of workSpheres.workSpheres" [value]="subSphere.subSpheres">
-                        {{subSphere}}
+                        {{subSphere.subSpheres}}
                     </mat-option>
                         </mat-select>
                     </mat-form-field>
