@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobService } from '../shared/job.service';
-import { WorkSphereLookup } from '../shared/models/workSpheresLookup';
-import { SubSphere } from '../shared/models/work-spheres/sub-sphere';
-import { workSphere } from '../shared/models/work-spheres/work-sphere';
+import { WorkSphereLookup } from '../shared/models/input-models/workSpheresLookup';
+import { JwtService } from 'src/app/shared/jwt.service';
+import { SubSphereInputModel } from '../shared/models/input-models/work-spheres/sub-sphere';
+import { workSphereInputModel } from '../shared/models/input-models/work-spheres/work-sphere';
+import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
 
 @Component({
   selector: 'app-job-add',
@@ -13,14 +15,18 @@ import { workSphere } from '../shared/models/work-spheres/work-sphere';
 export class JobAddComponent implements OnInit {
 
   workSpheres: WorkSphereLookup;
-  subSpheres: SubSphere[];
-  selectedWorkSphere: workSphere;
+  subSpheres: SubSphereInputModel[];
+  selectedWorkSphere: workSphereInputModel;
   isLoading = true;
   addJobForm: FormGroup;
+  job: JobOutputModel;
+  id: string;
 
-  constructor(private formBuilder: FormBuilder, private jobService: JobService) { }
+  constructor(private formBuilder: FormBuilder, private jobService: JobService, private jwtService: JwtService) { }
 
   ngOnInit(): void {
+    this.id =  this.jwtService.getUserId;
+
     this.jobService.getWorkSpheres().subscribe(data => {
       this.workSpheres = data;
       this.isLoading = false;
@@ -41,7 +47,26 @@ export class JobAddComponent implements OnInit {
   }
 
   addJob() {
+    const formValue = this.addJobForm.value;
+    const subSphere = {
+      id: formValue.subSphere
+    }
 
+    const workSphere = {
+      id: formValue.workSphere,
+      subSphere: subSphere
+    }
+    const job: JobOutputModel = {
+      jobTitle: formValue.jobName,
+      workSphere: workSphere,
+      deliveryTime: formValue.deliveryTime,
+      price: formValue.jobPrice,
+      description: formValue.jobDescription
+    }    
+
+    this.jobService.addJob(this.id, job).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

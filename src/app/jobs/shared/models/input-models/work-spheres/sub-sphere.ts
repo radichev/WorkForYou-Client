@@ -1,4 +1,4 @@
-export interface SubSphere {
+export interface SubSphereInputModel {
     id: string;
     subSphere: string;
 }

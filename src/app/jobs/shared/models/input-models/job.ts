@@ -1,9 +1,9 @@
-import { workSphere } from './work-spheres/work-sphere';
+import { workSphereInputModel } from './work-spheres/work-sphere';
 import { PictureModel } from './pictures-model/picture';
 
-export interface JobModel {
+export interface JobInputModel {
     id: string;
-    workSphere: workSphere;
+    workSphere: workSphereInputModel;
     deliveryTime: number;
     price: number;
     description: string;
