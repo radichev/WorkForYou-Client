@@ -44,6 +44,7 @@ export class JobAddComponent implements OnInit {
 
   filterSubSpheres(event) {
     this.selectedWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
+    this.selectedWorkSphere.subSpheres.sort((a,b) => a.subSphere.localeCompare(b.subSphere));
   }
 
   addJob() {
@@ -56,6 +57,7 @@ export class JobAddComponent implements OnInit {
       id: formValue.workSphere,
       subSphere: subSphere
     }
+
     const job: JobOutputModel = {
       jobTitle: formValue.jobName,
       workSphere: workSphere,
