@@ -42,7 +42,7 @@ export class JobAddComponent implements OnInit {
     });
   }
 
-  filterSubSpheres(event) {
+  filterSubSpheres(event: string) {
     this.selectedWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
     this.selectedWorkSphere.subSpheres.sort((a,b) => a.subSphere.localeCompare(b.subSphere));
   }

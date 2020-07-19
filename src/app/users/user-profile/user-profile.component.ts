@@ -51,8 +51,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     const formData = new FormData;
     formData.append('file', this.selectedImage, this.selectedImage.name);
 
-    this.userService.uploadUserProfileImage(this.id, formData).subscribe(res => {
-      console.log(res);
+    this.userService.uploadUserProfileImage(this.id, formData).subscribe(() => {
+      this.ngOnInit();
     });
   }
 }
