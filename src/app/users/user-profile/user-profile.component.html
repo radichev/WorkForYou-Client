@@ -12,7 +12,8 @@
                         </button></div>
                 </div>
                 <mat-card-title class="username">{{username}}</mat-card-title>
-                <a mat-stroked-button class="edit-button" *ngIf="id" [routerLink]="['/users/profile/edit', id]">Edit User Profile</a>
+                <a mat-stroked-button class="edit-button" *ngIf="id" [routerLink]="['/users/profile/edit', id]">Edit
+                    User Profile</a>
                 <mat-divider class="divider"></mat-divider>
                 <mat-card-content class="user-content">
                     <div class="country" *ngIf="userProfile.country">
@@ -115,10 +116,16 @@
             <mat-card>
                 Jobs
             </mat-card>
-            <mat-card class="user-jobs">
-                <img class="job-image" src="https://skywell.software/wp-content/uploads/2019/11/java-spring-framework-1024x683.jpg">
-                <span class="job-divider"></span>
-                <h3></h3>
+            <mat-card class="user-jobs" *ngFor="let job of jobs">
+                <a [routerLink]="['/jobs/', username, job.id]">
+                    <img class="job-image"
+                        src="https://skywell.software/wp-content/uploads/2019/11/java-spring-framework-1024x683.jpg">
+                    <span class="job-divider"></span>
+                    <h6>{{job.jobTitle}}</h6>
+                </a>
+                <label class="job-price">
+                    <small>Price</small> ${{job.price}}
+                </label>
             </mat-card>
         </div>
     </div>

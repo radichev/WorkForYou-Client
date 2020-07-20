@@ -123,7 +123,8 @@ mat-spinner {
   position: relative;
 }
 
-@media (max-width: 1259px) {}
+@media (max-width: 1259px) {
+}
 .row {
   max-width: 1200px;
 }
@@ -166,11 +167,30 @@ mat-spinner {
 }
 
 .user-jobs {
+  margin: 0 32px;
+  display: inline-block;
   margin-top: 15px;
   width: 220px;
-  height: 300px;
+  height: 270px;
+  position: relative;
 }
 
 .job-image {
   width: 100%;
+}
+
+.job-price {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+  padding: 6px 0;
+  bottom: 5px;
+  position: absolute;
+  right: 10px;
+  color: #1dbf73;
+}
+
+a {
+  color: #1dbf73;
+  text-decoration: none;
 }

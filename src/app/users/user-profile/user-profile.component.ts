@@ -3,8 +3,8 @@ import { UserService } from '../shared/user.service';
 import { UserProfile } from '../shared/models/user-profile';
 import { ActivatedRoute } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
+import { JobInputModel } from 'src/app/shared/models/input-models/job';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   photo: any
   selectedImage: File;
   userProfileSubscription: Subscription;
+  jobs: JobInputModel[];
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -42,6 +43,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       } else {
         this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
       }
+    });
+
+
+    this.userService.getAllJobs(this.id).subscribe(data => {
+      this.jobs = data;
     });
   }
 

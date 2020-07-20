@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { UserProfile } from './models/user-profile';
 import { LookupTables } from './models/lookup-tables';
+import { JobInputModel } from 'src/app/shared/models/input-models/job';
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,7 @@ export class UserService {
   private readonly ADD_SKILL_URL = `${environment.apiUrl}/skills/add/`;
   private readonly ADD_EDUCATION_URL = `${environment.apiUrl}/educations/add/`;
   private readonly ADD_CERTIFICATE_URL = `${environment.apiUrl}/certificates/add/`;
+  private readonly ALL_JOBS_URL = `${environment.apiUrl}/jobs/all/`;
 
   constructor(private http: HttpClient) { }
 
@@ -42,6 +44,10 @@ export class UserService {
 
   getAllLookupTables() {
     return this.http.get<LookupTables>(this.LOOKUP_TABLES_URL);
+  }
+
+  getAllJobs(id: string){
+    return this.http.get<JobInputModel[]>(this.ALL_JOBS_URL + id);
   }
 
   // getUserProfileImage(id:string) {

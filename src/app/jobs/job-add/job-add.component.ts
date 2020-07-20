@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobService } from '../shared/job.service';
 import { WorkSphereLookup } from '../shared/models/input-models/workSpheresLookup';
 import { JwtService } from 'src/app/shared/jwt.service';
-import { SubSphereInputModel } from '../shared/models/input-models/work-spheres/sub-sphere';
-import { workSphereInputModel } from '../shared/models/input-models/work-spheres/work-sphere';
 import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
+import { SubSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/sub-sphere';
+import { workSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/work-sphere';
 
 @Component({
   selector: 'app-job-add',
