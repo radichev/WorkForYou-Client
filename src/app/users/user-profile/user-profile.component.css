@@ -28,6 +28,13 @@ mat-spinner {
   margin-top: 10px;
 }
 
+.job-divider {
+  display: block;
+  padding-top: 15px;
+  margin-top: 12px;
+  border-top: 1px solid #c5c5c5;
+}
+
 .title {
   margin-bottom: 20px;
 }
@@ -155,5 +162,15 @@ mat-spinner {
   color: #777;
   border-color: #ccc;
   text-shadow: none;
+  width: 100%;
+}
+
+.user-jobs {
+  margin-top: 15px;
+  width: 220px;
+  height: 300px;
+}
+
+.job-image {
   width: 100%;
 }
