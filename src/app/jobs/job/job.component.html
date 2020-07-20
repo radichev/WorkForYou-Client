@@ -1,1 +1,5 @@
-<p>job works!</p>
+<mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
+
+<ng-template #Loaded>
+    
+</ng-template>

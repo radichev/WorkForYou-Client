@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { JobService } from '../shared/job.service';
+import { JobInputModel } from 'src/app/shared/models/input-models/job';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-job',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobComponent implements OnInit {
 
-  constructor() { }
+  isLoading = true;
+  job: JobInputModel;
+  id: string;
+
+  constructor(private jobService: JobService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
+    this.id = this.route.snapshot.paramMap.get('id');
 
+    this.jobService.getJobById(this.id).subscribe(data => {
+      this.job = data;
+      this.isLoading = false;
+    });
+  }
 }
