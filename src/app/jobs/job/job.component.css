@@ -1,0 +1,117 @@
+@media (min-width: 900px) {
+  .job-page {
+    padding-left: 32px;
+    padding-right: 32px;
+    max-width: 1304px;
+    margin: 0 auto;
+    flex-direction: row;
+    display: flex;
+  }
+}
+
+.job-info {
+  margin-right: 9.15%;
+  width: 57.42%;
+}
+
+@media (min-width: 900px) {
+  .aside {
+    position: sticky;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    top: 86px;
+    width: 33.6%;
+    order: 20;
+  }
+}
+
+.title {
+  font-size: 20px;
+  line-height: 24px;
+  white-space: nowrap;
+  padding-right: 0;
+  font-weight: bold;
+  display: block;
+  padding-top: 0;
+}
+
+.price {
+  padding-right: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header {
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-family: "ProximaNova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header {
+  padding-bottom: 10px;
+  line-height: 21px;
+  display: block;
+}
+
+article {
+  font-size: 14px;
+  line-height: 23px;
+  display: block;
+}
+
+.delivery {
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 15px;
+  line-height: 23px;
+  font-family: Helvetica;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.alarm-icon {
+  display: inline-block;
+}
+
+.delivery-time {
+  padding-left: 8px;
+  padding-top: 9px;
+}
+
+.divider {
+  display: block;
+  padding-top: 15px;
+  margin-top: 12px;
+  border-top: 1px solid #c5c5c5;
+}
+
+.buy-button {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: 0.15s ease-in-out;
+  -o-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+  background-color: #1dbf73;
+  color: #fff;
+  font-family: "ProximaNova", helvetica, Helvetica, Arial, sans-serif;
+  width: 100%;
+}
+
+.buy-button:hover {background-color: #16a562}

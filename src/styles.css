@@ -1,12 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* @import "bootstrap/dist/css/bootstrap-grid.min.css"; */
+@import url('https://fonts.googleapis.com/css?family=Proxima+Nova');
 
 html,
 body {
   margin: 0;
   font: 400 16px/24px "ProximaNova", "Helvetica Neue", Helvetica, Arial,
-    sans-serif; 
+    sans-serif !important;
   overflow-x: hidden;
   height: 100%;
   max-width: 100%;

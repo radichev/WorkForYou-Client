@@ -1,5 +1,35 @@
 <mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
 
 <ng-template #Loaded>
-    
+    <div class="job-page">
+        <aside class="aside">
+            <mat-card>
+                <header>
+                    <h3 class="header">
+                        <b class="title">{{job.jobTitle}}</b>
+                        <span class="price">€{{job.price}}</span>
+                    </h3>
+                </header>
+                <span class="divider"></span>
+                <article>
+                    <b class="delivery">
+                        <mat-icon class="alarm-icon">alarm</mat-icon>
+                        <label class="delivery-time">{{job.deliveryTime}} Days Delivery</label>
+                    </b>
+                </article>
+                <footer>
+                    <button
+                        class="buy-button"
+                        type="submit">Continue
+                        <span> (€{{job.price}})</span>
+                    </button>
+                </footer>
+            </mat-card>
+        </aside>
+        <div class="job-info">
+            <mat-card>
+                <h3>{{job.jobTitle}}</h3>
+            </mat-card>
+        </div>
+    </div>
 </ng-template>
