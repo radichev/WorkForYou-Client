@@ -34,14 +34,11 @@
                 </section>
                 <div class="description">
                     <header>
-                        <h2 class="section-title">About This Job</h2>
+                        <h3 class="section-title">About This Job</h3>
                     </header>
                     <div class="description-wrapper">
                         <div class="description-content">
                             {{job.description}}
-                        </div>
-                        <div class="cover">
-
                         </div>
                         <button class="collapse-button">+ See More</button>
                     </div>
@@ -49,10 +46,38 @@
                         <li class="metadata-attribute">
                             <p>{{job.workSphere.workSphere}}</p>
                             <ul>
-                                <li>{{job.subSphere.subSphere}}</li>
+                                <li class="sub-sphere-li">{{job.subSphere.subSphere}}</li>
                             </ul>
                         </li>
                     </ul>
+                </div>
+                <h3 class="section-title">About The Seller</h3>
+                <div class="profile-card">
+                    <div class="seller-card">
+                        <div class="profile-info">
+                            <div class="user-profile-label">
+                                <img class="picture" src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/e516eb84670e89ccb50a4496351fcaf1-1589662481484/191cb7eb-28b0-4057-bdae-aea95cdc3383.jpg">
+                                <!-- <div class="username-line"> -->
+                                    <a mat-button [routerLink]="['/users/profile', job.userProfileDetails.userId]" class="username">{{job.userProfileDetails.username}}</a>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                        <div class="stats-desc">
+                            <ul class="user-stats">
+                                <li>From
+                                    <strong>{{job.userProfileDetails.country}}</strong>
+                                </li>
+                                <li>Member since
+                                    <strong>{{job.userProfileDetails.createdDate | date:'MMMM y'}}</strong>
+                                </li>
+                            </ul>
+                            <article class="seller-desc">
+                                <div class="inner">
+                                    {{job.description}}
+                                </div>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </mat-card>
         </div>
