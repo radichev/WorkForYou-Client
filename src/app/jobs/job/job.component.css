@@ -59,7 +59,6 @@ mat-spinner {
 
 .job-page .sidebar {
   display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -183,7 +182,7 @@ article {
 
 @media (min-width: 900px) {
   .description {
-    margin-bottom: 55px;
+    margin-bottom: 30px;
   }
 }
 
@@ -202,20 +201,6 @@ article {
 .description-wrapper {
   position: relative;
   padding-bottom: 20px;
-}
-
-@media (min-width: 600px) {
-  .job-page .description .description-wrapper .collapse-button {
-    display: none !important;
-  }
-}
-
-.job-page .description .description-wrapper .collapse-button {
-  background: #fff;
-  display: block;
-  border: 0;
-  font-size: inherit;
-  color: #4a73e8;
 }
 
 .job-page .description .metadata {

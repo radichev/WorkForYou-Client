@@ -40,7 +40,6 @@
                         <div class="description-content">
                             {{job.description}}
                         </div>
-                        <button class="collapse-button">+ See More</button>
                     </div>
                     <ul class="metadata">
                         <li class="metadata-attribute">
@@ -56,10 +55,10 @@
                     <div class="seller-card">
                         <div class="profile-info">
                             <div class="user-profile-label">
-                                <img class="picture" src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/e516eb84670e89ccb50a4496351fcaf1-1589662481484/191cb7eb-28b0-4057-bdae-aea95cdc3383.jpg">
-                                <!-- <div class="username-line"> -->
-                                    <a mat-button [routerLink]="['/users/profile', job.userProfileDetails.userId]" class="username">{{job.userProfileDetails.username}}</a>
-                                <!-- </div> -->
+                                <img class="picture"
+                                    src="https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/e516eb84670e89ccb50a4496351fcaf1-1589662481484/191cb7eb-28b0-4057-bdae-aea95cdc3383.jpg">
+                                <a mat-button [routerLink]="['/users/profile', job.userProfileDetails.userId]"
+                                    class="username">{{job.userProfileDetails.username}}</a>
                             </div>
                         </div>
                         <div class="stats-desc">
@@ -73,7 +72,7 @@
                             </ul>
                             <article class="seller-desc">
                                 <div class="inner">
-                                    {{job.description}}
+                                    {{job.userProfileDetails.description}}
                                 </div>
                             </article>
                         </div>
