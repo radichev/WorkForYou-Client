@@ -3,7 +3,7 @@
 <ng-template #Loaded>
     <div class="job-page">
         <aside class="aside">
-            <mat-card>
+            <mat-card class="sidebar">
                 <header>
                     <h3 class="header">
                         <b class="title">{{job.jobTitle}}</b>
@@ -18,17 +18,42 @@
                     </b>
                 </article>
                 <footer>
-                    <button
-                        class="buy-button"
-                        type="submit">Continue
+                    <button class="buy-button" type="submit">Continue
                         <span> (€{{job.price}})</span>
                     </button>
                 </footer>
             </mat-card>
         </aside>
         <div class="job-info">
-            <mat-card>
-                <h3>{{job.jobTitle}}</h3>
+            <mat-card class="main">
+                <h3 class="main-title">{{job.jobTitle}}</h3>
+                <span class="divider"></span>
+                <section class="gallery">
+                    <img class="job-image"
+                        src="https://skywell.software/wp-content/uploads/2019/11/java-spring-framework-1024x683.jpg">
+                </section>
+                <div class="description">
+                    <header>
+                        <h2 class="section-title">About This Job</h2>
+                    </header>
+                    <div class="description-wrapper">
+                        <div class="description-content">
+                            {{job.description}}
+                        </div>
+                        <div class="cover">
+
+                        </div>
+                        <button class="collapse-button">+ See More</button>
+                    </div>
+                    <ul class="metadata">
+                        <li class="metadata-attribute">
+                            <p>{{job.workSphere.workSphere}}</p>
+                            <ul>
+                                <li>{{job.subSphere.subSphere}}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </mat-card>
         </div>
     </div>
