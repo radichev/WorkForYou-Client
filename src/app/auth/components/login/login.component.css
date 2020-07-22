@@ -28,4 +28,13 @@
   font-size: x-large;
   font-weight: 420;
 }
+
+#username {
+  margin-bottom: 7px;
+}
+
+.error {
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
   

@@ -1,7 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { of, Observable, BehaviorSubject } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { environment } from "../../../environments/environment"
 import { Tokens } from '../models/tokens';
 import { Router } from '@angular/router';
