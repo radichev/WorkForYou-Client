@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly LOGIN_URL = `${environment.apiUrl}/auth/sign-in`
-  private readonly REGISTER_URL = `${environment.apiUrl}/auth/sign-up`
+  private readonly LOGIN_URL = `${environment.apiUrl}/auth/sign-in`;
+  private readonly REGISTER_URL = `${environment.apiUrl}/auth/sign-up`;
   private loggedUser: string;
   isLoggedIn$: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
+    this.isLoggedIn$ = new BehaviorSubject<boolean>(this.isLoggedIn());
   }
 
   login(user: { username: string, password: string }): Observable<boolean> {
