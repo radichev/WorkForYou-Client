@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { JwtService } from './jwt.service';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     MatToolbarModule,
     MatButtonModule,
     RouterModule,
+    AuthModule
   ],
   exports: [
   NavbarComponent

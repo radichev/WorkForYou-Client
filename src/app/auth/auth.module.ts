@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
-import { AuthService } from './services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +14,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   providers: [
-    AuthGuard,
-    AuthService
+    AuthGuard
   ],
   imports: [
     CommonModule,

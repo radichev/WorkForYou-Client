@@ -13,13 +13,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { JobService } from './shared/job.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthModule } from '../auth/auth.module';
 
 
 
 @NgModule({
   declarations: [JobAddComponent, JobComponent],
   providers: [
-    AuthGuard,
     JobService
   ],
   imports: [
@@ -33,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    AuthModule
   ]
 })
 export class JobsModule { }

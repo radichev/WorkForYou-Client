@@ -17,12 +17,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
   declarations: [UserProfileComponent, UserProfileEditComponent],
   providers: [
-    AuthGuard,
     UserService
   ],
   imports: [
@@ -39,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    AuthModule
   ]
 })
 export class UsersModule { }
