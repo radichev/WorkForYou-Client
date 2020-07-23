@@ -1,4 +1,4 @@
-.logo {
+.logo-container {
   background-color: #eef2f5;
   height: fit-content;
   display: flex;
@@ -10,4 +10,22 @@
   height: 260px;
   width: 630px;
   padding-left: 13px;
+}
+
+.header-divider {
+  display: block;
+  padding-top: 15px;
+  border-top: 1px solid #c5c5c5;
+}
+
+h2 {
+  font-size: 26px;
+  line-height: 38px;
+  padding-bottom: 24px;
+}
+
+.subcategory-box {
+  margin-top: 80px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
