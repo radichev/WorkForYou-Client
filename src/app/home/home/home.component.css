@@ -349,3 +349,12 @@ a {
 .listing-carousel {
     margin: 0;
 }
+
+.slider-package .slick-track:after {
+    clear: both;
+}
+
+.slider-package .slick-track:after, .slider-package .slick-track:before {
+    display: table;
+    content: "";
+}
