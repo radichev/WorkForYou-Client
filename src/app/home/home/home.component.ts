@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobInputModel } from 'src/app/shared/models/input-models/job';
+import { HomeService } from '../shared/home.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isLoading = true;
+  jobs: JobInputModel[];
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.homeService.getFiveJobsInWebProgramming().subscribe(data => {
+      this.jobs = data;
+      this.isLoading = false;
+    });
   }
 
 }
