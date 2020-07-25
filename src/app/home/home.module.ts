@@ -8,6 +8,7 @@ import { AuthModule } from '../auth/auth.module';
 import { SharedModule } from '../shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeService } from './shared/home.service';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 @NgModule({
   declarations: [HomepageComponent, HomeComponent, IndexComponent],
@@ -19,7 +20,8 @@ import { HomeService } from './shared/home.service';
     HomeRoutingModule,
     AuthModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCarouselModule.forRoot()
   ]
 })
 export class HomeModule { }

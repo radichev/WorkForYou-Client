@@ -89,13 +89,13 @@ small {
   }
 }
 
-@media only screen and (min-width: 900px) {
+@media (min-width: 900px) {
   .slider-package .slick-slider .slick-slide {
     padding: 0 18px;
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media (min-width: 600px) {
   .slider-package .slick-slider .slick-slide {
     padding: 0 9px;
   }
@@ -357,4 +357,8 @@ a {
 .slider-package .slick-track:after, .slider-package .slick-track:before {
     display: table;
     content: "";
+}
+
+.carousel-container {
+  display: flex;
 }
