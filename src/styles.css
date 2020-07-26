@@ -12,3 +12,8 @@ body {
   height: 100%;
   max-width: 100%;
 }
+
+.ng2-carouselamos-container{
+  width: 90%;
+  margin: 0 10px;
+}

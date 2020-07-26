@@ -6,21 +6,32 @@
     </div>
     <span class="header-divider"></span>
 
-    <mat-carousel timings="250ms ease-in" [autoplay]="false" interval="5000" color="accent" maxWidth="88em"
-        proportion="25" slides="2" [loop]="true" [hideArrows]="false" [hideIndicators]="true" [useKeyboard]="true"
-        [useMouseWheel]="false" orientation="ltr">
-        <mat-carousel-slide [hideOverlay]="true">
-            <div class="carousel-container">
-                <div data-index="2" class="slick-slide slick-active" tabindex="-1" aria-hidden="false"
-                    style="outline: none; width: 244px;" *ngFor="let job of jobs; let i = index">
+    <div id="container">
+        <div ng2-carouselamos class="slides-wrapper" [items]="jobs" [width]="850" [$prev]="prev" [$next]="next"
+            [$item]="item">
+        </div>
+
+
+        <ng-template #prev>
+            <img class="carousel-button" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png"
+                id="left" />
+        </ng-template>
+        <ng-template #next>
+            <img class="carousel-button" src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"
+                id="right" />
+        </ng-template>
+        <ng-template #item let-item let-i="index">
+
+            <div class="slide-items">
+                <div class="slick-slide slick-active" style="outline: none; width: 244px;">
                     <div>
                         <div class="gig-card-layout">
                             <div>
                                 <div class="gig-wrapper card" data-gig-id="122982910" data-impression-collected="true">
                                     <a href="/mahamwebs/design-redesign-and-customize-wordpress-website?context_referrer=logged_in_homepage&amp;source=recently_and_inspired&amp;ref_ctx_id=b9ea2264-f8ee-440d-a8c6-7e3ce8e00c2d&amp;context=recommendation&amp;pckg_id=1&amp;pos=3&amp;context_alg=recently_viewed"
-                                        target="_self" class="media">
+                                        class="media">
                                         <div class="slider">
-                                            <div class="slides preview" style="">
+                                            <div class="slides preview">
                                                 <div class="slide-item active" style="width: auto;"><img
                                                         src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png"
                                                         loading="lazy"></div>
@@ -31,24 +42,22 @@
                                         <div class="inner-wrapper"><span class="seller-image">
                                                 <figure class="fit-avatar-figure fit-avatar-circle-shape"
                                                     style="font-size: 24px;">
-                                                    <figcaption class="">m</figcaption><span class="fit-avatar-image"
+                                                    <figcaption class=""></figcaption><span class="fit-avatar-image"
                                                         style="background-image: url(&quot;https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/53d2be446394683ffe557446378a818d-742734591548082068588/JPEG_20190121_194746_-943619541.jpg&quot;);"></span>
                                                 </figure>
                                             </span><span class="seller-name"><a
                                                     href="/mahamwebs?source=gig_cards&amp;referrer_gig_slug=design-redesign-and-customize-wordpress-website&amp;ref_ctx_id=b9ea2264-f8ee-440d-a8c6-7e3ce8e00c2d"
-                                                    target="_self"><span>by</span>{{job.userProfileDetails.username}}</a></span>
+                                                    target="_self"><span>by</span>{{item.userProfileDetails.username}}</a></span>
                                         </div>
                                     </div>
                                     <h3 class="text-display-7"><a
-                                            href="/mahamwebs/design-redesign-and-customize-wordpress-website?context_referrer=logged_in_homepage&amp;source=recently_and_inspired&amp;ref_ctx_id=b9ea2264-f8ee-440d-a8c6-7e3ce8e00c2d&amp;context=recommendation&amp;pckg_id=1&amp;pos=3&amp;context_alg=recently_viewed"
-                                            target="_self"
-                                            title="I will design, redesign and customize wordpress website">{{job.description}}</a>
+                                            href="/mahamwebs/design-redesign-and-customize-wordpress-website?context_referrer=logged_in_homepage&amp;source=recently_and_inspired&amp;ref_ctx_id=b9ea2264-f8ee-440d-a8c6-7e3ce8e00c2d&amp;context=recommendation&amp;pckg_id=1&amp;pos=3&amp;context_alg=recently_viewed">{{item.description}}</a>
                                     </h3>
                                     <footer>
                                         <a href="/mahamwebs/design-redesign-and-customize-wordpress-website?context_referrer=logged_in_homepage&amp;source=recently_and_inspired&amp;ref_ctx_id=b9ea2264-f8ee-440d-a8c6-7e3ce8e00c2d&amp;context=recommendation&amp;pckg_id=1&amp;pos=3&amp;context_alg=recently_viewed"
                                             target="_self" class="price" title="€18.10"><small
                                                 class="text-body-3">Starting
-                                                at</small>€{{job.price}}</a>
+                                                at</small>€{{item.price}}</a>
                                     </footer>
                                 </div>
                             </div>
@@ -56,7 +65,7 @@
                     </div>
                 </div>
             </div>
-        </mat-carousel-slide>
-    </mat-carousel>
+        </ng-template>
+    </div>
 
 </ng-template>
