@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { WorkSphereLookup } from './models/input-models/workSpheresLookup';
+import { WorkSphereLookup } from '../../shared/models/input-models/workSpheresLookup';
 import { JobOutputModel } from './models/output-models/jobOutputModel';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
 

@@ -21,7 +21,8 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
     AuthModule,
     SharedModule,
     MatProgressSpinnerModule,
-    Ng2CarouselamosModule
+    Ng2CarouselamosModule,
+    SharedModule
   ]
 })
 export class HomeModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
 import { HomeService } from '../shared/home.service';
+import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheresLookup';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   isLoading = true;
   jobs: JobInputModel[];
+  workSpheres: WorkSphereLookup;
 
   constructor(private homeService: HomeService) { }
 
@@ -18,6 +20,10 @@ export class HomeComponent implements OnInit {
     this.homeService.getFiveJobsInWebProgramming().subscribe(data => {
       this.jobs = data;
       this.isLoading = false;
+    });
+
+    this.homeService.getWorkSpheres().subscribe(data => {
+      this.workSpheres = data;
     });
   }
 

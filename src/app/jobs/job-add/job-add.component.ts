@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobService } from '../shared/job.service';
-import { WorkSphereLookup } from '../shared/models/input-models/workSpheresLookup';
+import { WorkSphereLookup } from '../../shared/models/input-models/workSpheresLookup';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
 import { SubSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/sub-sphere';
