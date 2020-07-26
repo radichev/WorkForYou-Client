@@ -7,7 +7,8 @@ import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheres
 @Injectable()
 export class HomeService {
 
-  private readonly GET_FIVE_JOBS_IN_WEB_PROGRAMMING_URL = `${environment.apiUrl}/jobs/web-programming`
+  private readonly GET_FIVE_JOBS_IN_WEB_PROGRAMMING_URL = `${environment.apiUrl}/jobs/sub-sphere/Web programming`
+  private readonly GET_FIVE_JOBS_IN_VIDEO_EDITING_URL = `${environment.apiUrl}/jobs/sub-sphere/Video Editing`
   private readonly WORK_SPHERES_LOOKUP_URL = `${environment.apiUrl}/work-spheres/all`
 
 
@@ -19,5 +20,9 @@ export class HomeService {
 
   getFiveJobsInWebProgramming() {
     return this.http.get<JobInputModel[]>(this.GET_FIVE_JOBS_IN_WEB_PROGRAMMING_URL);
+  }
+
+  getFiveJobsInVideoEditing() {
+    return this.http.get<JobInputModel[]>(this.GET_FIVE_JOBS_IN_VIDEO_EDITING_URL);
   }
 }

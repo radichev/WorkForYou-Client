@@ -11,20 +11,26 @@ import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheres
 export class HomeComponent implements OnInit {
 
   isLoading = true;
-  jobs: JobInputModel[];
+  webProgrammingJobs: JobInputModel[];
+  videoEditingJobs: JobInputModel[];
   workSpheres: WorkSphereLookup;
 
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
     this.homeService.getFiveJobsInWebProgramming().subscribe(data => {
-      this.jobs = data;
+      this.webProgrammingJobs = data;
+    });
+
+    this.homeService.getFiveJobsInVideoEditing().subscribe(data => {
+      this.videoEditingJobs = data;
     });
 
     this.homeService.getWorkSpheres().subscribe(data => {
       this.workSpheres = data;
       this.isLoading = false;
     });
+
   }
 
 }
