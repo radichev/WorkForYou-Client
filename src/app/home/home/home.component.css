@@ -363,6 +363,12 @@ a {
   padding: 0;
 }
 
+@media (max-width: 975px) {
+  #container {
+    display: contents;
+  }
+}
+
 .slide-items {
   margin-right: 10px;
 }
@@ -411,7 +417,7 @@ h2 {
 
 /* Links inside the dropdown */
 .dropdown-content a {
-  color: black;
+  color: rgb(83, 83, 83);
   padding: 12px 16px;
   text-decoration: none;
   display: block;

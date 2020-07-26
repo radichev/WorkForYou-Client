@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.homeService.getFiveJobsInWebProgramming().subscribe(data => {
       this.jobs = data;
-      this.isLoading = false;
     });
 
     this.homeService.getWorkSpheres().subscribe(data => {
       this.workSpheres = data;
+      this.isLoading = false;
     });
   }
 

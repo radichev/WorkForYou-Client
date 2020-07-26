@@ -10,7 +10,7 @@
         <div class="dropdown" *ngFor="let workSphere of workSpheres.workSpheres">
             <button mat-button class="dropbtn">{{workSphere.workSphere}}</button>
             <div class="dropdown-content">
-                <a href="#" *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
+                <a mat-button href="#" *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
             </div>
         </div>
     </div>
