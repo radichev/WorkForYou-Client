@@ -8,7 +8,7 @@
 
     <div class="dropdown-container">
         <div class="dropdown" *ngFor="let workSphere of workSpheres.workSpheres">
-            <button class="dropbtn">{{workSphere.workSphere}}</button>
+            <button mat-button class="dropbtn">{{workSphere.workSphere}}</button>
             <div class="dropdown-content">
                 <a href="#" *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
             </div>
