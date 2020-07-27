@@ -1,91 +1,76 @@
-<div class="logo-container">
-    <img class="logo-img" src="https://i.imgur.com/80TojRd.png">
-</div>
-<span class="header-divider"></span>
-<div class="subcategory-box">
-    <h2>Popular Professional Services</h2>
-    <div class="sub-sphere-container">
-        <div>
-            <div class="sub-sphere">
-                <a href="" class="subcategory">
-                    <h4>
-                        <small>Build Your Brand</small>
-                        Logo Design
-                    </h4>
-                    <picture>
-                        <img class="image" alt="Logo Design"
-                            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
-                    </picture>
-                </a>
-            </div>
-        </div>
+<mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
+
+<ng-template #Loaded>
+    <div class="logo-container">
+        <img class="logo-img" src="https://i.imgur.com/80TojRd.png">
     </div>
-    <div class="sub-sphere-container">
-        <div>
-            <div class="sub-sphere">
-                <a href="" class="subcategory">
-                    <h4>
-                        <small>Build Your Brand</small>
-                        Logo Design
-                    </h4>
-                    <picture>
-                        <img class="image" alt="Logo Design"
-                            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
-                    </picture>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="sub-sphere-container">
-        <div>
-            <div class="sub-sphere">
-                <a href="" class="subcategory">
-                    <h4>
-                        <small>Build Your Brand</small>
-                        Logo Design
-                    </h4>
-                    <picture>
-                        <img class="image" alt="Logo Design"
-                            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
-                    </picture>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="sub-sphere-container">
-        <div class="previous">
-            <div class="sub-sphere">
-                <a href="" class="subcategory">
-                    <h4>
-                        <small>Build Your Brand</small>
-                        Logo Design
-                    </h4>
-                    <picture>
-                        <img class="image" alt="Logo Design"
-                            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
-                    </picture>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-        <div class="sub-sphere-container">
-            <div class="last-elm">
-            <div>
-                <div class="sub-sphere">
-                    <a href="" class="subcategory">
-                        <h4>
-                            <small>Build Your Brand</small>
-                            Logo Design
-                        </h4>
-                        <picture>
-                            <img class="image" alt="Logo Design"
-                                src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
-                        </picture>
-                    </a>
+    <span class="header-divider"></span>
+
+    <div class="home-wrapper">
+        <ng-container>
+            <div class="subcategory-box">
+                <h2>Popular Professional Services</h2>
+                <div id="container">
+                    <div ng2-carouselamos class="slides-wrapper" [items]="subSpheres" [width]="850" [$prev]="prev"
+                        [$next]="next" [$item]="item">
+                    </div>
+
+                    <ng-template #prev>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" id="left" />
+                    </ng-template>
+                    <ng-template #next>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"
+                            id="right" />
+                    </ng-template>
+                    <ng-template #item let-item let-i="index">
+                        <div>
+                            <div class="sub-sphere">
+                                <a href="" class="subcategory">
+                                    <h4>
+                                        {{item.subSphere}}
+                                    </h4>
+                                    <picture>
+                                        <img class="image" alt="Logo Design"
+                                            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_250,dpr_1.0/general_assets/logged_out_homepage/assets/sub_category/logodesign@2x.jpg">
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
+            </div>
+        </ng-container>
+        <div class="content-wrapper">
+            <div class="content">
+                <h2>Get work done faster, with confidence</h2>
+                <ul>
+                    <li>
+                        <h6>Payment protection, guaranteed</h6>
+                        <p>Payment is released to the freelancer once you’re pleased and approve the work you get.</p>
+                    </li>
+                    <li>
+                        <h6>Know the price up front</h6>
+                        <p>Find any service within minutes and know exactly what you’ll pay. No hourly rates, just a
+                            fixed
+                            price.</p>
+                    </li>
+                    <li>
+                        <h6>We’re here for you 24/7</h6>
+                        <p>Reach out to us at any time! We have your back, from answering your questions to resolving
+                            issues.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="picture-modal">
+                <div class="picture-wrapper">
+                    <picture>
+                        <img class="picture" src="https://cdn.pixabay.com/photo/2018/03/10/12/00/paper-3213924_960_720.jpg">
+                    </picture>
                 </div>
             </div>
         </div>
-    
-</div>
+    </div>
+</ng-template>

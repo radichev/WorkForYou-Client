@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SubSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/sub-sphere';
+import { HomeService } from '../shared/home.service';
 
 @Component({
   selector: 'app-index',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  subSpheres: SubSphereInputModel[];
+  isLoading = true;
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+    this.homeService.getFiveSubSpheres().subscribe(data => {
+      this.subSpheres = data;
+      this.isLoading = false;
+    });
   }
 
 }

@@ -16,130 +16,98 @@
     </div>
 
     <div class="home-wrapper">
-        <div class="subcategory-box">
-            <h2>Services in Web Programming</h2>
-            <div id="container">
-                <div ng2-carouselamos class="slides-wrapper" [items]="webProgrammingJobs" [width]="850" [$prev]="prev"
-                    [$next]="next" [$item]="item">
-                </div>
+        <ng-container>
+            <div class="subcategory-box">
+                <h2>Services in Web Programming</h2>
+                <div id="container">
+                    <div ng2-carouselamos class="slides-wrapper" [items]="webProgrammingJobs" [width]="850"
+                        [$prev]="prev" [$next]="next" [$item]="item">
+                    </div>
 
-                <ng-template #prev>
-                    <img class="carousel-button"
-                        src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" id="left" />
-                </ng-template>
-                <ng-template #next>
-                    <img class="carousel-button"
-                        src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png" id="right" />
-                </ng-template>
-                <ng-template #item let-item let-i="index">
-
-                    <div class="slide-items">
-                        <div class="slick-slide slick-active" style="outline: none; width: 244px;">
-                            <div>
-                                <div class="gig-card-layout">
-                                    <div>
-                                        <div class="gig-wrapper card">
-                                            <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
-                                                class="media">
-                                                <div class="slider">
-                                                    <div class="slides preview">
-                                                        <div class="slide-item active" style="width: auto;">
-                                                            <img src="https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png">
+                    <ng-template #prev>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" id="left" />
+                    </ng-template>
+                    <ng-template #next>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"
+                            id="right" />
+                    </ng-template>
+                    <ng-template #item let-item let-i="index">
+                        <div class="slide-items">
+                            <div class="slick-slide slick-active" style="outline: none; width: 244px;">
+                                <div>
+                                    <div class="gig-card-layout">
+                                        <div>
+                                            <div class="gig-wrapper card">
+                                                <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
+                                                    class="media">
+                                                    <div class="slider">
+                                                        <div class="slides preview">
+                                                            <div class="slide-item active" style="width: auto;">
+                                                                <img
+                                                                    [src]='item.picture'>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="seller-info text-body-2">
+                                                    <div class="inner-wrapper"><span class="seller-image">
+                                                            <figure class="fit-avatar-figure fit-avatar-circle-shape"
+                                                                style="font-size: 24px;">
+                                                                <figcaption class=""></figcaption><span
+                                                                    class="fit-avatar-image"
+                                                                    style="background-image: url(&quot;https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/53d2be446394683ffe557446378a818d-742734591548082068588/JPEG_20190121_194746_-943619541.jpg&quot;);"></span>
+                                                            </figure>
+                                                        </span><span class="seller-name"><a
+                                                                [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.userProfileDetails.username}}</a></span>
                                                     </div>
                                                 </div>
-                                            </a>
-                                            <div class="seller-info text-body-2">
-                                                <div class="inner-wrapper"><span class="seller-image">
-                                                        <figure class="fit-avatar-figure fit-avatar-circle-shape"
-                                                            style="font-size: 24px;">
-                                                            <figcaption class=""></figcaption><span
-                                                                class="fit-avatar-image"
-                                                                style="background-image: url(&quot;https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/53d2be446394683ffe557446378a818d-742734591548082068588/JPEG_20190121_194746_-943619541.jpg&quot;);"></span>
-                                                        </figure>
-                                                    </span><span class="seller-name"><a
-                                                            [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.userProfileDetails.username}}</a></span>
-                                                </div>
+                                                <h3 class="text-display-7"><a
+                                                        [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.description}}</a>
+                                                </h3>
+                                                <footer>
+                                                    <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
+                                                        class="price">
+                                                        <small class="text-body-3">Starting
+                                                            at</small>€{{item.price}}</a>
+                                                </footer>
                                             </div>
-                                            <h3 class="text-display-7"><a
-                                                    [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.description}}</a>
-                                            </h3>
-                                            <footer>
-                                                <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
-                                                    class="price">
-                                                    <small class="text-body-3">Starting at</small>€{{item.price}}</a>
-                                            </footer>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </ng-template>
-            </div>
-        </div>
-
-        <div class="subcategory-box">
-            <h2>Services in Video Editing</h2>
-            <div id="container">
-                <div ng2-carouselamos class="slides-wrapper" [items]="videoEditingJobs" [width]="850" [$prev]="prev"
-                    [$next]="next" [$item]="item">
+                    </ng-template>
                 </div>
+            </div>
+        </ng-container>
+        <ng-container>
+            <div class="subcategory-box">
+                <h2>Services in Video Editing</h2>
+                <div id="container">
+                    <div ng2-carouselamos class="slides-wrapper" [items]="videoEditingJobs" [width]="850" [$prev]="prev"
+                        [$next]="next" [$item]="item">
+                    </div>
 
-                <ng-template #prev>
-                    <img class="carousel-button"
-                        src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" id="left" />
-                </ng-template>
-                <ng-template #next>
-                    <img class="carousel-button"
-                        src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png" id="right" />
-                </ng-template>
-                <ng-template #item let-item let-i="index">
-
-                    <div class="slide-items">
-                        <div class="slick-slide slick-active" style="outline: none; width: 244px;">
-                            <div>
-                                <div class="gig-card-layout">
-                                    <div>
-                                        <div class="gig-wrapper card">
-                                            <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
-                                                class="media">
-                                                <div class="slider">
-                                                    <div class="slides preview">
-                                                        <div class="slide-item active" style="width: auto;">
-                                                            <img src="https://www.craftedny.com/news/wp-content/uploads/2019/03/the-essential-stages-of-corporate-video-editing.jpg">
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <div class="seller-info text-body-2">
-                                                <div class="inner-wrapper"><span class="seller-image">
-                                                        <figure class="fit-avatar-figure fit-avatar-circle-shape"
-                                                            style="font-size: 24px;">
-                                                            <figcaption class=""></figcaption><span
-                                                                class="fit-avatar-image"
-                                                                style="background-image: url()"></span>
-                                                        </figure>
-                                                    </span><span class="seller-name"><a
-                                                            [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.userProfileDetails.username}}</a></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="text-display-7"><a
-                                                    [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]">{{item.description}}</a>
-                                            </h3>
-                                            <footer>
-                                                <a [routerLink]="['/jobs/', item.userProfileDetails.username, item.id]"
-                                                    class="price">
-                                                    <small class="text-body-3">Starting at</small>€{{item.price}}</a>
-                                            </footer>
-                                        </div>
-                                    </div>
-                                </div>
+                    <ng-template #prev>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-left-01-512.png" id="left" />
+                    </ng-template>
+                    <ng-template #next>
+                        <img class="carousel-button"
+                            src="https://cdn3.iconfinder.com/data/icons/faticons/32/arrow-right-01-512.png"
+                            id="right" />
+                    </ng-template>
+                    <ng-template #item let-item let-i="index">
+                        <div class="slide-items">
+                            <div class="slick-slide slick-active" style="outline: none; width: 244px;">
+                                
                             </div>
                         </div>
-                    </div>
-                </ng-template>
+                    </ng-template>
+                </div>
             </div>
-        </div>
+        </ng-container>
     </div>
 </ng-template>
