@@ -10,7 +10,8 @@
         <div class="dropdown" *ngFor="let workSphere of workSpheres.workSpheres">
             <button mat-button class="dropbtn">{{workSphere.workSphere}}</button>
             <div class="dropdown-content">
-                <a mat-button href="#" *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
+                <a mat-button [routerLink]="['/', workSphere.workSphere, subSphere.subSphere]"
+                    *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
             </div>
         </div>
     </div>
@@ -45,8 +46,7 @@
                                                     <div class="slider">
                                                         <div class="slides preview">
                                                             <div class="slide-item active" style="width: auto;">
-                                                                <img
-                                                                    [src]='item.picture'>
+                                                                <img [src]='item.picture'>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -102,7 +102,7 @@
                     <ng-template #item let-item let-i="index">
                         <div class="slide-items">
                             <div class="slick-slide slick-active" style="outline: none; width: 244px;">
-                                
+
                             </div>
                         </div>
                     </ng-template>
