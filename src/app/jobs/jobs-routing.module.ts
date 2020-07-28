@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { JobComponent } from './job/job.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { JobAddComponent } from './job-add/job-add.component';
+import { JobsAllComponent } from './jobs-all/jobs-all.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
   {
     path: ':username/:id',
     component: JobComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: ':worksphere/:subsphere',
+    component: JobsAllComponent,
     canActivate: [AuthGuard]
   }
 ];
