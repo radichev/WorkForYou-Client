@@ -14,11 +14,12 @@ import { JobService } from './shared/job.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthModule } from '../auth/auth.module';
+import { JobsAllComponent } from './jobs-all/jobs-all.component';
 
 
 
 @NgModule({
-  declarations: [JobAddComponent, JobComponent],
+  declarations: [JobAddComponent, JobComponent, JobsAllComponent],
   providers: [
     JobService
   ],
