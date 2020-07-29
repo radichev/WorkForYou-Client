@@ -14,6 +14,9 @@ body {
 }
 
 .ng2-carouselamos-container{
-  width: 90%;
-  margin: 0 10px;
+  width: 100%;
+}
+
+.ng2-carouselamos-wrapper {
+  width: 90% !important;
 }
