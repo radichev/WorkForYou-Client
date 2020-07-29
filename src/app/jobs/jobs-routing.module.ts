@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: ':worksphere/:subsphere/all',
+    path: ':worksphere/:subsphere/:id',
     component: JobsAllComponent,
     canActivate: [AuthGuard]
   }
