@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobService } from '../shared/job.service';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
 import { ActivatedRoute } from '@angular/router';
+import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheresLookup';
 
 @Component({
   selector: 'app-jobs-all',
@@ -16,6 +17,7 @@ export class JobsAllComponent implements OnInit {
   pages: Array<number>;
   id: string;
   isLoading = true;
+  workSpheres: WorkSphereLookup;
 
 
   constructor(private jobService: JobService, private route: ActivatedRoute) { }
@@ -33,6 +35,10 @@ export class JobsAllComponent implements OnInit {
         console.log(this.pages);
       }
       console.log(data);
+    });
+
+    this.jobService.getWorkSpheres().subscribe(data => {
+      this.workSpheres = data;
       this.isLoading = false;
     });
   }

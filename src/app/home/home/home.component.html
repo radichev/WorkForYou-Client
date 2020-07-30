@@ -8,9 +8,9 @@
 
     <div class="dropdown-container">
         <div class="dropdown" *ngFor="let workSphere of workSpheres.workSpheres">
-            <button mat-button class="dropbtn">{{workSphere.workSphere}}</button>
+            <button class="dropbtn">{{workSphere.workSphere}}</button>
             <div class="dropdown-content">
-                <a mat-button [routerLink]="['/jobs/', workSphere.workSphere.split(' ').join('-'), subSphere.subSphere.split(' ').join('-'), subSphere.id]"
+                <a [routerLink]="['/jobs/', workSphere.workSphere.split(' ').join('-'), subSphere.subSphere.split(' ').join('-'), subSphere.id]"
                     *ngFor="let subSphere of workSphere.subSpheres">{{subSphere.subSphere}}</a>
             </div>
         </div>
