@@ -12,7 +12,7 @@ export class HomeService {
   private readonly GET_FIVE_JOBS_IN_VIDEO_EDITING_URL = `${environment.apiUrl}/jobs/sub-sphere/Video Editing`
   private readonly WORK_SPHERES_LOOKUP_URL = `${environment.apiUrl}/work-spheres/all`
   private readonly FIVE_SUB_SPHERES_URL = `${environment.apiUrl}/sub-spheres/five`
-
+  
 
   constructor(private http: HttpClient) { }
 

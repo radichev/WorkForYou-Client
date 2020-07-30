@@ -1,1 +1,47 @@
-<p>jobs-all works!</p>
+<mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
+
+<ng-template #Loaded>
+    <div class="row content-row">
+        <div class="content">
+            <div class="listing-container">
+                <div class="gig-card-layout" *ngFor="let job of jobs">
+                    <div>
+                        <div class="gig-wrapper card">
+                            <a [routerLink]="['/jobs/', job.userProfileDetails.username, job.id]"
+                                class="media">
+                                <div class="slider">
+                                    <div class="slides preview">
+                                        <div class="slide-item active" style="width: auto;">
+                                            <img [src]='job.picture'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="seller-info text-body-2">
+                                <div class="inner-wrapper"><span class="seller-image">
+                                        <figure class="fit-avatar-figure fit-avatar-circle-shape"
+                                            style="font-size: 24px;">
+                                            <figcaption class=""></figcaption><span
+                                                class="fit-avatar-image"
+                                                style="background-image: url(&quot;https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/53d2be446394683ffe557446378a818d-742734591548082068588/JPEG_20190121_194746_-943619541.jpg&quot;);"></span>
+                                        </figure>
+                                    </span><span class="seller-name"><a
+                                            [routerLink]="['/jobs/', job.userProfileDetails.username, job.id]">{{job.userProfileDetails.username}}</a></span>
+                                </div>
+                            </div>
+                            <h3 class="text-display-7"><a
+                                    [routerLink]="['/jobs/', job.userProfileDetails.username, job.id]">{{job.description}}</a>
+                            </h3>
+                            <footer>
+                                <a [routerLink]="['/jobs/', job.userProfileDetails.username, job.id]"
+                                    class="price">
+                                    <small class="text-body-3">Starting
+                                        at</small>€{{job.price}}</a>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
