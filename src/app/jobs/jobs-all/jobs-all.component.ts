@@ -12,7 +12,7 @@ import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheres
 export class JobsAllComponent implements OnInit {
 
   page: number = 0;
-  size: number = 2;
+  size: number = 12;
   jobs: JobInputModel[];
   pages: Array<number>;
   id: string;
