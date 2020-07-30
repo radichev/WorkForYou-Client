@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../shared/job.service';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheresLookup';
 
 @Component({
@@ -20,10 +20,12 @@ export class JobsAllComponent implements OnInit {
   workSpheres: WorkSphereLookup;
 
 
-  constructor(private jobService: JobService, private route: ActivatedRoute) { }
+  constructor(private jobService: JobService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.jobService.getAllJobsInSubSphere(this.id, this.page, this.size).subscribe(data => {
       this.jobs = data['content'];
