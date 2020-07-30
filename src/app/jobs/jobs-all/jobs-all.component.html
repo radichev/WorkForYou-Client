@@ -52,5 +52,10 @@
                 </div>
             </div>
         </div>
+        <ul id="pagination" class="page-pagination desktop">
+            <li class="page-number" *ngFor="let p of pages; let i=index" [ngClass]="(i == page)?'active-page':''">
+                <a href="" (click)="changePage(i, $event)">{{i+1}}</a>
+            </li>
+        </ul>
     </div>
 </ng-template>

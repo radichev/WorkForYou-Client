@@ -12,7 +12,7 @@ import { WorkSphereLookup } from 'src/app/shared/models/input-models/workSpheres
 export class JobsAllComponent implements OnInit {
 
   page: number = 0;
-  size: number = 5;
+  size: number = 2;
   jobs: JobInputModel[];
   pages: Array<number>;
   id: string;
@@ -27,22 +27,27 @@ export class JobsAllComponent implements OnInit {
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
-    this.jobService.getAllJobsInSubSphere(this.id, this.page, this.size).subscribe(data => {
-      this.jobs = data['content'];
-      this.pages = new Array(data['totalPages']);
-      this.jobs
-        .forEach(job => job.picture = "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png");
-
-      if(this.pages) {
-        console.log(this.pages);
-      }
-      console.log(data);
-    });
+    this.getJobs();
 
     this.jobService.getWorkSpheres().subscribe(data => {
       this.workSpheres = data;
       this.isLoading = false;
     });
+  }
+
+  getJobs() {
+    this.jobService.getAllJobsInSubSphere(this.id, this.page, this.size).subscribe(data => {
+      this.jobs = data['content'];
+      this.pages = new Array(data['totalPages']);
+      this.jobs
+        .forEach(job => job.picture = "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png");
+    });
+  }
+
+  changePage(i: number, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.getJobs();
   }
 
 }
