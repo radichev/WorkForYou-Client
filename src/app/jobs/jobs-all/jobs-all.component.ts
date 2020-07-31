@@ -54,6 +54,17 @@ export class JobsAllComponent implements OnInit {
     event.preventDefault();
     this.page = i;
     this.getJobs();
+
+    // this.router.navigate([], {
+    //   relativeTo: this.route,
+    //   queryParams: {
+    //     page: this.page
+    //   },
+    //   queryParamsHandling: 'merge',
+    //   // preserve the existing query params in the route
+    //   skipLocationChange: true
+    //   // do not trigger navigation
+    // });
   }
 
 }
