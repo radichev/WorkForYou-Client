@@ -87,6 +87,31 @@ mat-spinner {
   justify-content: space-between;
 }
 
+.subcategory-header .title-wrapper {
+  display: flex;
+}
+
+.subcategory-header {
+  padding-top: 26px;
+}
+
+@media (min-width: 600px) {
+  .subcategory-header .title-wrapper h1 {
+    font-size: 32px;
+    color: #0e0e0f;
+    padding-bottom: 0;
+  }
+}
+
+.subcategory-header .title-wrapper h1 {
+  font-size: 24px;
+  text-transform: none !important;
+  color: #555;
+  padding-bottom: 5px;
+  line-height: 125%;
+  font-weight: 700;
+}
+
 .row {
   margin: 0 auto;
   padding: 0 10px;

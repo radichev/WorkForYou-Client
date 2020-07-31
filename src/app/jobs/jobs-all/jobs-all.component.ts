@@ -18,12 +18,15 @@ export class JobsAllComponent implements OnInit {
   id: string;
   isLoading = true;
   workSpheres: WorkSphereLookup;
+  currentSubSphere: string;
 
 
   constructor(private jobService: JobService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
+    
+    this.currentSubSphere = this.route.snapshot.paramMap.get('subsphere').split('-').join(' ');
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
