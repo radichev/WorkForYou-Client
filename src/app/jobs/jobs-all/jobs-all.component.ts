@@ -19,6 +19,7 @@ export class JobsAllComponent implements OnInit {
   isLoading = true;
   workSpheres: WorkSphereLookup;
   currentSubSphere: string;
+  totalServices: number;
 
 
   constructor(private jobService: JobService, private route: ActivatedRoute, private router: Router) { }
@@ -42,6 +43,8 @@ export class JobsAllComponent implements OnInit {
     this.jobService.getAllJobsInSubSphere(this.id, this.page, this.size).subscribe(data => {
       this.jobs = data['content'];
       this.pages = new Array(data['totalPages']);
+      this.totalServices = data['totalElements'];
+      console.log(data);
       this.jobs
         .forEach(job => job.picture = "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png");
     });

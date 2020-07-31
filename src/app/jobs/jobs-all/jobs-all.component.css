@@ -4,6 +4,12 @@ mat-spinner {
   left: 45%;
 }
 
+.divider {
+  display: block;
+  padding-top: 10px;
+  border-top: 1px solid #c5c5c5;
+}
+
 /* Dropdown Button */
 .dropbtn {
   /* background-color: #4caf50; */
@@ -110,6 +116,16 @@ mat-spinner {
   padding-bottom: 5px;
   line-height: 125%;
   font-weight: 700;
+}
+
+.results-info {
+ padding-bottom: 10px;
+}
+
+.total-services {
+  color: #7a7d85;
+  font: 600 14px/22px ProximaNova, Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding: 0 5px;
 }
 
 .row {
