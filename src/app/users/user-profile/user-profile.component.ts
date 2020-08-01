@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   isLoading = true;
   id: string;
-  username: string;
   userProfile: UserProfile;
   photo: any
   selectedImage: File;
@@ -32,8 +31,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-
-    this.username = this.jwtService.getUsername;
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;

@@ -11,7 +11,7 @@
                             <mat-icon>camera_alt</mat-icon>
                         </button></div>
                 </div>
-                <mat-card-title class="username">{{username}}</mat-card-title>
+                <mat-card-title class="username">{{userProfile.username}}</mat-card-title>
                 <a mat-stroked-button class="edit-button" *ngIf="id" [routerLink]="['/users/profile/edit', id]">Edit
                     User Profile</a>
                 <mat-divider class="divider"></mat-divider>
@@ -117,7 +117,7 @@
                 Jobs
             </mat-card>
             <mat-card class="user-jobs" *ngFor="let job of jobs">
-                <a [routerLink]="['/jobs/', username, job.id]">
+                <a [routerLink]="['/jobs/', userProfile.username, job.id]">
                     <img class="job-image"
                         src="https://skywell.software/wp-content/uploads/2019/11/java-spring-framework-1024x683.jpg">
                     <span class="job-divider"></span>
