@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthModule } from '../auth/auth.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AuthModule } from '../auth/auth.module';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ]
 })
 export class UsersModule { }
