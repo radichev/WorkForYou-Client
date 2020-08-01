@@ -6,6 +6,7 @@ import { Country } from './education-models/country';
 
 export interface UserProfile {
     id: string;
+    userId: string;
     username: string;
     firstName: string;
     lastName: string;
