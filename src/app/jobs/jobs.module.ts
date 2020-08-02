@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { JobAddComponent } from './job-add/job-add.component';
 import { JobComponent } from './job/job.component';
 import { JobsRoutingModule } from './jobs-routing.module';
-import { AuthGuard } from '../shared/guards/auth.guard';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

@@ -18,6 +18,11 @@ export class JwtService {
     return decodedToken ? decodedToken.sub : null;
   }
 
+  get getHasCompletedAccountSetup(): boolean {
+    const decodedToken = this.getDecodedToken();
+    return decodedToken ? decodedToken.hasCompletedAccountSetup : null;
+  }
+
   private getDecodedToken(): any {
     const token = this.jwtHelper.tokenGetter();
     let decodedToken = null;

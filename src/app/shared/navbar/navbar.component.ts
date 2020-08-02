@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
 
   userId: string;
   username: string;
+  hasCompletedAccountSetup: boolean;
 
   constructor(private authService: AuthService, private router: Router, private jwtHelper: JwtService) { }
 
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
   getUserDetails() {
     this.userId = this.jwtHelper.getUserId;
     this.username = this.jwtHelper.getUsername;
+    this.hasCompletedAccountSetup = this.jwtHelper.getHasCompletedAccountSetup;
   }
 
   isLoggedIn() {
