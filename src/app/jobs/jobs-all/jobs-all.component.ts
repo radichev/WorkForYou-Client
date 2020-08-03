@@ -19,6 +19,7 @@ export class JobsAllComponent implements OnInit {
   isLoading = true;
   workSpheres: WorkSphereLookup;
   currentSubSphere: string;
+  currentWorkSphere: string;
   totalServices: number;
 
 
@@ -26,8 +27,15 @@ export class JobsAllComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    
+
     this.currentSubSphere = this.route.snapshot.paramMap.get('subsphere').split('-').join(' ');
+    this.currentWorkSphere = this.route.snapshot.paramMap.get('worksphere').split('-').join(' ');
+
+    this.route
+      .queryParams
+      .subscribe(params => {
+        this.page = +params['page'] || 0;
+      });
 
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
@@ -50,21 +58,8 @@ export class JobsAllComponent implements OnInit {
     });
   }
 
-  changePage(i: number, event: any) {
-    event.preventDefault();
-    this.page = i;
-    this.getJobs();
-
-    // this.router.navigate([], {
-    //   relativeTo: this.route,
-    //   queryParams: {
-    //     page: this.page
-    //   },
-    //   queryParamsHandling: 'merge',
-    //   // preserve the existing query params in the route
-    //   skipLocationChange: true
-    //   // do not trigger navigation
-    // });
+  changePage(i: number) {
+    this.router.navigate(['/jobs/', this.currentWorkSphere, this.currentSubSphere, this.id], { queryParams: { page: this.page = i } });
   }
 
 }
