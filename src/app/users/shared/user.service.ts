@@ -15,6 +15,7 @@ export class UserService {
   private readonly ADD_EDUCATION_URL = `${environment.apiUrl}/educations/add/`;
   private readonly ADD_CERTIFICATE_URL = `${environment.apiUrl}/certificates/add/`;
   private readonly ALL_JOBS_URL = `${environment.apiUrl}/jobs/all/`;
+  private readonly ALL_JOBS_BY_USER_URL = `${environment.apiUrl}/jobs/`;
 
   constructor(private http: HttpClient) { }
 
@@ -48,6 +49,10 @@ export class UserService {
 
   getAllJobs(id: string){
     return this.http.get<JobInputModel[]>(this.ALL_JOBS_URL + id);
+  }
+
+  getJobsBoughtByUser(id: string) {
+    return this.http.get<JobInputModel[]>(this.ALL_JOBS_BY_USER_URL + id + '/bought');
   }
 
   // getUserProfileImage(id:string) {

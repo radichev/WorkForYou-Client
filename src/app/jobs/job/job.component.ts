@@ -33,7 +33,7 @@ export class JobComponent implements OnInit {
       userId: this.jwtService.getUserId,
       jobId: this.job.id
     }
-    console.log("asd");
+    
     this.jobService.buyJob(this.job.id, this.jobBuyModel).subscribe(data => {
       console.log(data);
     });

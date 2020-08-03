@@ -114,10 +114,15 @@
             </mat-card>
         </div>
         <div class="jobs">
-            <mat-card class="job-card">
-                Jobs
-            </mat-card>
-            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup" [routerLink]="['/jobs/job/add']">Create a new Job</a>
+                <div class="job-card">
+                <ul class="status-filter-bar">
+                    <li (click)="ownJobs()" [ngClass]="!selectedOption ? 'selected-filter' : ''">Jobs</li>
+                    <li (click)="boughtJobs()" [ngClass]="selectedOption ? 'selected-filter' : ''">Bought Jobs</li>
+                </ul>
+            </div>
+            
+            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup && !selectedOption"
+                [routerLink]="['/jobs/job/add']">Create a new Job</a>
             <mat-card class="user-jobs" *ngFor="let job of jobs">
                 <a [routerLink]="['/jobs/', userProfile.username, job.id]">
                     <img class="job-image"
@@ -129,7 +134,7 @@
                     <small>Price</small> ${{job.price}}
                 </label>
             </mat-card>
-            
+
         </div>
     </div>
 </ng-template>

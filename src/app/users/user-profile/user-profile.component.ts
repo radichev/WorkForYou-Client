@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   selectedImage: File;
   userProfileSubscription: Subscription;
   jobs: JobInputModel[];
+  selectedOption: boolean = true;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -44,11 +45,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
       }
     });
-
-
-    this.userService.getAllJobs(this.id).subscribe(data => {
-      this.jobs = data;
-    });
+    this.ownJobs();
   }
 
   onImageSelected(event) {
@@ -59,6 +56,20 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
     this.userService.uploadUserProfileImage(this.id, formData).subscribe(() => {
       this.ngOnInit();
+    });
+  }
+
+  ownJobs() {
+    this.selectedOption = !this.selectedOption;
+    this.userService.getAllJobs(this.id).subscribe(data => {
+      this.jobs = data;
+    });
+  }
+
+  boughtJobs() {
+    this.selectedOption = !this.selectedOption;
+    this.userService.getJobsBoughtByUser(this.id).subscribe(data => {
+      this.jobs = data;
     });
   }
 }
