@@ -24,4 +24,8 @@ export class JobComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
+  buyJob() {
+    
+  }
 }
