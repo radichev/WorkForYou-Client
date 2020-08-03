@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { WorkSphereLookup } from '../../shared/models/input-models/workSpheresLookup';
 import { JobOutputModel } from './models/output-models/jobOutputModel';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
+import { JobBuyOutputModel } from './models/output-models/jobBuyOutputModel';
 
 @Injectable()
 export class JobService {
@@ -12,6 +13,7 @@ export class JobService {
   private readonly ADD_JOB_LOOKUP_URL = `${environment.apiUrl}/jobs/add/`
   private readonly GET_JOB_BY_ID_URL = `${environment.apiUrl}/jobs/`
   private readonly ALL_JOBS_BY_SUB_SPHERES_URL = `${environment.apiUrl}/jobs/sub-sphere/`
+  private readonly BUY_JOB_URL = `${environment.apiUrl}/jobs/buy/`
 
 
   constructor(private http: HttpClient) { }
@@ -30,5 +32,9 @@ export class JobService {
 
   getAllJobsInSubSphere(subSphereId: string, page: number, size: number) {
     return this.http.get<JobInputModel[]>(this.ALL_JOBS_BY_SUB_SPHERES_URL + subSphereId + '/all?page=' + page + '&size=' + size);
+  }
+
+  buyJob(id: string, jobBuyOutputModel: JobBuyOutputModel) {
+    return this.http.post(this.BUY_JOB_URL + id, jobBuyOutputModel);
   }
 }

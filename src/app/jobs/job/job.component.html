@@ -18,7 +18,7 @@
                     </b>
                 </article>
                 <footer>
-                    <button class="buy-button" type="submit" (ngSubmit)="buyJob()">Continue
+                    <button (click)="buyJob()" class="buy-button" type="submit">Continue
                         <span> (€{{job.price}})</span>
                     </button>
                 </footer>
