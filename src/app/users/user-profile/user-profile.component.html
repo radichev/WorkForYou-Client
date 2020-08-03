@@ -117,6 +117,7 @@
             <mat-card class="job-card">
                 Jobs
             </mat-card>
+            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup" [routerLink]="['/jobs/job/add']">Create a new Job</a>
             <mat-card class="user-jobs" *ngFor="let job of jobs">
                 <a [routerLink]="['/jobs/', userProfile.username, job.id]">
                     <img class="job-image"
@@ -128,7 +129,7 @@
                     <small>Price</small> ${{job.price}}
                 </label>
             </mat-card>
-            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup" [routerLink]="['/jobs/job/add']">Create a new Job</a>
+            
         </div>
     </div>
 </ng-template>

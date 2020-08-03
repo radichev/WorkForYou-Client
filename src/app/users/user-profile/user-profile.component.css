@@ -123,10 +123,17 @@ mat-spinner {
   position: relative;
 }
 
-@media (max-width: 1259px) {
-}
-.row {
-  max-width: 1200px;
+@media (min-width: 1260px) {
+  .jobs {
+    width: 736px !important;
+  }
+  .user-jobs {
+    margin: 10px 12px !important;
+  }
+
+  .job-card-base {
+    margin: 10px 12px !important;
+  }
 }
 
 .jobs {
@@ -134,12 +141,6 @@ mat-spinner {
   margin-top: 3em;
   width: 36em;
 }
-
-/* @media (max-width: 575px) {
-  .jobs {
-    max-width: 25em;
-  }
-} */
 
 @media (min-width: 1260px) {
 }
@@ -179,7 +180,7 @@ mat-spinner {
   position: relative;
 }
 
-@media(max-width: 993px) {
+@media (max-width: 993px) {
   .user-jobs {
     margin: 10px 10px;
   }
@@ -189,20 +190,18 @@ mat-spinner {
   .job-card {
     width: 30em;
   }
+
+  .job-card-base {
+    margin: 10px 10px !important;
+  }
 }
 
-@media(max-width: 575px) {
-  .user-jobs {
+@media (max-width: 575px) {
+  .job-card-base .user-jobs {
     width: 190px;
     height: 220px;
     margin: 10px 25px;
   }
-  /* .jobs { */
-    /* margin: 10px 36px; */
-  /* } */
-  /* .job-card {
-    width: 24em;
-  } */
 }
 
 .job-image {
@@ -228,8 +227,9 @@ a {
 .job-card-base {
   background-color: #fff;
   width: 220px;
-  height: 270px;
+  height: 250px;
   margin: 0 32px;
+  margin-top: 15px;
   margin-top: 15px;
   float: left;
   position: relative;
