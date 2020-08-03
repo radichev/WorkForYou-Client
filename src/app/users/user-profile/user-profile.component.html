@@ -12,7 +12,8 @@
                         </button></div>
                 </div>
                 <mat-card-title class="username">{{userProfile.username}}</mat-card-title>
-                <a mat-stroked-button class="edit-button" *ngIf="id && currentlyLoggedInId == userProfile.userId" [routerLink]="['/users/profile/edit', id]">Edit
+                <a mat-stroked-button class="edit-button" *ngIf="id && currentlyLoggedInId == userProfile.userId"
+                    [routerLink]="['/users/profile/edit', id]">Edit
                     User Profile</a>
                 <mat-divider class="divider"></mat-divider>
                 <mat-card-content class="user-content">
@@ -127,6 +128,7 @@
                     <small>Price</small> ${{job.price}}
                 </label>
             </mat-card>
+            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup" [routerLink]="['/jobs/job/add']">Create a new Job</a>
         </div>
     </div>
 </ng-template>

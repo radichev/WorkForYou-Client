@@ -194,3 +194,37 @@ a {
   color: #1dbf73;
   text-decoration: none;
 }
+
+.job-card-base {
+  background-color: #fff;
+  width: 220px;
+  height: 270px;
+  margin: 0 32px;
+  margin-top: 15px;
+  float: left;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+}
+
+.add-new-job {
+  text-align: center;
+  color: #555;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.add-new-job:before {
+  content: "+";
+  background-color: #78cdd2;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 400;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: block;
+  margin: 80px auto 20px;
+  line-height: 69px;
+}

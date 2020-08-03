@@ -6,6 +6,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 })
 export class JwtService {
 
+  // hasCompletedAccountSetup: boolean = false;
+
   constructor(private jwtHelper: JwtHelperService) { }
 
   get getUserId(): string {
@@ -16,11 +18,6 @@ export class JwtService {
   get getUsername(): string {
     const decodedToken = this.getDecodedToken();
     return decodedToken ? decodedToken.sub : null;
-  }
-
-  get getHasCompletedAccountSetup(): boolean {
-    const decodedToken = this.getDecodedToken();
-    return decodedToken ? decodedToken.hasCompletedAccountSetup : null;
   }
 
   private getDecodedToken(): any {

@@ -9,7 +9,6 @@
         </ng-container>
 
         <ng-template #LoggedIn>
-                <a mat-button *ngIf="hasCompletedAccountSetup" [routerLink]="['/jobs/job/add']">Add Job</a>
                 <ng-container *ngIf="username && userId">
                 <a mat-button [routerLink]="['/users/profile', userId]">{{username}}</a>
                 </ng-container>

@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
   getUserDetails() {
     this.userId = this.jwtHelper.getUserId;
     this.username = this.jwtHelper.getUsername;
-    this.hasCompletedAccountSetup = this.jwtHelper.getHasCompletedAccountSetup;
   }
 
   isLoggedIn() {

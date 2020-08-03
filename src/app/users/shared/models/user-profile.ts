@@ -14,6 +14,7 @@ export interface UserProfile {
     personalWebsite: string;
     country: Country;
     email: string;
+    hasCompletedAccountSetup: boolean;
     createdDate: string;
     profilePicture: string
     languages: [Language];
