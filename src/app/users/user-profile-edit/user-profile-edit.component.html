@@ -37,16 +37,34 @@
                     <mat-form-field>
                         <input matInput type="firstName" id="firstName" placeholder="First Name"
                             formControlName="firstName">
+                        <mat-error *ngIf="checkError('firstName', 'required')">First Name is required</mat-error>
+                        <mat-error *ngIf="checkError('firstName', 'minlength')">First Name must be at least 2
+                            characters</mat-error>
+                        <mat-error *ngIf="checkError('firstName', 'maxlength')">First Name should be less than 30
+                            characters</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field>
                         <input matInput type="lastName" id="lastName" placeholder="Last Name"
                             formControlName="lastName">
+                        <mat-error *ngIf="checkError('lastName', 'required')">Last Name is required</mat-error>
+                        <mat-error *ngIf="checkError('lastName', 'minlength')">Last Name must be at least 2
+                            characters</mat-error>
+                        <mat-error *ngIf="checkError('lastName', 'maxlength')">Last Name should be less than 30
+                            characters</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field>
                         <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
                             formControlName="personalWebsite">
+                        <mat-error *ngIf="checkError('personalWebsite', 'required')">Personal Website is required
+                        </mat-error>
+                        <mat-error *ngIf="checkError('personalWebsite', 'minlength')">Personal Website must be at least
+                            4
+                            characters</mat-error>
+                        <mat-error *ngIf="checkError('personalWebsite', 'maxlength')">Personal Website should be less
+                            than 30
+                            characters</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field>
@@ -56,6 +74,7 @@
                                 {{country.country}}
                             </mat-option>
                         </mat-select>
+                        <mat-error *ngIf="checkError('country', 'required')">Country is required</mat-error>
                     </mat-form-field>
                     <span class="buttons-wrapper">
                         <button mat-flat-button type="submit" color="primary">Update</button>

@@ -44,6 +44,10 @@ export class JobAddComponent implements OnInit {
     });
   }
 
+  public checkError = (controlName: string, errorName: string) => {
+    return this.addJobForm.controls[controlName].hasError(errorName);
+  }
+
   filterSubSpheres(event: string) {
     this.selectedWorkSphere = this.workSpheres.workSpheres.filter(x => x.id === event)[0];
   }

@@ -97,6 +97,10 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
 
   }
 
+  public checkError = (controlName: string, errorName: string) => {
+    return this.basicInfo.controls[controlName].hasError(errorName);
+  }
+
   onImageSelected(event) {
     this.selectedImage = <File>event.target.files[0];
 
