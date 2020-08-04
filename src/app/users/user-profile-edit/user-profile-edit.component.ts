@@ -46,20 +46,19 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
-      if(!this.userProfile.profilePicture) {
+
+      if (!this.userProfile.profilePicture) {
         this.photo = `https://simpleicon.com/wp-content/uploads/user1.png`;
-      } else {
-        this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+      } else if (this.userProfile.profilePicture) {
+        this.photo = this.userProfile.profilePicture;
       }
     });
-
-    
 
     this.lookupTablesSubscription = this.userService.getAllLookupTables().subscribe(data => {
       this.lookupTables = data;
       this.isLoading = false;
     });
-    
+
 
     this.descriptionForm = this.formBuilder.group({
       description: [null, [Validators.required]],
@@ -181,7 +180,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  editBasicInfo(){
+  editBasicInfo() {
     const formValue = this.basicInfo.value;
     this.userProfile.firstName = formValue.firstName;
     this.userProfile.lastName = formValue.lastName;
@@ -192,7 +191,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       country: null
     }
     this.userProfile.country = country;
-  
+
     this.userService.editUserProfile(this.id, this.userProfile).subscribe(() => {
       this.router.navigate(['/users/profile', this.userProfile.userId]);
     });

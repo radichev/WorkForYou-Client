@@ -33,16 +33,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
-    
+
     this.currentlyLoggedInId = this.jwtService.getUserId;
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
       this.isLoading = false;
-      if(!this.userProfile.profilePicture) {
+      if (!this.userProfile.profilePicture) {
         this.photo = `https://simpleicon.com/wp-content/uploads/user1.png`;
       } else {
-        this.photo = `http://localhost:8080/api/profile/details/${this.id}/image/download`;
+        this.photo = this.userProfile.profilePicture;
       }
     });
     this.ownJobs();

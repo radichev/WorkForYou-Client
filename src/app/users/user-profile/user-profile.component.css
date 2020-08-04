@@ -7,10 +7,15 @@
   margin-bottom: 15px;
 }
 
-mat-spinner {
+.page-loader {
   position: fixed;
   top: 45%;
   left: 45%;
+}
+
+.photo-loader {
+  left: 36%;
+  top: 153px;
 }
 
 .username {

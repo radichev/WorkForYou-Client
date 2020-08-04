@@ -1,11 +1,11 @@
-<mat-spinner *ngIf="isLoading; else Loaded"></mat-spinner>
+<mat-spinner class="page-loader" *ngIf="isLoading; else Loaded"></mat-spinner>
 
 <ng-template #Loaded>
     <div class="row flex">
         <div class="asd user-details">
             <mat-card>
-                <div class="imghov" *ngIf="photo">
-                    <img mat-card-avatar class="avatar" [src]='photo'>
+                <div class="imghov">
+                    <img mat-card-avatar *ngIf="photo" class="avatar" [src]='photo'>
                     <input #inputImage type="file" style="display:none" (change)="onImageSelected($event)" />
                     <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
                             <mat-icon>camera_alt</mat-icon>
