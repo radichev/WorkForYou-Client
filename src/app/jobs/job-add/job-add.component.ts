@@ -35,12 +35,12 @@ export class JobAddComponent implements OnInit {
     })
 
     this.addJobForm = this.formBuilder.group({
-      jobName: [null, [Validators.required]],
-      jobDescription: [null, [Validators.required]],
+      jobTitle: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
+      jobDescription: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
       workSphere: [null, [Validators.required]],
       subSphere: [null, [Validators.required]],
-      deliveryTime: [null, [Validators.required]],
-      jobPrice: [null, [Validators.required]]
+      deliveryTime: [null, [Validators.required, Validators.min(0)]],
+      jobPrice: [null, [Validators.required, Validators.min(0.1)]]
     });
   }
 
@@ -72,7 +72,7 @@ export class JobAddComponent implements OnInit {
     formData.append('job', new Blob([JSON.stringify(job)], {
                 type: "application/json"
             }));
-            
+
     this.jobService.addJob(this.id, formData).subscribe(data => {
       console.log(data);
     });

@@ -61,37 +61,37 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
 
 
     this.descriptionForm = this.formBuilder.group({
-      description: [null, [Validators.required]],
+      description: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
     });
 
     this.languageForm = this.formBuilder.group({
-      language: [null, [Validators.required]],
+      language: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       languageLevel: [null, [Validators.required]]
     });
 
     this.skillForm = this.formBuilder.group({
-      skill: [null, [Validators.required]],
+      skill: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       skillLevel: [null, [Validators.required]]
     });
 
     this.educationsForm = this.formBuilder.group({
       country: [null, [Validators.required]],
-      universityName: [null, [Validators.required]],
+      universityName: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
       titleType: [null, [Validators.required]],
-      educationSubject: [null, [Validators.required]],
-      graduationYear: [null, [Validators.required]]
+      educationSubject: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      graduationYear: [null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
     });
 
     this.certificateForm = this.formBuilder.group({
-      certificateSubject: [null, [Validators.required]],
-      awardedFrom: [null, [Validators.required]],
-      graduationYear: [null, [Validators.required]]
+      certificateSubject: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      awardedFrom: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
+      graduationYear: [null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
     });
 
     this.basicInfo = this.formBuilder.group({
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
-      personalWebsite: [null, []],
+      firstName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      lastName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      personalWebsite: [null, [Validators.minLength(4), Validators.maxLength(30)]],
       country: [null, [Validators.required]]
     });
 
