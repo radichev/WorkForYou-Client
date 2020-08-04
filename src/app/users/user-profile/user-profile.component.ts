@@ -32,6 +32,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.selectedOption = true;
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.currentlyLoggedInId = this.jwtService.getUserId;

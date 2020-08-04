@@ -3,7 +3,17 @@
 <ng-template #Loaded>
     <div class="box-row">
         <mat-card class="job">
-            <form [formGroup]="addJobForm" (ngSubmit)="addJob()">
+            <form enctype="multipart/form-data" [formGroup]="addJobForm" (ngSubmit)="addJob()">
+                <div class="imghov">
+                    <img mat-card-avatar *ngIf="imgURL" class="avatar" [src]='imgURL'>
+                    <input #inputImage type="file" style="display:none"
+                        (change)="onImageSelected($event)" />
+                    <div class="overlay ctr"><button mat-fab type="button" (click)="inputImage.click()">
+                            <mat-icon>camera_alt</mat-icon>
+                        </button></div>
+                </div>
+                <span class="divider"></span>
+
                 <div class="form-row">
                     <div class="label-wrap">
                         <label class="prefix">Job Title</label>

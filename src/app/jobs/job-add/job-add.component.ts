@@ -21,11 +21,13 @@ export class JobAddComponent implements OnInit {
   addJobForm: FormGroup;
   job: JobOutputModel;
   id: string;
+  selectedImage: File;
+  imgURL: any;
 
   constructor(private formBuilder: FormBuilder, private jobService: JobService, private jwtService: JwtService) { }
 
   ngOnInit(): void {
-    this.id =  this.jwtService.getUserId;
+    this.id = this.jwtService.getUserId;
 
     this.jobService.getWorkSpheres().subscribe(data => {
       this.workSpheres = data;
@@ -63,11 +65,28 @@ export class JobAddComponent implements OnInit {
       deliveryTime: formValue.deliveryTime,
       price: formValue.jobPrice,
       description: formValue.jobDescription
-    }    
+    }
 
-    this.jobService.addJob(this.id, job).subscribe(data => {
+    const formData = new FormData;
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+    formData.append('job', new Blob([JSON.stringify(job)], {
+                type: "application/json"
+            }));
+            
+    this.jobService.addJob(this.id, formData).subscribe(data => {
       console.log(data);
     });
+  }
+
+  onImageSelected(event) {
+    this.selectedImage = <File>event.target.files[0];
+
+    console.log("change");
+    var reader = new FileReader();
+    reader.readAsDataURL(this.selectedImage);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
   }
 
 }

@@ -11,6 +11,7 @@ export interface JobInputModel {
     subSphere: SubSphereInputModel;
     deliveryTime: number;
     picture:string;
+    jobPicture:string;
     price: number;
     description: string;
     pictures: [PictureModel];

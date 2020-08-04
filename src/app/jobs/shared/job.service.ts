@@ -22,7 +22,7 @@ export class JobService {
     return this.http.get<WorkSphereLookup>(`${this.WORK_SPHERES_LOOKUP_URL}`);
   }
 
-  addJob(id: string, jobModel: JobOutputModel) {
+  addJob(id: string, jobModel: FormData) {
     return this.http.post(this.ADD_JOB_LOOKUP_URL + id, jobModel);
   }
 

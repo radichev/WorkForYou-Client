@@ -126,7 +126,7 @@
             <mat-card class="user-jobs" *ngFor="let job of jobs">
                 <a [routerLink]="['/jobs/', userProfile.username, job.id]">
                     <img class="job-image"
-                        src="https://skywell.software/wp-content/uploads/2019/11/java-spring-framework-1024x683.jpg">
+                        [src]="job.jobPicture">
                     <span class="job-divider"></span>
                     <h6>{{job.jobTitle}}</h6>
                 </a>
