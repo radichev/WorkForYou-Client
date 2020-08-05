@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserProfile } from '../shared/models/user-profile';
 import { UserService } from '../shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JwtService } from 'src/app/shared/jwt.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LookupTables } from '../shared/models/lookup-tables';
 import { Subscription } from 'rxjs';
@@ -29,8 +28,13 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   userProfileSubscription: Subscription;
   lookupTablesSubscription: Subscription;
   currDiv: string;
+  fieldToEdit: any;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnDestroy(): void {
     if (this.userProfileSubscription) {
@@ -43,11 +47,12 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.currDiv = "";
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
-
+      this.isLoading = false;
       if (!this.userProfile.profilePicture) {
         this.photo = `https://simpleicon.com/wp-content/uploads/user1.png`;
       } else if (this.userProfile.profilePicture) {
@@ -57,36 +62,10 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
 
     this.lookupTablesSubscription = this.userService.getAllLookupTables().subscribe(data => {
       this.lookupTables = data;
-      this.isLoading = false;
     });
-
 
     this.descriptionForm = this.formBuilder.group({
       description: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
-    });
-
-    this.languageForm = this.formBuilder.group({
-      language: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      languageLevel: [null, [Validators.required]]
-    });
-
-    this.skillForm = this.formBuilder.group({
-      skill: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-      skillLevel: [null, [Validators.required]]
-    });
-
-    this.educationsForm = this.formBuilder.group({
-      country: [null, [Validators.required]],
-      universityName: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(40)]],
-      titleType: [null, [Validators.required]],
-      educationSubject: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      graduationYear: [null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
-    });
-
-    this.certificateForm = this.formBuilder.group({
-      certificateSubject: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      awardedFrom: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(40)]],
-      graduationYear: [null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
     });
 
     this.basicInfo = this.formBuilder.group({
@@ -95,21 +74,64 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       personalWebsite: [null, [Validators.minLength(4), Validators.maxLength(30)]],
       country: [null, [Validators.required]]
     });
-
   }
 
-  deleteItem(itemCategory: string, id: string) {
-    this.userService.deleteItem(itemCategory, id).subscribe(() => { 
+  deleteItem(subjectCategory: string, id: string) {
+    this.userService.deleteItem(subjectCategory, id).subscribe(() => {
       this.ngOnInit();
-    }); 
+    });
+  }
+
+  addOrEditLanguageForm(item: any) {
+    this.fieldToEdit = item;
+
+    this.languageForm = this.formBuilder.group({
+      language: [this.fieldToEdit ? this.fieldToEdit.language : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      languageLevel: [this.fieldToEdit ? this.fieldToEdit.languageLevel.id : null, [Validators.required]]
+    });
+  }
+
+  addOrEditSkillsForm(item: any) {
+    this.fieldToEdit = item;
+
+    this.skillForm = this.formBuilder.group({
+      skill: [this.fieldToEdit ? this.fieldToEdit.skill : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      skillLevel: [this.fieldToEdit ? this.fieldToEdit.skillLevel.id : null, [Validators.required]]
+    });
+  }
+
+  addOrEditEducationForm(item: any) {
+    this.fieldToEdit = item;
+
+    this.educationsForm = this.formBuilder.group({
+      country: [this.fieldToEdit ? this.fieldToEdit.country.id : null, [Validators.required]],
+      universityName: [this.fieldToEdit ? this.fieldToEdit.universityName : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      titleType: [this.fieldToEdit ? this.fieldToEdit.titleType.id : null, [Validators.required]],
+      educationSubject: [this.fieldToEdit ? this.fieldToEdit.educationSubject : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      graduationYear: [this.fieldToEdit ? this.fieldToEdit.graduationYear : null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
+    });
+  }
+
+  addOrEditCertificatesForm(item: any) {
+    this.fieldToEdit = item;
+
+    this.certificateForm = this.formBuilder.group({
+      certificateSubject: [this.fieldToEdit ? this.fieldToEdit.certificateSubject : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      awardedFrom: [this.fieldToEdit ? this.fieldToEdit.awardedFrom : null, [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      graduationYear: [this.fieldToEdit ? this.fieldToEdit.graduationYear : null, [Validators.required, Validators.min(1915), Validators.max(2050)]]
+    });
   }
 
   ShowDiv(divVal: string) {
     this.currDiv = divVal;
-}
+    this.addOrEditLanguageForm(null);
+    this.addOrEditSkillsForm(null);
+    this.addOrEditEducationForm(null);
+    this.addOrEditCertificatesForm(null);
+  }
 
-  public checkError = (controlName: string, errorName: string) => {
-    return this.basicInfo.controls[controlName].hasError(errorName);
+  public checkError = (form: FormGroup, controlName: string, errorName: string) => {
+    return form.controls[controlName].hasError(errorName);
   }
 
   onImageSelected(event) {
@@ -131,7 +153,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  addLanguages() {
+  addOrEditLanguages() {
+    const subjectCategory = "languages";
     const formValue = this.languageForm.value;
     const languageLevel = {
       id: formValue.languageLevel
@@ -140,12 +163,20 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       language: formValue.language,
       languageLevel: languageLevel
     };
-    this.userService.addLanguage(this.id, language).subscribe(() => {
-      this.ngOnInit();
-    });
+
+    if (this.fieldToEdit) {
+      this.userService.editItem(subjectCategory, this.fieldToEdit.id, language).subscribe(() => {
+        this.ngOnInit();
+      })
+    } else {
+      this.userService.addLanguage(this.id, language).subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
-  addSkill() {
+  addOrEditSkill() {
+    const subjectCategory = "skills";
     const formValue = this.skillForm.value;
     const skillLevel = {
       id: formValue.skillLevel
@@ -154,12 +185,20 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       skill: formValue.skill,
       skillLevel: skillLevel
     };
-    this.userService.addSkill(this.id, skill).subscribe(() => {
-      this.ngOnInit();
-    });
+
+    if (this.fieldToEdit) {
+      this.userService.editItem(subjectCategory, this.fieldToEdit.id, skill).subscribe(() => {
+        this.ngOnInit();
+      })
+    } else {
+      this.userService.addSkill(this.id, skill).subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
-  addEducation() {
+  addOrEditEducation() {
+    const subjectCategory = "educations";
     const formValue = this.educationsForm.value;
     const country = {
       id: formValue.country
@@ -177,22 +216,35 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       graduationYear: formValue.graduationYear
     };
 
-    this.userService.addEducation(this.id, education).subscribe(() => {
-      this.ngOnInit();
-    });
-
+    if (this.fieldToEdit) {
+      this.userService.editItem(subjectCategory, this.fieldToEdit.id, education).subscribe(() => {
+        this.ngOnInit();
+      })
+    } else {
+      this.userService.addEducation(this.id, education).subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
-  addCertificate() {
+  addOrEditCertificate() {
+    const subjectCategory = "certificates"
     const formValue = this.certificateForm.value;
     const certificate = {
       certificateSubject: formValue.certificateSubject,
       awardedFrom: formValue.awardedFrom,
       graduationYear: formValue.graduationYear
     };
-    this.userService.addCertificate(this.id, certificate).subscribe(() => {
-      this.ngOnInit();
-    });
+
+    if (this.fieldToEdit) {
+      this.userService.editItem(subjectCategory, this.fieldToEdit.id, certificate).subscribe(() => {
+        this.ngOnInit();
+      })
+    } else {
+      this.userService.addCertificate(this.id, certificate).subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
   editBasicInfo() {
@@ -212,4 +264,3 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     });
   }
 }
-

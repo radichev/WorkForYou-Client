@@ -37,32 +37,39 @@
                     <mat-form-field>
                         <input matInput type="firstName" id="firstName" placeholder="First Name"
                             formControlName="firstName">
-                        <mat-error *ngIf="checkError('firstName', 'required')">First Name is required</mat-error>
-                        <mat-error *ngIf="checkError('firstName', 'minlength')">First Name must be at least 2
+                        <mat-error *ngIf="checkError(basicInfo, 'firstName', 'required')">First Name is required
+                        </mat-error>
+                        <mat-error *ngIf="checkError(basicInfo, 'firstName', 'minlength')">First Name must be at least 2
                             characters</mat-error>
-                        <mat-error *ngIf="checkError('firstName', 'maxlength')">First Name should be less than 30
+                        <mat-error *ngIf="checkError(basicInfo, 'firstName', 'maxlength')">First Name should be less
+                            than 30
                             characters</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field>
                         <input matInput type="lastName" id="lastName" placeholder="Last Name"
                             formControlName="lastName">
-                        <mat-error *ngIf="checkError('lastName', 'required')">Last Name is required</mat-error>
-                        <mat-error *ngIf="checkError('lastName', 'minlength')">Last Name must be at least 2
+                        <mat-error *ngIf="checkError(basicInfo, 'lastName', 'required')">Last Name is required
+                        </mat-error>
+                        <mat-error *ngIf="checkError(basicInfo, 'lastName', 'minlength')">Last Name must be at least 2
                             characters</mat-error>
-                        <mat-error *ngIf="checkError('lastName', 'maxlength')">Last Name should be less than 30
+                        <mat-error *ngIf="checkError(basicInfo, 'lastName', 'maxlength')">Last Name should be less than
+                            30
                             characters</mat-error>
                     </mat-form-field>
                     <br />
                     <mat-form-field>
                         <input matInput type="personalWebsite" id="personalWebsite" placeholder="Personal Website"
                             formControlName="personalWebsite">
-                        <mat-error *ngIf="checkError('personalWebsite', 'required')">Personal Website is required
+                        <mat-error *ngIf="checkError(basicInfo, 'personalWebsite', 'required')">Personal Website is
+                            required
                         </mat-error>
-                        <mat-error *ngIf="checkError('personalWebsite', 'minlength')">Personal Website must be at least
+                        <mat-error *ngIf="checkError(basicInfo, 'personalWebsite', 'minlength')">Personal Website must
+                            be at least
                             4
                             characters</mat-error>
-                        <mat-error *ngIf="checkError('personalWebsite', 'maxlength')">Personal Website should be less
+                        <mat-error *ngIf="checkError(basicInfo, 'personalWebsite', 'maxlength')">Personal Website should
+                            be less
                             than 30
                             characters</mat-error>
                     </mat-form-field>
@@ -74,10 +81,11 @@
                                 {{country.country}}
                             </mat-option>
                         </mat-select>
-                        <mat-error *ngIf="checkError('country', 'required')">Country is required</mat-error>
+                        <mat-error *ngIf="checkError(basicInfo, 'country', 'required')">Country is required</mat-error>
                     </mat-form-field>
                     <span class="buttons-wrapper">
-                        <button mat-flat-button type="submit" color="primary">Update</button>
+                        <button mat-flat-button type="submit" color="primary"
+                            [disabled]="!basicInfo.valid">Update</button>
                     </span>
                 </form>
             </mat-card>
@@ -90,15 +98,24 @@
                     <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
                     <a [routerLink] class="add" [routerLink] (click)="ShowDiv('description')">Edit</a>
                 </mat-card-title>
-                <label>
+                <label *ngIf="userProfile.description">
                     {{userProfile.description}}
                 </label>
                 <div class="edit-box" *ngIf="currDiv == 'description'">
                     <form [formGroup]="descriptionForm" (ngSubmit)="editDescription()">
                         <textarea [(ngModel)]="userProfile.description" placeholder="Description"
                             class="description-input" formControlName="description"></textarea>
+                        <mat-error *ngIf="checkError(descriptionForm, 'description', 'required')">Description is
+                            required</mat-error>
+                        <mat-error *ngIf="checkError(descriptionForm, 'description', 'minlength')">Description must be
+                            at least 15
+                            characters</mat-error>
+                        <mat-error *ngIf="checkError(descriptionForm, 'description', 'maxlength')">Description should be
+                            less than 800
+                            characters</mat-error>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button type="submit" color="primary">Update</button>
+                            <button mat-flat-button type="submit" color="primary"
+                                [disabled]="!descriptionForm.valid">Update</button>
                         </span>
                     </form>
                 </div>
@@ -119,7 +136,8 @@
                         </label>
                         <div class="animate">
                             <span>
-                                <a [routerLink] class="pencil">
+                                <a [routerLink] class="pencil" (click)="currDiv = 'languages'"
+                                    (click)="addOrEditLanguageForm(language)">
                                     <mat-icon class="edit-icon">edit</mat-icon>
                                 </a>
                             </span>
@@ -129,12 +147,18 @@
                                 </a>
                             </span>
                         </div>
-                    </div> 
+                    </div>
                     <div class="edit-box" *ngIf="currDiv == 'languages'">
-                        <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
+                        <form [formGroup]="languageForm" (ngSubmit)="addOrEditLanguages()">
                             <mat-form-field>
                                 <input matInput type="language" id="language" placeholder="Language"
                                     formControlName="language">
+                                <mat-error *ngIf="checkError(languageForm, 'language', 'required')">Language is
+                                    required</mat-error>
+                                <mat-error *ngIf="checkError(languageForm, 'language', 'minlength')">Language must be
+                                    at least 3 characters</mat-error>
+                                <mat-error *ngIf="checkError(languageForm, 'language', 'maxlength')">Language should
+                                    be less than 30 characters</mat-error>
                             </mat-form-field>
                             <br />
                             <mat-form-field appearance="fill">
@@ -147,7 +171,8 @@
                                 </mat-select>
                             </mat-form-field>
                             <span class="buttons-wrapper">
-                                <button mat-flat-button type="submit" color="primary">Add</button>
+                                <button mat-flat-button type="submit" color="primary"
+                                    [disabled]="!languageForm.valid">Add</button>
                             </span>
                         </form>
                     </div>
@@ -165,7 +190,8 @@
                     </label>
                     <div class="animate">
                         <span>
-                            <a [routerLink] class="pencil">
+                            <a [routerLink] class="pencil" (click)="currDiv = 'skills'"
+                                (click)="addOrEditSkillsForm(skill)">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
@@ -177,9 +203,15 @@
                     </div>
                 </div>
                 <div class="edit-box" *ngIf="currDiv == 'skills'">
-                    <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
+                    <form [formGroup]="skillForm" (ngSubmit)="addOrEditSkill()">
                         <mat-form-field>
                             <input matInput type="skill" id="skill" placeholder="Skill" formControlName="skill">
+                            <mat-error *ngIf="checkError(skillForm, 'skill', 'required')">Skill is
+                                required</mat-error>
+                            <mat-error *ngIf="checkError(skillForm, 'skill', 'minlength')">Skill must be
+                                at least 3 characters</mat-error>
+                            <mat-error *ngIf="checkError(skillForm, 'skill', 'maxlength')">Skill should
+                                be less than 30 characters</mat-error>
                         </mat-form-field>
                         <br />
                         <mat-form-field appearance="fill">
@@ -191,7 +223,8 @@
                             </mat-select>
                         </mat-form-field>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button type="submit" color="primary">Add</button>
+                            <button mat-flat-button type="submit" color="primary"
+                                [disabled]="!skillForm.valid">Add</button>
                         </span>
                     </form>
                 </div>
@@ -208,7 +241,8 @@
                     </label>
                     <div class="animate">
                         <span>
-                            <a [routerLink] class="pencil">
+                            <a [routerLink] class="pencil" (click)="currDiv = 'education'"
+                                (click)="addOrEditEducationForm(education)">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
@@ -226,7 +260,7 @@
                     </span>
                 </div>
                 <div class="edit-box" *ngIf="currDiv == 'education'">
-                    <form [formGroup]="educationsForm" (ngSubmit)="addEducation()">
+                    <form [formGroup]="educationsForm" (ngSubmit)="addOrEditEducation()">
                         <mat-form-field>
                             <mat-label>Country of University</mat-label>
                             <mat-select formControlName="country">
@@ -239,6 +273,12 @@
                         <mat-form-field>
                             <input matInput type="universityName" id="universityName"
                                 placeholder="College/University name" formControlName="universityName">
+                                <mat-error *ngIf="checkError(educationsForm, 'universityName', 'required')">University Name is
+                                    required</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'universityName', 'minlength')">University Name must be
+                                    at least 3 characters</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'universityName', 'maxlength')">University Name should
+                                    be less than 30 characters</mat-error>
                         </mat-form-field>
                         <br />
                         <mat-form-field>
@@ -252,14 +292,24 @@
                         <mat-form-field>
                             <input matInput type="educationSubject" id="educationSubject"
                                 placeholder="Education Subject" formControlName="educationSubject">
+                                <mat-error *ngIf="checkError(educationsForm, 'educationSubject', 'required')">Education Subject is
+                                    required</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'educationSubject', 'minlength')">Education Subject must be
+                                    at least 3 characters</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'educationSubject', 'maxlength')">Education Subject should
+                                    be less than 30 characters</mat-error>
                         </mat-form-field>
                         <br />
                         <mat-form-field>
                             <input matInput type="number" id="graduationYear" placeholder="Graduation year"
                                 formControlName="graduationYear">
+                                <mat-error *ngIf="checkError(educationsForm, 'graduationYear', 'required')">Graduation Year is required</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'graduationYear', 'min')">Graduation Year must be greater than 1915</mat-error>
+                                <mat-error *ngIf="checkError(educationsForm, 'graduationYear', 'max')">Graduation Year must be before 2050</mat-error>
                         </mat-form-field>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button type="submit" color="primary">Add</button>
+                            <button mat-flat-button type="submit" color="primary"
+                                [disabled]="!educationsForm.valid">Add</button>
                         </span>
                     </form>
                 </div>
@@ -276,7 +326,8 @@
                     </label>
                     <div class="animate">
                         <span>
-                            <a [routerLink] class="pencil">
+                            <a [routerLink] class="pencil" (click)="currDiv = 'certification'"
+                                (click)="addOrEditCertificatesForm(certificate)">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
@@ -293,23 +344,39 @@
                     </span>
                 </div>
                 <div class="edit-box" *ngIf="currDiv == 'certification'">
-                    <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
+                    <form [formGroup]="certificateForm" (ngSubmit)="addOrEditCertificate()">
                         <mat-form-field>
                             <input matInput id="certificateSubject" placeholder="Certificate or Award"
                                 formControlName="certificateSubject">
+                                <mat-error *ngIf="checkError(certificateForm, 'certificateSubject', 'required')">Certificate Subject is
+                                    required</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'certificateSubject', 'minlength')">Certificate Subject must be
+                                    at least 3 characters</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'certificateSubject', 'maxlength')">Certificate Subject should
+                                    be less than 30 characters</mat-error>
                         </mat-form-field>
                         <br />
                         <mat-form-field>
                             <input matInput id="awardedFrom" placeholder="Certified From (E.G. Softuni)"
                                 formControlName="awardedFrom">
+                                <mat-error *ngIf="checkError(certificateForm, 'awardedFrom', 'required')">Awarded From is
+                                    required</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'awardedFrom', 'minlength')">Awarded From must be
+                                    at least 3 characters</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'awardedFrom', 'maxlength')">Awarded From should
+                                    be less than 30 characters</mat-error>
                         </mat-form-field>
                         <br />
                         <mat-form-field>
                             <input matInput type="number" id="graduationYear" placeholder="Graduation Year"
                                 formControlName="graduationYear">
+                                <mat-error *ngIf="checkError(certificateForm, 'graduationYear', 'required')">Graduation Year is required</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'graduationYear', 'min')">Graduation Year must be greater than 1915</mat-error>
+                                <mat-error *ngIf="checkError(certificateForm, 'graduationYear', 'max')">Graduation Year must be before 2050</mat-error>
                         </mat-form-field>
                         <span class="buttons-wrapper">
-                            <button mat-flat-button type="submit" color="primary">Add</button>
+                            <button mat-flat-button type="submit" color="primary"
+                                [disabled]="!certificateForm.valid">Add</button>
                         </span>
                     </form>
                 </div>

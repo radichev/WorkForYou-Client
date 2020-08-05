@@ -138,6 +138,7 @@ mat-spinner {
   margin: 0 auto;
   margin-top: 3em;
   width: 34rem;
+  height: 10%;
 }
 
 .edit-button {
@@ -217,62 +218,6 @@ mat-spinner {
 [data-hint] {
   position: relative;
 }
-/* 
-[data-hint=""]:before,
-[data-hint=""]:after {
-  display: none !important;
-}
-
-[data-hint]:before {
-  content: "";
-  position: absolute;
-  background: 0 0;
-  border: 6px solid transparent;
-  z-index: 1000001;
-}
-
-[data-hint]:after {
-  content: attr(data-hint);
-  background: #222325;
-  color: #fff;
-  text-shadow: 0 -1px 0 #000;
-  padding: 7px 9px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 600;
-  white-space: nowrap;
-  text-decoration: none;
-  text-transform: none;
-  text-indent: 0;
-  border-radius: 4px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-[data-hint]:before,
-[data-hint]:after {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  z-index: 1000000;
-  pointer-events: none;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-[data-hint]:before,
-[data-hint]:after {
-  position: absolute;
-  visibility: hidden;
-  opacity: 0;
-  z-index: 1000000;
-  pointer-events: none;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-} */
 
 .animate .trash-can {
   margin-left: 7px;
