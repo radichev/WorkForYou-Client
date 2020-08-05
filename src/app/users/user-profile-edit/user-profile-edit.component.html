@@ -118,18 +118,18 @@
                             - {{language.languageLevel.languageLevel}}
                         </label>
                         <div class="animate">
-                            <span class="" data-hint="">
+                            <span>
                                 <a [routerLink] class="pencil">
                                     <mat-icon class="edit-icon">edit</mat-icon>
                                 </a>
                             </span>
-                            <span class="delete" data-hint="">
-                                <a [routerLink] class="trash-can">
+                            <span class="delete">
+                                <a [routerLink] class="trash-can" (click)="deleteItem('languages', language.id)">
                                     <mat-icon class="delete-icon">delete</mat-icon>
                                 </a>
                             </span>
                         </div>
-                    </div>
+                    </div> 
                     <div class="edit-box" *ngIf="currDiv == 'languages'">
                         <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
                             <mat-form-field>
@@ -164,13 +164,13 @@
                         {{skill.skill}}
                     </label>
                     <div class="animate">
-                        <span class="" data-hint="">
+                        <span>
                             <a [routerLink] class="pencil">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
-                        <span class="delete" data-hint="">
-                            <a [routerLink] class="trash-can">
+                        <span class="delete">
+                            <a [routerLink] class="trash-can" (click)="deleteItem('skills', skill.id)">
                                 <mat-icon class="delete-icon">delete</mat-icon>
                             </a>
                         </span>
@@ -207,13 +207,13 @@
                         {{education.titleType.titleType}} - {{education.educationSubject}}
                     </label>
                     <div class="animate">
-                        <span class="" data-hint="">
+                        <span>
                             <a [routerLink] class="pencil">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
-                        <span class="delete" data-hint="">
-                            <a [routerLink] class="trash-can">
+                        <span class="delete">
+                            <a [routerLink] class="trash-can" (click)="deleteItem('educations', education.id)">
                                 <mat-icon class="delete-icon">delete</mat-icon>
                             </a>
                         </span>
@@ -275,13 +275,13 @@
                         {{certificate.certificateSubject}}
                     </label>
                     <div class="animate">
-                        <span class="" data-hint="">
+                        <span>
                             <a [routerLink] class="pencil">
                                 <mat-icon class="edit-icon">edit</mat-icon>
                             </a>
                         </span>
-                        <span class="delete" data-hint="">
-                            <a [routerLink] class="trash-can">
+                        <span class="delete">
+                            <a [routerLink] class="trash-can" (click)="deleteItem('certificates', certificate.id)">
                                 <mat-icon class="delete-icon">delete</mat-icon>
                             </a>
                         </span>

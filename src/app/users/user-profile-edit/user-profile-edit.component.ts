@@ -98,6 +98,12 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
 
   }
 
+  deleteItem(itemCategory: string, id: string) {
+    this.userService.deleteItem(itemCategory, id).subscribe(() => { 
+      this.ngOnInit();
+    }); 
+  }
+
   ShowDiv(divVal: string) {
     this.currDiv = divVal;
 }

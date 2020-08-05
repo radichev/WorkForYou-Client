@@ -55,6 +55,10 @@ export class UserService {
     return this.http.get<JobInputModel[]>(this.ALL_JOBS_BY_USER_URL + id + '/bought');
   }
 
+  deleteItem(itemCategory: string, id: string) {
+    return this.http.delete(`${environment.apiUrl}/` + itemCategory + '/' + id);
+  }
+
   // getUserProfileImage(id:string) {
   //   // const userId = this.jwtService.getUserId;
   //   // this.IMAGE_URL = this.sanitizeImageUrl(this.PROFILE_DETAILS_ULR + `${id}/image/download`);
