@@ -28,6 +28,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   basicInfo: FormGroup;
   userProfileSubscription: Subscription;
   lookupTablesSubscription: Subscription;
+  currDiv: string;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private formBuilder: FormBuilder, private router: Router) { }
 
@@ -96,6 +97,10 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     });
 
   }
+
+  ShowDiv(divVal: string) {
+    this.currDiv = divVal;
+}
 
   public checkError = (controlName: string, errorName: string) => {
     return this.basicInfo.controls[controlName].hasError(errorName);

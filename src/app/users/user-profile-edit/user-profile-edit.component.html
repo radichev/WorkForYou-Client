@@ -88,8 +88,12 @@
                 <mat-card-title class="title">
                     Description
                     <!-- <a mat-flat-button class="edit-description" (click)="">Edit Description</a> -->
+                    <a [routerLink] class="add" [routerLink] (click)="ShowDiv('description')">Edit</a>
                 </mat-card-title>
-                <div class="edit-box">
+                <label>
+                    {{userProfile.description}}
+                </label>
+                <div class="edit-box" *ngIf="currDiv == 'description'">
                     <form [formGroup]="descriptionForm" (ngSubmit)="editDescription()">
                         <textarea [(ngModel)]="userProfile.description" placeholder="Description"
                             class="description-input" formControlName="description"></textarea>
@@ -104,16 +108,29 @@
                 <mat-card-content class="detail-container">
                     <mat-card-title class="title">
                         Languages
+                        <a [routerLink] class="add" (click)="ShowDiv('languages')">Add New</a>
                     </mat-card-title>
-                    <div *ngFor="let language of userProfile.languages">
+                    <div class="language-container" *ngFor="let language of userProfile.languages">
                         <label class="language">
                             {{language.language}}
                         </label>
                         <label class="language-level">
                             - {{language.languageLevel.languageLevel}}
                         </label>
+                        <div class="animate">
+                            <span class="" data-hint="">
+                                <a [routerLink] class="pencil">
+                                    <mat-icon class="edit-icon">edit</mat-icon>
+                                </a>
+                            </span>
+                            <span class="delete" data-hint="">
+                                <a [routerLink] class="trash-can">
+                                    <mat-icon class="delete-icon">delete</mat-icon>
+                                </a>
+                            </span>
+                        </div>
                     </div>
-                    <div class="edit-box">
+                    <div class="edit-box" *ngIf="currDiv == 'languages'">
                         <form [formGroup]="languageForm" (ngSubmit)="addLanguages()">
                             <mat-form-field>
                                 <input matInput type="language" id="language" placeholder="Language"
@@ -140,13 +157,26 @@
             <mat-card-content class="detail-container">
                 <mat-card-title class="title">
                     Skills
+                    <a [routerLink] class="add" (click)="ShowDiv('skills')">Add New</a>
                 </mat-card-title>
                 <div *ngFor="let skill of userProfile.skills" class="detail-container" class="box">
                     <label>
                         {{skill.skill}}
                     </label>
+                    <div class="animate">
+                        <span class="" data-hint="">
+                            <a [routerLink] class="pencil">
+                                <mat-icon class="edit-icon">edit</mat-icon>
+                            </a>
+                        </span>
+                        <span class="delete" data-hint="">
+                            <a [routerLink] class="trash-can">
+                                <mat-icon class="delete-icon">delete</mat-icon>
+                            </a>
+                        </span>
+                    </div>
                 </div>
-                <div class="edit-box">
+                <div class="edit-box" *ngIf="currDiv == 'skills'">
                     <form [formGroup]="skillForm" (ngSubmit)="addSkill()">
                         <mat-form-field>
                             <input matInput type="skill" id="skill" placeholder="Skill" formControlName="skill">
@@ -170,11 +200,24 @@
             <mat-card-content class="detail-container">
                 <mat-card-title class="title">
                     Education
+                    <a [routerLink] class="add" (click)="ShowDiv('education')">Add New</a>
                 </mat-card-title>
                 <div *ngFor="let education of userProfile.educations" class="detail-container">
                     <label>
                         {{education.titleType.titleType}} - {{education.educationSubject}}
                     </label>
+                    <div class="animate">
+                        <span class="" data-hint="">
+                            <a [routerLink] class="pencil">
+                                <mat-icon class="edit-icon">edit</mat-icon>
+                            </a>
+                        </span>
+                        <span class="delete" data-hint="">
+                            <a [routerLink] class="trash-can">
+                                <mat-icon class="delete-icon">delete</mat-icon>
+                            </a>
+                        </span>
+                    </div>
                     <br />
                     <span class="education-details">
                         {{education.universityName}},
@@ -182,7 +225,7 @@
                         Graduated {{education.graduationYear}}
                     </span>
                 </div>
-                <div class="edit-box">
+                <div class="edit-box" *ngIf="currDiv == 'education'">
                     <form [formGroup]="educationsForm" (ngSubmit)="addEducation()">
                         <mat-form-field>
                             <mat-label>Country of University</mat-label>
@@ -225,18 +268,31 @@
             <mat-card-content class="detail-container">
                 <mat-card-title class="title">
                     Certification
+                    <a [routerLink] class="add" (click)="ShowDiv('certification')">Add New</a>
                 </mat-card-title>
                 <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
                     <label>
                         {{certificate.certificateSubject}}
                     </label>
+                    <div class="animate">
+                        <span class="" data-hint="">
+                            <a [routerLink] class="pencil">
+                                <mat-icon class="edit-icon">edit</mat-icon>
+                            </a>
+                        </span>
+                        <span class="delete" data-hint="">
+                            <a [routerLink] class="trash-can">
+                                <mat-icon class="delete-icon">delete</mat-icon>
+                            </a>
+                        </span>
+                    </div>
                     <br />
                     <span class="certificate-details">
                         {{certificate.awardedFrom}},
                         Graduated {{certificate.graduationYear}}
                     </span>
                 </div>
-                <div class="edit-box">
+                <div class="edit-box" *ngIf="currDiv == 'certification'">
                     <form [formGroup]="certificateForm" (ngSubmit)="addCertificate()">
                         <mat-form-field>
                             <input matInput id="certificateSubject" placeholder="Certificate or Award"
