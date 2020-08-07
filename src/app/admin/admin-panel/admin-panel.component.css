@@ -1,0 +1,118 @@
+table {
+  width: 800px;
+}
+
+.manage-roles-table {
+  margin-top: 50px;
+  width: fit-content;
+}
+
+@media (max-width: 800px) {
+  table {
+    width: 100%;
+  }
+}
+
+.updateColumn {
+  margin-left: 30px !important;
+  padding-right: 0px !important;
+}
+
+.header .title-wrapper {
+  display: flex;
+}
+
+.header {
+  padding-top: 26px;
+}
+
+@media (min-width: 600px) {
+  .header .title-wrapper h1 {
+    font-size: 32px;
+    color: #0e0e0f;
+    padding-bottom: 0;
+  }
+}
+
+.header .title-wrapper h1 {
+  font-size: 24px;
+  text-transform: none !important;
+  color: #555;
+  padding-bottom: 5px;
+  line-height: 125%;
+  font-weight: 700;
+}
+
+.divider {
+  display: block;
+  padding-top: 10px;
+  border-top: 1px solid #c5c5c5;
+}
+
+.listings-perseus .row.content-row {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .listings-perseus .row {
+    padding: 0 32px !important;
+  }
+}
+
+.listings-perseus .row {
+  padding: 0 15px;
+}
+
+.listings-perseus .content {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  max-width: 100%;
+  display: flex;
+}
+
+@media (min-width: 1160px) {
+  .listings-perseus .listing-container .gig-card-layout {
+    width: 25% !important;
+    padding: 16px !important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1159px) {
+  .listings-perseus .listing-container .gig-card-layout {
+    width: 33.33333% !important;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .listings-perseus .listing-container .gig-card-layout {
+    width: 50% !important;
+    padding: 8px !important;
+  }
+}
+
+.listings-perseus .listing-container {
+  min-height: 370px;
+  padding: 0 !important;
+}
+
+.row {
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 1400px;
+  box-sizing: border-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+}

@@ -1,0 +1,60 @@
+<div class="listings-perseus">
+  <div class="row content-row">
+    <header class="header">
+      <div class="title-wrapper">
+        <h1>Admin Panel</h1>
+      </div>
+    </header>
+    <span class="divider"></span>
+    <div class="manage-roles-table">
+
+      <header class="header">
+        <div class="title-wrapper">
+          <h1>Manage Roles</h1>
+        </div>
+      </header>
+      <span class="divider"></span>
+      <table mat-table [dataSource]="users" class="mat-elevation-z8">
+        <ng-container matColumnDef="username">
+          <th mat-header-cell *matHeaderCellDef> Username </th>
+          <td mat-cell *matCellDef="let element">{{element.username}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let element">{{element.firstName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element">{{element.lastName}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="authority">
+          <th mat-header-cell *matHeaderCellDef> Authority </th>
+          <td mat-cell *matCellDef="let element">{{element.authorities[0] | titlecase}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="updateColumn">
+          <th mat-header-cell class="updateColumn" *matHeaderCellDef> Update Authority </th>
+          <td mat-cell class="updateColumn" *matCellDef="let element">
+            <form [formGroup]="authorityForm" (ngSubmit)="updateAuthority(element.username)">
+              <mat-form-field>
+                <mat-label>Authorities</mat-label>
+                <mat-select formControlName="authority">
+                  <mat-option *ngFor="let authority of authorities" [value]="authority.authority">
+                    {{authority.authority | titlecase}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-button type="submit">Update</button>
+            </form>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>

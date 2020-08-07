@@ -115,3 +115,27 @@ mat-spinner {
 .imghov {
   height: 240px;
 }
+
+@media(max-width: 568px) {
+  .box-row {
+    width: 133%;
+  }
+}
+
+.work-sphere-wrap {
+  display: contents;
+}
+
+.sub-sphere-wrap {
+  display: contents;
+}
+
+@media(max-width: 695px) {
+  .work-sphere-wrap {
+    display: inline-block;
+  }
+  
+  .sub-sphere-wrap {
+    display: inline-block;
+  }
+}

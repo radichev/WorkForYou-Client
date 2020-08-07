@@ -260,3 +260,12 @@ a {
 .language-container .animate .edit-icon {
   margin-right: 6px;
 }
+
+.education-container:hover > .animate {
+  opacity: 1;
+  margin-left: 10px;
+}
+
+.education-container .animate .edit-icon {
+  margin-right: 6px;
+}

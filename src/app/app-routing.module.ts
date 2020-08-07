@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule)
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
     pathMatch: 'full'

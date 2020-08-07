@@ -120,7 +120,7 @@
                     <li (click)="boughtJobs()" [ngClass]="selectedOption ? 'selected-filter' : ''">Bought Jobs</li>
                 </ul>
             </div>
-            
+            <h6 *ngIf="!userProfile.hasCompletedAccountSetup" class="edit-message">To add jobs first you need to edit your profile and add your First Name, Last Name and Country!</h6>
             <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup && !selectedOption"
                 [routerLink]="['/jobs/job/add']">Create a new Job</a>
             <mat-card class="user-jobs" *ngFor="let job of jobs">
@@ -134,7 +134,6 @@
                     <small>Price</small> ${{job.price}}
                 </label>
             </mat-card>
-
         </div>
     </div>
 </ng-template>

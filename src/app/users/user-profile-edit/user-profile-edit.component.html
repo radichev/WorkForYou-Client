@@ -235,7 +235,7 @@
                     Education
                     <a [routerLink] class="add" (click)="ShowDiv('education')">Add New</a>
                 </mat-card-title>
-                <div *ngFor="let education of userProfile.educations" class="detail-container">
+                <div *ngFor="let education of userProfile.educations" class="education-container">
                     <label>
                         {{education.titleType.titleType}} - {{education.educationSubject}}
                     </label>
@@ -320,7 +320,7 @@
                     Certification
                     <a [routerLink] class="add" (click)="ShowDiv('certification')">Add New</a>
                 </mat-card-title>
-                <div *ngFor="let certificate of userProfile.certificates" class="detail-container">
+                <div *ngFor="let certificate of userProfile.certificates" class="education-container">
                     <label>
                         {{certificate.certificateSubject}}
                     </label>

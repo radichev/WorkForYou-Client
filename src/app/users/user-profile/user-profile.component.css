@@ -201,6 +201,24 @@
   }
 }
 
+@media (max-width: 500px) {
+  .jobs {
+    width: 25em;
+  }
+
+  .job-card {
+    width: 25em;
+  }
+
+  .user-jobs {
+    width: 11em;
+  }
+
+  .job-card-base {
+    width: 12.6em !important;
+  }
+}
+
 @media (max-width: 575px) {
   .job-card-base .user-jobs {
     width: 190px;
@@ -311,4 +329,9 @@ a {
   background-color: #1dbf73;
   width: 100%;
   left: 0;
+}
+
+.edit-message {
+  text-align: center;
+  font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
