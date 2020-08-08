@@ -5,6 +5,9 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class JwtService {
+
+  private readonly ADMIN_AUTHORITY = "ADMIN";
+
   constructor(private jwtHelper: JwtHelperService) { }
 
   get getUserId(): string {
@@ -20,6 +23,11 @@ export class JwtService {
   get getAuthority(): string {
     const decodedToken = this.getDecodedToken();
     return decodedToken ? decodedToken.authorities.split(/\[([^\][]*)]/)[1] : null;
+  
+  }
+
+  isAdmin(): boolean {
+    return this.getAuthority == this.ADMIN_AUTHORITY;
   }
 
   private getDecodedToken(): any {

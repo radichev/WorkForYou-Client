@@ -8,23 +8,16 @@ import { JwtService } from '../jwt.service';
 })
 export class AdminGuard implements CanActivate {
 
-  authority: string;
-  private readonly ADMIN_AUTHORITY = "ADMIN";
-  private readonly USER_AUTHORITY = "USER";
-  
   constructor(private jwtService: JwtService, private router: Router) {}
 
   canActivate() {
-    this.authority = this.jwtService.getAuthority;
+    const isAdmin = this.jwtService.isAdmin();
 
-
-    console.log(this.jwtService.getAuthority);
-
-    if(this.authority == this.ADMIN_AUTHORITY) {
-      return true;
-    } else {
+    if(!isAdmin) {
       this.router.navigate(['/']);
     }
+
+    return this.jwtService.isAdmin();
   }
   
 }
