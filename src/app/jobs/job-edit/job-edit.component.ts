@@ -82,6 +82,11 @@ export class JobEditComponent implements OnInit {
     this.jobService.editJob(this.id, job).subscribe(() => {
       this.router.navigate(['/jobs/', this.job.userProfileDetails.username, this.id])
     })
+
+    const formData = new FormData;
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+
+    this.jobService.editJobImage(this.job.userProfileDetails.userId, this.job.jobTitle, this.id, formData).subscribe();
   }
 
   onImageSelected(event) {

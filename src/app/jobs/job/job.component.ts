@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../shared/job.service';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobBuyOutputModel } from '../shared/models/output-models/jobBuyOutputModel';
 import { JwtService } from 'src/app/shared/jwt.service';
 
@@ -18,7 +18,7 @@ export class JobComponent implements OnInit {
   id: string;
   isUserAuthor: boolean;
 
-  constructor(private jobService: JobService, private route: ActivatedRoute, private jwtService: JwtService) { }
+  constructor(private jobService: JobService, private route: ActivatedRoute, private jwtService: JwtService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -36,8 +36,14 @@ export class JobComponent implements OnInit {
       jobId: this.job.id
     }
 
-    this.jobService.buyJob(this.job.id, this.jobBuyModel).subscribe(data => {
-      console.log(data);
+    this.jobService.buyJob(this.job.id, this.jobBuyModel).subscribe(() => {
+      this.router.navigate(['/users/profile', this.jwtService.getUserId])
+    });
+  }
+
+  deleteJob() {
+    this.jobService.deleteJob(this.id).subscribe(() => {
+      this.router.navigate(['/users/profile', this.job.userProfileDetails.userId])
     });
   }
 }

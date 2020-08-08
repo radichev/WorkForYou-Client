@@ -28,7 +28,10 @@
             <mat-card class="main">
                 <div class="header-section">
                     <h3 class="main-title">{{job.jobTitle}}</h3>
-                    <a class="edit-job-button" *ngIf="isUserAuthor" mat-button [routerLink]="['/jobs/edit', job.id]">Edit Job</a>
+                    <div class="edit-buttons" *ngIf="isUserAuthor">
+                        <a mat-button [routerLink]="['/jobs/edit', job.id]">Edit Job</a>
+                        <a mat-button (click)="deleteJob()">Delete</a>
+                    </div>
                 </div>
                 <span class="divider"></span>
                 <section class="gallery">

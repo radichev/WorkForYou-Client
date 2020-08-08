@@ -15,6 +15,8 @@ export class JobService {
   private readonly ALL_JOBS_BY_SUB_SPHERES_URL = `${environment.apiUrl}/jobs/sub-sphere/`
   private readonly BUY_JOB_URL = `${environment.apiUrl}/jobs/buy/`
   private readonly EDIT_JOB_URL = `${environment.apiUrl}/jobs/edit/`
+  private readonly DELETE_JOB_URL = `${environment.apiUrl}/jobs/`
+  private readonly UPDATE_JOB_IMAGE_URL = `${environment.apiUrl}/jobs/{userId}/{jobTitle}/image/edit`
 
 
   constructor(private http: HttpClient) { }
@@ -41,5 +43,13 @@ export class JobService {
 
   buyJob(id: string, jobBuyOutputModel: JobBuyOutputModel) {
     return this.http.post(this.BUY_JOB_URL + id, jobBuyOutputModel);
+  }
+
+  deleteJob(id: string) {
+    return this.http.delete(this.DELETE_JOB_URL + id)
+  }
+
+  editJobImage(userId: string, jobTitle: string, id: string, formData: FormData) {
+    return this.http.post(`${environment.apiUrl}/jobs/${userId}/${jobTitle}/${id}/image/edit`, formData);
   }
 }

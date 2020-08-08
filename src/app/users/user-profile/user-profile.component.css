@@ -333,5 +333,18 @@ a {
 
 .edit-message {
   text-align: center;
-  font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+.title-job {
+  font-size: 15px;
+  line-height: 140%;
+  font-weight: 420;
+  color: #303030;
+  height: 40px;
+  overflow: hidden;
+  margin: 2px 0px;
+  word-break: break-word;
 }
