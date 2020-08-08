@@ -6,6 +6,7 @@ import { JwtService } from 'src/app/shared/jwt.service';
 import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
 import { SubSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/sub-sphere';
 import { workSphereInputModel } from 'src/app/shared/models/input-models/work-spheres/work-sphere';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-add',
@@ -24,7 +25,7 @@ export class JobAddComponent implements OnInit {
   selectedImage: File;
   imgURL: any;
 
-  constructor(private formBuilder: FormBuilder, private jobService: JobService, private jwtService: JwtService) { }
+  constructor(private formBuilder: FormBuilder, private jobService: JobService, private jwtService: JwtService, private router: Router) { }
 
   ngOnInit(): void {
     this.id = this.jwtService.getUserId;
@@ -39,7 +40,7 @@ export class JobAddComponent implements OnInit {
       jobDescription: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
       workSphere: [null, [Validators.required]],
       subSphere: [null, [Validators.required]],
-      deliveryTime: [null, [Validators.required, Validators.min(0)]],
+      deliveryTime: [null, [Validators.required, Validators.min(0), Validators.max(180)]],
       jobPrice: [null, [Validators.required, Validators.min(0.1)]]
     });
   }
@@ -64,7 +65,7 @@ export class JobAddComponent implements OnInit {
     }
 
     const job: JobOutputModel = {
-      jobTitle: formValue.jobName,
+      jobTitle: formValue.jobTitle,
       workSphere: workSphere,
       deliveryTime: formValue.deliveryTime,
       price: formValue.jobPrice,
@@ -78,7 +79,7 @@ export class JobAddComponent implements OnInit {
             }));
 
     this.jobService.addJob(this.id, formData).subscribe(data => {
-      console.log(data);
+      this.router.navigate(['/users/profile/' + this.id])
     });
   }
 

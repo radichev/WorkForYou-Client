@@ -68,6 +68,20 @@ a {
   width: 100%;
 }
 
+.slide-item {
+  height: 100%;
+}
+
+.picture {
+  height: 100%;
+  object-fit: cover;
+}
+
+.gig-wrapper .media .slider .slides {
+  height: 100%;
+  overflow: hidden;
+}
+
 .gig-wrapper .seller-info,
 .gig-wrapper .seller-info .inner-wrapper {
   display: -webkit-box;
@@ -324,3 +338,13 @@ h2 {
   margin-top: 12px;
   border-top: 1px solid #c5c5c5;
 }
+/* 
+.slider .slides .slide-item {
+  float: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+} */

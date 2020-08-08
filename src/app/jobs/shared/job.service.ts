@@ -10,10 +10,11 @@ import { JobBuyOutputModel } from './models/output-models/jobBuyOutputModel';
 export class JobService {
 
   private readonly WORK_SPHERES_LOOKUP_URL = `${environment.apiUrl}/work-spheres/all`
-  private readonly ADD_JOB_LOOKUP_URL = `${environment.apiUrl}/jobs/add/`
+  private readonly ADD_JOB_URL = `${environment.apiUrl}/jobs/add/`
   private readonly GET_JOB_BY_ID_URL = `${environment.apiUrl}/jobs/`
   private readonly ALL_JOBS_BY_SUB_SPHERES_URL = `${environment.apiUrl}/jobs/sub-sphere/`
   private readonly BUY_JOB_URL = `${environment.apiUrl}/jobs/buy/`
+  private readonly EDIT_JOB_URL = `${environment.apiUrl}/jobs/edit/`
 
 
   constructor(private http: HttpClient) { }
@@ -23,7 +24,11 @@ export class JobService {
   }
 
   addJob(id: string, jobModel: FormData) {
-    return this.http.post(this.ADD_JOB_LOOKUP_URL + id, jobModel);
+    return this.http.post(this.ADD_JOB_URL + id, jobModel);
+  }
+
+  editJob(id: string, jobModel: JobOutputModel) {
+    return this.http.post(this.EDIT_JOB_URL + id, jobModel);
   }
 
   getJobById(id: string) {

@@ -1,0 +1,142 @@
+mat-spinner {
+    position: fixed;
+    top: 45%;
+    left: 45%;
+  }
+  
+  .box-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 88%;
+  }
+  
+  .job {
+    height: fit-content;
+    width: 700px;
+  }
+  
+  .form {
+    margin-top: 2%;
+    width: 34em;
+  }
+  
+  .buttons-wrapper {
+    display: block;
+    padding-top: 15px;
+    margin-top: 6px;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .label-wrap {
+    width: 19%;
+    margin-top: 4%;
+    padding-right: 5%;
+    text-align: right;
+  }
+  
+  .input-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .form-row {
+    padding: 0 0 20px;
+    position: relative;
+  }
+  
+  .prefix {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+    color: #62646a;
+  }
+  
+  .job-description {
+    resize: none;
+    height: 50px;
+  }
+  
+  .dropdown {
+    margin-top: 2%;
+  }
+  
+  .dropdown-space {
+    margin-right: 55px;
+  }
+  
+  .price {
+    margin-top: 2%;
+    width: 13em;
+  }
+  
+  .divider {
+    display: block;
+    padding-top: 15px;
+    margin-top: 6px;
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 115.6px;
+    left: 195px;
+    background-color: rgb(190, 190, 190);
+    height: 200px;
+    width: 200px;
+    opacity: 1;
+    margin-bottom: 15px;
+  }
+  
+  .ctr {
+    display: inline-block;
+    position: relative;
+    transform: translate(-50%, -44%);
+    text-align: center;
+    padding-top: 16%;
+    left: 21%;
+    border-radius: 50%;
+  }
+  
+  .mat-fab {
+    background-color: black;
+    bottom: 30px;
+  }
+  
+  .avatar {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+  }
+  
+  .imghov {
+    height: 240px;
+  }
+  
+  @media(max-width: 568px) {
+    .box-row {
+      width: 133%;
+    }
+  }
+  
+  .work-sphere-wrap {
+    display: contents;
+  }
+  
+  .sub-sphere-wrap {
+    display: contents;
+  }
+  
+  @media(max-width: 695px) {
+    .work-sphere-wrap {
+      display: inline-block;
+    }
+    
+    .sub-sphere-wrap {
+      display: inline-block;
+    }
+  }
+  

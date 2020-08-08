@@ -16,6 +16,7 @@ export class JobComponent implements OnInit {
   job: JobInputModel;
   jobBuyModel: JobBuyOutputModel;
   id: string;
+  isUserAuthor: boolean;
 
   constructor(private jobService: JobService, private route: ActivatedRoute, private jwtService: JwtService) { }
 
@@ -25,6 +26,7 @@ export class JobComponent implements OnInit {
     this.jobService.getJobById(this.id).subscribe(data => {
       this.job = data;
       this.isLoading = false;
+      this.isUserAuthor = this.jwtService.getUserId === this.job.userProfileDetails.userId;
     });
   }
 
@@ -33,7 +35,7 @@ export class JobComponent implements OnInit {
       userId: this.jwtService.getUserId,
       jobId: this.job.id
     }
-    
+
     this.jobService.buyJob(this.job.id, this.jobBuyModel).subscribe(data => {
       console.log(data);
     });

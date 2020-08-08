@@ -52,8 +52,6 @@ export class JobsAllComponent implements OnInit {
       this.jobs = data['content'];
       this.pages = new Array(data['totalPages']);
       this.totalServices = data['totalElements'];
-      this.jobs
-        .forEach(job => job.picture = "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/122982910/original/46a9da9988ad14b744b56ae30003c448bd314567.png");
     });
   }
 

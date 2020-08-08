@@ -329,3 +329,8 @@ li {
 strong {
   padding-left: 2px;
 }
+
+.header-section {
+  justify-content: space-between;
+  display: flex;
+}

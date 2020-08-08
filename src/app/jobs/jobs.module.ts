@@ -15,11 +15,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthModule } from '../auth/auth.module';
 import { JobsAllComponent } from './jobs-all/jobs-all.component';
 import { SharedModule } from '../shared/shared.module';
+import { JobEditComponent } from './job-edit/job-edit.component';
 
 
 
 @NgModule({
-  declarations: [JobAddComponent, JobComponent, JobsAllComponent],
+  declarations: [JobAddComponent, JobComponent, JobsAllComponent, JobEditComponent],
   providers: [
     JobService
   ],

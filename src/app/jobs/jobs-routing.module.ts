@@ -4,11 +4,17 @@ import { JobComponent } from './job/job.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { JobAddComponent } from './job-add/job-add.component';
 import { JobsAllComponent } from './jobs-all/jobs-all.component';
+import { JobEditComponent } from './job-edit/job-edit.component';
 
 const routes: Routes = [
   {
     path: 'job/add',
     component: JobAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit/:id',
+    component: JobEditComponent,
     canActivate: [AuthGuard]
   },
   {

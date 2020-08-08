@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatOptionModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatSelectModule,
     MatButtonModule,
-    MatOptionModule
+    MatOptionModule,
+    SharedModule
   ]
 })
 export class AdminModule { }

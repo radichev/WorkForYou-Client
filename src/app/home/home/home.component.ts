@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.homeService.getFiveJobsInWebProgramming().subscribe(data => {
       this.webProgrammingJobs = data;
+      console.log(this.webProgrammingJobs);
     });
 
     this.homeService.getFiveJobsInVideoEditing().subscribe(data => {

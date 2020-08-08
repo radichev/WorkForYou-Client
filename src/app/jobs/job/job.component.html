@@ -26,11 +26,13 @@
         </aside>
         <div class="job-info">
             <mat-card class="main">
-                <h3 class="main-title">{{job.jobTitle}}</h3>
+                <div class="header-section">
+                    <h3 class="main-title">{{job.jobTitle}}</h3>
+                    <a class="edit-job-button" *ngIf="isUserAuthor" mat-button [routerLink]="['/jobs/edit', job.id]">Edit Job</a>
+                </div>
                 <span class="divider"></span>
                 <section class="gallery">
-                    <img class="job-image"
-                        [src]="job.jobPicture">
+                    <img class="job-image" [src]="job.jobPicture">
                 </section>
                 <div class="description">
                     <header>
