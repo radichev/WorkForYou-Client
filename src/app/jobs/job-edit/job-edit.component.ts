@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
 import { ActivatedRoute, Router } from '@angular/router';
+import { concat, Observable, forkJoin } from 'rxjs';
+import { combineLatest } from 'rxjs/internal/operators/combineLatest';
 
 @Component({
   selector: 'app-job-edit',
@@ -38,7 +40,7 @@ export class JobEditComponent implements OnInit {
       this.workSpheres = data;
       this.isLoading = false;
       this.editJobForm = this.formBuilder.group({
-        jobTitle: [this.job ? this.job.jobTitle: null, [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
+        jobTitle: [this.job ? this.job.jobTitle : null, [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
         jobDescription: [this.job ? this.job.description : null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
         workSphere: [this.job ? this.job.workSphere.id : null, [Validators.required]],
         subSphere: [this.job ? this.job.subSphere.id : null, [Validators.required]],
@@ -77,22 +79,27 @@ export class JobEditComponent implements OnInit {
       price: formValue.jobPrice,
       description: formValue.jobDescription
     }
-    console.log(job);
 
-    this.jobService.editJob(this.id, job).subscribe(() => {
-      this.router.navigate(['/jobs/', this.job.userProfileDetails.username, this.id])
-    })
+    if (this.selectedImage) {
+      const formData = new FormData;
+      formData.append('file', this.selectedImage, this.selectedImage.name);
+      var updatePicture = this.jobService.editJobImage(this.job.userProfileDetails.userId, this.job.jobTitle, this.id, formData);
 
-    const formData = new FormData;
-    formData.append('file', this.selectedImage, this.selectedImage.name);
+      var jobEdit = this.jobService.editJob(this.id, job);
 
-    this.jobService.editJobImage(this.job.userProfileDetails.userId, this.job.jobTitle, this.id, formData).subscribe();
+      forkJoin(updatePicture, jobEdit).subscribe(() => {
+        this.router.navigate(['/jobs/', this.job.userProfileDetails.username, this.id])
+      })
+    } else {
+      this.jobService.editJob(this.id, job).subscribe(() => {
+        this.router.navigate(['/jobs/', this.job.userProfileDetails.username, this.id])
+      })
+    }
   }
 
   onImageSelected(event) {
     this.selectedImage = <File>event.target.files[0];
 
-    console.log("change");
     var reader = new FileReader();
     reader.readAsDataURL(this.selectedImage);
     reader.onload = (_event) => {

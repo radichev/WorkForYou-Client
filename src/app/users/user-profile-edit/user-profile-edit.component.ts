@@ -4,7 +4,7 @@ import { UserService } from '../shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LookupTables } from '../shared/models/lookup-tables';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -25,8 +25,7 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
   educationsForm: FormGroup;
   certificateForm: FormGroup;
   basicInfo: FormGroup;
-  userProfileSubscription: Subscription;
-  lookupTablesSubscription: Subscription;
+  forkedSubscription: Subscription;
   currDiv: string;
   fieldToEdit: any;
 
@@ -37,12 +36,8 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnDestroy(): void {
-    if (this.userProfileSubscription) {
-      this.userProfileSubscription.unsubscribe();
-    }
-
-    if (this.lookupTablesSubscription) {
-      this.lookupTablesSubscription.unsubscribe();
+    if (this.forkedSubscription) {
+      this.forkedSubscription.unsubscribe();
     }
   }
 
@@ -50,19 +45,19 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
     this.currDiv = "";
     this.id = this.route.snapshot.paramMap.get('id');
 
-    this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
-      this.userProfile = data;
-      this.isLoading = false;
+    var userProfile = this.userService.getUserProfile(this.id);
+    var lookupTables = this.userService.getAllLookupTables();
+
+    this.forkedSubscription = forkJoin(userProfile, lookupTables).subscribe(data => {
+      this.userProfile = data[0];
       if (!this.userProfile.profilePicture) {
         this.photo = `https://simpleicon.com/wp-content/uploads/user1.png`;
       } else if (this.userProfile.profilePicture) {
         this.photo = this.userProfile.profilePicture;
       }
-    });
-
-    this.lookupTablesSubscription = this.userService.getAllLookupTables().subscribe(data => {
-      this.lookupTables = data;
-    });
+      this.lookupTables = data[1];
+      this.isLoading = false;
+    })
 
     this.descriptionForm = this.formBuilder.group({
       description: [null, [Validators.required, Validators.minLength(15), Validators.maxLength(800)]],
