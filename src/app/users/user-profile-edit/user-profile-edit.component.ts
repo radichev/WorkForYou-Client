@@ -57,14 +57,14 @@ export class UserProfileEditComponent implements OnInit, OnDestroy {
       }
       this.lookupTables = data[1];
       this.isLoading = false;
-
-      this.basicInfo = this.formBuilder.group({
-        firstName: [this.userProfile ? this.userProfile.firstName : null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-        lastName: [this.userProfile ? this.userProfile.lastName : null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
-        personalWebsite: [this.userProfile ? this.userProfile.personalWebsite : null, [Validators.minLength(4), Validators.maxLength(30)]],
-        country: [this.userProfile ? this.userProfile.country.id : null, [Validators.required]]
-      });
     })
+
+    this.basicInfo = this.formBuilder.group({
+      firstName: [this.userProfile ? this.userProfile.firstName : null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      lastName: [this.userProfile ? this.userProfile.lastName : null, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      personalWebsite: [this.userProfile ? this.userProfile.personalWebsite : null, [Validators.minLength(4), Validators.maxLength(30)]],
+      country: [this.userProfile ? this.userProfile.country.id : null, [Validators.required]]
+    });
 
     this.descriptionForm = this.formBuilder.group({
       description: [null, [Validators.minLength(15), Validators.maxLength(800)]],
