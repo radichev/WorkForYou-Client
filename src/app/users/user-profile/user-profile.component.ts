@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { UserProfile } from '../shared/models/user-profile';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtService } from 'src/app/shared/jwt.service';
 import { Subscription } from 'rxjs';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
@@ -23,7 +23,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   jobs: JobInputModel[];
   selectedOption: boolean = true;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private jwtService: JwtService, private router: Router) { }
 
   ngOnDestroy(): void {
     if (this.userProfileSubscription) {
@@ -36,6 +36,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.currentlyLoggedInId = this.jwtService.getUserId;
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
 
     this.userProfileSubscription = this.userService.getUserProfile(this.id).subscribe(data => {
       this.userProfile = data;
