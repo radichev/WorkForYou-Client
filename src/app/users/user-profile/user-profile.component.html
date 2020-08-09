@@ -121,7 +121,7 @@
                 </ul>
             </div>
             <h6 *ngIf="!userProfile.hasCompletedAccountSetup" class="edit-message">To add jobs first you need to edit your profile and add your First Name, Last Name and Country!</h6>
-            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup && !selectedOption"
+            <a class="job-card-base add-new-job" *ngIf="userProfile.hasCompletedAccountSetup && !selectedOption && id === currentlyLoggedInId"
                 [routerLink]="['/jobs/job/add']">Create a new Job</a>
             <mat-card class="user-jobs" *ngFor="let job of jobs">
                 <a [routerLink]="['/jobs/', userProfile.username, job.id]">

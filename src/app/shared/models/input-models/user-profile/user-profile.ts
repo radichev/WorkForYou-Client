@@ -5,4 +5,5 @@ export interface UserProfileInputModel {
     createdDate: string;
     country: string;
     username: string;
+    profilePicture: string;
 }
