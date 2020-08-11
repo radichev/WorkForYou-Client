@@ -16,8 +16,6 @@ export class JobService {
   private readonly BUY_JOB_URL = `${environment.apiUrl}/jobs/buy/`
   private readonly EDIT_JOB_URL = `${environment.apiUrl}/jobs/edit/`
   private readonly DELETE_JOB_URL = `${environment.apiUrl}/jobs/`
-  private readonly UPDATE_JOB_IMAGE_URL = `${environment.apiUrl}/jobs/{userId}/{jobTitle}/image/edit`
-
 
   constructor(private http: HttpClient) { }
 

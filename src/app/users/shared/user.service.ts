@@ -62,13 +62,7 @@ export class UserService {
   editItem(subjectCategory: string, id: string, item: Object) {
     return this.http.post(`${environment.apiUrl}/` + subjectCategory + '/edit/' + id, item);
   }
-
-  // getUserProfileImage(id:string) {
-  //   // const userId = this.jwtService.getUserId;
-  //   // this.IMAGE_URL = this.sanitizeImageUrl(this.PROFILE_DETAILS_ULR + `${id}/image/download`);
-  //   return this.http.get(`http://localhost:8080/api/profile/details/${id}/image/download`, { responseType: 'blob' });
-  // }
-
+  
   uploadUserProfileImage(id: string, formData: FormData) {
     return this.http.post(`http://localhost:8080/api/profile/details/${id}/image/upload`, formData);
   }

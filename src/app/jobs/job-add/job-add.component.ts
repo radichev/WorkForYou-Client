@@ -86,7 +86,6 @@ export class JobAddComponent implements OnInit {
   onImageSelected(event) {
     this.selectedImage = <File>event.target.files[0];
 
-    console.log("change");
     var reader = new FileReader();
     reader.readAsDataURL(this.selectedImage);
     reader.onload = (_event) => {
