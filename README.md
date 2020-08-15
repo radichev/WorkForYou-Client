@@ -1,6 +1,8 @@
 # WorkForYou-Client
 
 WorkForYou-Client is an angular client which consumes from [WorkForYou-API](https://github.com/radichev/WorkForYou-API). It is build with lazy loaded modules which helps keep the initial bundle size smaller, which in turn helps decrease loading times. Every registered user can publish a job and buy existing one. The published and bought jobs are stored in his profile where he can access them. A user can update or delete job if he is the author of it. The application has admin panel which can only be accessed by a user with admin authority which is checked by AdminGurad from the jwt token, from there the admin can manage other users authorities. Every route, except the index, is guarded by an authentication guard which requires the user to be logged in. Every user can upload profile and job image which is handled by the backend and stored in AWS S3 bucket, in return the client receives image url.
+
+[![Build status](https://ci.appveyor.com/api/projects/status/k3elwjp58i8luawl/branch/master?svg=true)](https://ci.appveyor.com/project/radichev/workforyou-client/branch/master)
  
 # Build With:
 
