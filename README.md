@@ -6,7 +6,7 @@ WorkForYou-Client is an angular client which consumes from [WorkForYou-API](http
  
 # Build With:
 
-- Angular CLI 9.1.7
+- Angular 9.1.7
 - Angular Material 9.2.4
 - ng2-carouselamos 4.1.0
 - auth0/angular-jwt 4.2.0
