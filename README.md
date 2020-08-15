@@ -1,27 +1,10 @@
-# WorkForYouClient
+# WorkForYou-Client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+WorkForYou-Client is an angular client which consumes from [WorkForYou-API](https://github.com/radichev/WorkForYou-API). It is build with lazy loaded modules which helps keep the initial bundle size smaller, which in turn helps decrease loading times. Every registered user can publish a job and buy existing one. The published and bought jobs are stored in his profile where he can access them. A user can update or delete job if he is the author of it. The application has admin panel which can only be accessed by a user with admin authority which is checked by AdminGurad from the jwt token, from there the admin can manage other users authorities. Every route, except the index, is guarded by an authentication guard which requires the user to be logged in. Every user can upload profile and job image which is handled by the backend and stored in AWS S3 bucket, in return the client receives image url.
+ 
+# Build With:
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Angular CLI 9.1.7
+- Angular Material 9.2.4
+- ng2-carouselamos 4.1.0
+- auth0/angular-jwt 4.2.0
