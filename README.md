@@ -4,7 +4,7 @@ WorkForYou-Client is an angular client which consumes from [WorkForYou-API](http
 
 [![Build status](https://ci.appveyor.com/api/projects/status/k3elwjp58i8luawl/branch/master?svg=true)](https://ci.appveyor.com/project/radichev/workforyou-client/branch/master)
  
-# Build With:
+# :hammer_and_wrench: Build With:
 
 - Angular 9.1.7
 - Angular Material 9.2.4
