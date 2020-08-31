@@ -10,3 +10,36 @@ WorkForYou-Client is an angular client which consumes from [WorkForYou-API](http
 - Angular Material 9.2.4
 - ng2-carouselamos 4.1.0
 - auth0/angular-jwt 4.2.0
+
+# Website Screenshots
+- Index Page
+
+![Index Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/index.jpg)
+
+- Home Page
+
+![Home Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/home%20page.png)
+
+- User Profile Page
+
+![User Profile Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/user%20profile.png)
+
+- Job Page
+
+![Job Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/job.jpg)
+
+- Edit Job Page
+
+![Edit Job Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/edit%20job.jpg)
+
+- Add Job Page
+
+![Add Job Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/add%20job.jpg)
+
+- Web Programming Category Page (one of many categories)
+
+![Web Programming Category Page](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/web%20programming%20category.jpg)
+
+- Admin Panel
+
+![Admin Panel](https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/admin%20panel.jpg)
