@@ -7,8 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { JobOutputModel } from '../shared/models/output-models/jobOutputModel';
 import { JobInputModel } from 'src/app/shared/models/input-models/job';
 import { ActivatedRoute, Router } from '@angular/router';
-import { concat, Observable, forkJoin } from 'rxjs';
-import { combineLatest } from 'rxjs/internal/operators/combineLatest';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-job-edit',
